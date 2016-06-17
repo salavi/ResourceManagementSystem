@@ -10,6 +10,11 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+<<<<<<< HEAD
+=======
+import org.apache.log4j.BasicConfigurator;
+
+>>>>>>> branch 'master' of https://github.com/salavi/ResourceManagementSystem.git
 public class Log extends JFrame {
 
 	public static void main(String[] args) {

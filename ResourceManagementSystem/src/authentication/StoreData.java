@@ -1,5 +1,9 @@
 package authentication;
 
+<<<<<<< HEAD
+=======
+import org.apache.log4j.BasicConfigurator;
+>>>>>>> branch 'master' of https://github.com/salavi/ResourceManagementSystem.git
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
