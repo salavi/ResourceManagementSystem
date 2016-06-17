@@ -9,7 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class MainApp extends Application {
+class MainApp extends Application {
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;
@@ -31,7 +31,7 @@ public class MainApp extends Application {
 			loader.setLocation(MainApp.class.getResource("../view/LoginSignUpRootLayout.fxml"));
 			rootLayout = (BorderPane) loader.load();
 
-			// Show the scene containing the root layout.
+			// Show the scene containing the login sign up root layout.
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -43,12 +43,12 @@ public class MainApp extends Application {
 
 	private void showLogin() {
 		try {
-            // Load person overview.
+            // Load login.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("../view/Login.fxml"));
             AnchorPane login = (AnchorPane) loader.load();
 
-            // Set person overview into the center of root layout.
+            // Set login into the center of login sign up root layout.
             rootLayout.setCenter(login);
         } catch (IOException e) {
             e.printStackTrace();
