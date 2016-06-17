@@ -4,6 +4,29 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<accessrules>
 			<accessrule kind="accessible" pattern="javafx/**"/>
+<<<<<<< HEAD
+		</accessrules>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/asm-attrs.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/asm.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/c3p0-0.9.1.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/cglib-2.1.3.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/com.mysql.jdbc_5.1.5.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/commons-collections-2.1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/ehcache-1.2.3.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/hibernate-validator.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/hibernate3.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/jdbc2_0-stdext.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/jta.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/log4j-1.2.11.jar"/>
+	<classpathentry kind="lib" path="/Users/Hooori/Documents/uni/ترم های گذرانده شده/ترم ۱۰/OOD/Project/hibernate/hibernate/xerces-2.6.2.jar"/>
+=======
 			<accessrule kind="accessible" pattern="javafx/stage/**"/>
 		</accessrules>
 	</classpathentry>
@@ -26,5 +49,6 @@
 	<classpathentry kind="lib" path="/Users/sunhouse/+MyFiles/University/term10/OOD/ProjectDevelopment/hibernate/hibernate/jta.jar"/>
 	<classpathentry kind="lib" path="/Users/sunhouse/+MyFiles/University/term10/OOD/ProjectDevelopment/hibernate/hibernate/log4j-1.2.11.jar"/>
 	<classpathentry kind="lib" path="/Users/sunhouse/+MyFiles/University/term10/OOD/ProjectDevelopment/hibernate/hibernate/xerces-2.6.2.jar"/>
+>>>>>>> branch 'master' of https://github.com/salavi/ResourceManagementSystem.git
 	<classpathentry kind="output" path="bin"/>
 </classpath>
