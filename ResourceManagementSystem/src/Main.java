@@ -5,9 +5,7 @@ import javax.swing.JPanel;
 
 
 public class Main {
-<<<<<<< HEAD
-	
-=======
+
 	public static void main(String[] args) {
 		JFrame j1 = new JFrame();
 		JPanel j2 = new JPanel();
@@ -16,8 +14,6 @@ public class Main {
 		
 	}
 	
-	
 
->>>>>>> branch 'master' of https://github.com/salavi/ResourceManagementSystem.git
 }
 

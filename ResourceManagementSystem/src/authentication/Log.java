@@ -14,7 +14,6 @@ import javax.swing.JTextField;
 =======
 import org.apache.log4j.BasicConfigurator;
 
->>>>>>> branch 'master' of https://github.com/salavi/ResourceManagementSystem.git
 public class Log extends JFrame {
 
 	public static void main(String[] args) {
