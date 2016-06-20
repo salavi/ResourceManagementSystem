@@ -9,7 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-class MainApp extends Application {
+public class MainApp extends Application {
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;
