@@ -8,13 +8,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginController">
    <children>
       <Pane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FDFDFD;">
          <children>
-            <Pane layoutX="225.0" layoutY="100.0" prefHeight="400.0" prefWidth="450.0" style="-fx-background-color: #F6F6F6; -fx-border-color: #B38B5D; -fx-border-width: 5;">
+            <Pane layoutX="225.0" layoutY="69.0" prefHeight="463.0" prefWidth="450.0" style="-fx-background-color: #F6F6F6; -fx-border-color: #B38B5D; -fx-border-width: 5;">
                <children>
-                  <Text layoutX="41.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="به سامانه مدیریت منابع سازمان خوش آمدید">
+                  <Text layoutX="41.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="به سامانه مدیریت منابع سازمانی خوش آمدید">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -29,9 +29,9 @@
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <TextField layoutX="89.0" layoutY="133.0" prefHeight="45.0" prefWidth="273.0" />
-                  <PasswordField layoutX="88.0" layoutY="232.0" prefHeight="45.0" prefWidth="273.0" />
-                  <Button layoutX="249.0" layoutY="307.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="82.0" text="ورود">
+                  <TextField fx:id="username" layoutX="89.0" layoutY="133.0" prefHeight="45.0" prefWidth="273.0" />
+                  <PasswordField fx:id="password" layoutX="88.0" layoutY="232.0" prefHeight="45.0" prefWidth="273.0" />
+                  <Button fx:id="loginButton" layoutX="249.0" layoutY="307.0" mnemonicParsing="false" onMouseReleased="#handleLoginButton" prefHeight="39.0" prefWidth="82.0" text="ورود">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -41,6 +41,11 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
+                  <Text fx:id="message" fill="#b20505" layoutX="104.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.34300312399864">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
                </children>
             </Pane>
          </children>
