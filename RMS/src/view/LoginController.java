@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import logic.authentication.Authentication;
+import logic.authentication.UserAccount;
 
 public class LoginController {
 	////////////////////////
@@ -12,6 +14,9 @@ public class LoginController {
 	  @FXML private TextField password;
 	  @FXML private Button loginButton;
 	  @FXML private Text message = new Text();
+	  
+	  private Authentication auth;
+	  private UserAccount loggedInUser;
 	  
 
 	  /**
@@ -32,8 +37,19 @@ public class LoginController {
 	   */
 	  @FXML
 	  private void handleLoginButton() {
-//		  System.out.println("hiiiiiiiiiiiiiiiiiiiiiiiiiii");
-	      message.setText("اطلاعات وارد شده نادرست می‌باشد");
+		  if(!username.getText().isEmpty() && !password.getText().isEmpty()){
+			  loggedInUser = auth.login(username.getText(), password.getText());
+			  if(loggedInUser == null){
+				  message.setText("اطلاعات وارد شده نادرست می‌باشد");
+			  }
+			  else{
+				  message.setText("ورود شما با موفقیت انجام شد");
+			  }
+		  }
+		  else{
+			  message.setText("لطفا نام کاربری و رمز عبور را وارد نمایید");
+		  }
+	      
 	  }
 	  //////////////////////////
 	// Reference to the main application.
@@ -45,6 +61,7 @@ public class LoginController {
      * The constructor is called before the initialize() method.
      */
     public LoginController() {
+    	auth = new Authentication();
     }
     
     /**

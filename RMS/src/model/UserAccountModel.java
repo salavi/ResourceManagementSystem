@@ -7,7 +7,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class UserAccount {
+public class UserAccountModel {
 
 	private StringProperty firstName;
 	private StringProperty lastName;
@@ -16,7 +16,7 @@ public class UserAccount {
 	private IntegerProperty accessLevel;
 	private BooleanProperty isAdmin;
 
-	public UserAccount(String firstName, String lastName, String username, String password) {
+	public UserAccountModel(String firstName, String lastName, String username, String password) {
 
 		setFirstName(firstName);
 		setLastName(lastName);

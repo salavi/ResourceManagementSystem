@@ -41,7 +41,7 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Text fx:id="message" fill="#b20505" layoutX="104.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.34300312399864">
+                  <Text fx:id="message" fill="#b20505" layoutX="75.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="308.34300312399864">
                      <font>
                         <Font size="20.0" />
                      </font>

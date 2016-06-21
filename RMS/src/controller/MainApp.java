@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import model.UserAccount;
+import model.UserAccountModel;
 import view.LoginController;
 
 public class MainApp extends Application {
@@ -20,16 +20,16 @@ public class MainApp extends Application {
 	/**
      * The data as an observable list of UserAccounts.
      */
-    private ObservableList<UserAccount> accountsData = FXCollections.observableArrayList();
+    private ObservableList<UserAccountModel> accountsData = FXCollections.observableArrayList();
 
     /**
      * Constructor
      */
     public MainApp() {
         // Add some sample data
-        accountsData.add(new UserAccount("Hoorieh", "Marefat", "hoooooori", "pass1"));
-        accountsData.add(new UserAccount("Mehrnush", "Mirtaheri", "makhmoosh", "pass2"));
-        accountsData.add(new UserAccount("Soheil", "Alavi", "salavi", "pass3"));
+        accountsData.add(new UserAccountModel("Hoorieh", "Marefat", "hoooooori", "pass1"));
+        accountsData.add(new UserAccountModel("Mehrnush", "Mirtaheri", "makhmoosh", "pass2"));
+        accountsData.add(new UserAccountModel("Soheil", "Alavi", "salavi", "pass3"));
 //        accountData.add(new UserAccount("Cornelia", "Meier"));
 //        accountData.add(new UserAccount("Werner", "Meyer"));
 //        accountData.add(new UserAccount("Lydia", "Kunz"));
@@ -42,7 +42,7 @@ public class MainApp extends Application {
      * Returns the data as an observable list of UserAccounts. 
      * @return
      */
-    public ObservableList<UserAccount> getaccountData() {
+    public ObservableList<UserAccountModel> getaccountData() {
         return accountsData;
     }
 	
