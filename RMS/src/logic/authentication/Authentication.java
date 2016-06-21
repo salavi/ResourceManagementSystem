@@ -7,4 +7,9 @@ public class Authentication {
 		System.out.println("in Authentication");
 		return null;
 	}
+	
+	public int signUp(String username, String password, String firstName, String lastName){
+		System.out.println("in signUppppppppppppppp");
+		return -1;
+	}
 }

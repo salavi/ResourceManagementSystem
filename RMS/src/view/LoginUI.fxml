@@ -31,12 +31,12 @@
                   </Text>
                   <TextField fx:id="username" layoutX="89.0" layoutY="133.0" prefHeight="45.0" prefWidth="273.0" />
                   <PasswordField fx:id="password" layoutX="88.0" layoutY="232.0" prefHeight="45.0" prefWidth="273.0" />
-                  <Button fx:id="loginButton" layoutX="249.0" layoutY="307.0" mnemonicParsing="false" onMouseReleased="#handleLoginButton" prefHeight="39.0" prefWidth="82.0" text="ورود">
+                  <Button fx:id="loginButton" layoutX="249.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="39.0" prefWidth="82.0" text="ورود">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="121.0" layoutY="307.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="82.0" text="ثبت نام">
+                  <Button fx:id="signUpButton" layoutX="121.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleSignupButton" prefHeight="39.0" prefWidth="82.0" text="ثبت نام">
                      <font>
                         <Font size="20.0" />
                      </font>
