@@ -9,7 +9,6 @@ public class UserAccount {
 	private Boolean isAdmin = false;
 
 	public UserAccount(String firstName, String lastName, String username, String password) {
-
 		setFirstName(firstName);
 		setLastName(lastName);
 		setUsername(username);

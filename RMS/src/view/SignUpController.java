@@ -52,15 +52,20 @@ public class SignUpController {
 	@FXML
 	private void handleSignUpButton() {
 		if(!firstName.getText().isEmpty() && !lastName.getText().isEmpty() && !username.getText().isEmpty() && !password.getText().isEmpty()){
-			int success = auth.signUp(username.getText(), password.getText(), firstName.getText(), lastName.getText());
+			int success = auth.signUp(firstName.getText(), lastName.getText(), username.getText(), password.getText());
 			if(success == -1){
 				//dar nazar gerefte shode ke tanha halate adame movafaghiyat, mojud budane username ast
 				message.setFill(Color.RED);
 				message.setText("این نام کاربری موجود می‌باشد");
+				username.clear();
 			}
-			else{
+			else if(success == 1){
 				message.setFill(Color.GREEN);
 				message.setText("ثبت‌ نام شما با موفقیت انجام شد");
+				firstName.clear();
+				lastName.clear();
+				username.clear();
+				password.clear();
 			}
 		}
 		else{

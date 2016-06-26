@@ -1,75 +1,86 @@
 package model;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class UserAccountModel {
+	private String firstName;
+	private String lastName;
+	@Column(unique = true)
+	private String username;
+	private String password;
+	private Integer accessLevel = 0;
+	private Boolean isAdmin = false;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;  
 
-	private StringProperty firstName;
-	private StringProperty lastName;
-	private StringProperty username;
-	private StringProperty password;
-	private IntegerProperty accessLevel;
-	private BooleanProperty isAdmin;
-
+	
 	public UserAccountModel(String firstName, String lastName, String username, String password) {
-
 		setFirstName(firstName);
 		setLastName(lastName);
 		setUsername(username);
 		setPassword(password);
 	}
 
-	public StringProperty getFirstName() {
+	public String getFirstName() {
 		return firstName;
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = new SimpleStringProperty(firstName);
+		this.firstName = firstName;
 	}
 
-	public StringProperty getLastName() {
+	public String getLastName() {
 		return lastName;
 	}
 
 	public void setLastName(String lastName) {
-		this.lastName = new SimpleStringProperty(lastName);
+		this.lastName = lastName;
 	}
 
-	public StringProperty getUsername() {
+	public String getUsername() {
 		return username;
 	}
 
 	public void setUsername(String username) {
-		this.username = new SimpleStringProperty(username);
+		this.username = username;
 	}
 
-	public StringProperty getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
-		this.password = new SimpleStringProperty(password);
+		this.password = password;
 	}
 
-	public IntegerProperty getAccessLevel() {
+	public Integer getAccessLevel() {
 		return accessLevel;
 	}
 
 	public void setAccessLevel(int accessLevel) {
-		this.accessLevel = new SimpleIntegerProperty(accessLevel);
+		this.accessLevel = accessLevel;
 	}
 
-	public BooleanProperty getIsAdmin() {
+	public Boolean getIsAdmin() {
 		return isAdmin;
 	}
 
 	public void setIsAdmin(boolean isAdmin) {
-		this.isAdmin = new SimpleBooleanProperty(isAdmin);
+		this.isAdmin = isAdmin;
 	}
 
+	public Long getId() {  
+	    return id;  
+	}  
+	
+	public void setId(Long id) {  
+	    this.id = id;  
+	}  
 }
