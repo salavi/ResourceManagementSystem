@@ -9,7 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-class MainApp extends Application {
+public class MainApp extends Application {
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;
@@ -17,7 +17,7 @@ class MainApp extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("سامانه‌ی مدیریت منابع سازمانی");
+		this.primaryStage.setTitle("به سامانه مدیریت منابع سازمانی خوش آمدید.");
 
 		initLoginLayout();
 		showLogin();

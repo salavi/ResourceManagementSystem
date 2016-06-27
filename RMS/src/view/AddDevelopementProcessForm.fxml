@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FDFDFD;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F6F6F6; -fx-border-color: #B38B5D; -fx-border-width: 5;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <AnchorPane prefHeight="500.0" prefWidth="760.0">
+               <children>
+                  <GridPane AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="170.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="57.0" minWidth="0.0" prefWidth="21.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="77.0" minWidth="10.0" prefWidth="77.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="170.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label prefHeight="16.0" prefWidth="37.0" text="نام پروژه" />
+                        <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                        <Label text="نام فعالیت" GridPane.rowIndex="1" />
+                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="تاریخ شروع" GridPane.rowIndex="3" />
+                        <Label text="تاریخ پابان" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Label text="ماژول" GridPane.rowIndex="2" />
+                        <Label text="واحد سازمان" GridPane.rowIndex="4" />
+                        <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ListView prefHeight="34.0" prefWidth="178.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text="منابع " GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <DatePicker prefHeight="25.0" prefWidth="194.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <DatePicker prefHeight="25.0" prefWidth="194.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.valignment="BOTTOM" />
+                        <Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="افزودن" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
