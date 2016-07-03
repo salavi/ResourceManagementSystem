@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -20,218 +13,27 @@
               <tabs>
                   <Tab text="مشخصات">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <Text layoutX="353.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="مشخصات کاربر">
-                                 <font>
-                                    <Font size="28.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="549.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="نام" AnchorPane.rightAnchor="298.0813751220703">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="475.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="نام ‌خانوادگی" AnchorPane.rightAnchor="299.8125228881836">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="492.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="نام ‌کاربری" AnchorPane.rightAnchor="299.6570053100586">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="461.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="سطح دسترسی" AnchorPane.rightAnchor="299.85230255126953">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Label layoutX="303.0" layoutY="115.0" text="Label" AnchorPane.rightAnchor="514.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="303.0" layoutY="160.0" text="Label" AnchorPane.rightAnchor="514.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="303.0" layoutY="208.0" text="Label" AnchorPane.rightAnchor="514.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="303.0" layoutY="251.0" text="Label" AnchorPane.rightAnchor="514.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
                   <Tab text="ویرایش ">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <Text layoutX="354.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ویرایش اطلاعات">
-                                 <font>
-                                    <Font size="28.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="604.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="نام" AnchorPane.rightAnchor="243.0813751220703">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="533.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="نام خانوادگی" AnchorPane.rightAnchor="241.8125228881836">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <TextField layoutX="241.0" layoutY="118.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </TextField>
-                              <TextField layoutX="241.0" layoutY="184.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </TextField>
-                              <Button fx:id="loginButton" layoutX="393.0" layoutY="283.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="39.0" prefWidth="82.0" text="ثبت">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
                 <Tab text="تغییر رمز عبور">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <Text layoutX="363.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="تغییر رمز عبور">
-                                 <font>
-                                    <Font size="28.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="561.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="رمز‌عبور قدیم" AnchorPane.rightAnchor="216.5973358154297">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="558.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="رمز‌عبور جدید" AnchorPane.rightAnchor="214.50691986083984">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="514.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="تکرار رمز‌عبور جدید" AnchorPane.rightAnchor="217.63047790527344">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <TextField layoutX="213.0" layoutY="123.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </TextField>
-                              <TextField layoutX="213.0" layoutY="179.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </TextField>
-                              <TextField layoutX="213.0" layoutY="236.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </TextField>
-                              <Button fx:id="loginButton1" layoutX="409.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="39.0" prefWidth="82.0" text="ثبت">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Button>
-                           </children></AnchorPane>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                   </content>
                 </Tab>
                 <Tab text="تغییر سطح دسترسی">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <Text layoutX="327.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="تغییر سطح دسترسی ">
-                                 <font>
-                                    <Font size="28.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="600.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="نام کاربری">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="570.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="سطح دسترسی">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <RadioButton layoutX="360.0" layoutY="225.0" mnemonicParsing="false" text="سطح دسترسی میانه">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <toggleGroup>
-                                    <ToggleGroup fx:id="accessLevel" />
-                                 </toggleGroup>
-                              </RadioButton>
-                              <RadioButton layoutX="524.0" layoutY="225.0" mnemonicParsing="false" text="بالاترین سطح دسترسی" toggleGroup="$accessLevel">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </RadioButton>
-                              <RadioButton layoutX="185.0" layoutY="225.0" mnemonicParsing="false" text="کمترین سطح دسترسی" toggleGroup="$accessLevel">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </RadioButton>
-                              <TextField layoutX="274.0" layoutY="99.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </TextField>
-                              <Button fx:id="loginButton11" layoutX="393.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="39.0" prefWidth="82.0" text="ثبت">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Button>
-                           </children></AnchorPane>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                   </content>
                 </Tab>
                   <Tab text="حذف حساب کاربری ">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <Text layoutX="337.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="حذف حساب‌کاربری">
-                                 <font>
-                                    <Font size="28.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="499.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="نام کاربری مورد نظر">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <TextField layoutX="223.0" layoutY="127.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </TextField>
-                              <Button fx:id="loginButton111" layoutX="392.0" layoutY="206.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="39.0" prefWidth="82.0" text="ثبت">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
               </tabs>
