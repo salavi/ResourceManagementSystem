@@ -1,18 +1,22 @@
 package model;
 
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import logic.authentication.UserAccount;
+
+
 @Entity
+//@Table(name = "UserAccounts", 
+//uniqueConstraints = @UniqueConstraint(columnNames = {"UserName"}))
 public class UserAccountModel {
 	private String firstName;
-	private String lastName;
-	@Column(unique = true)
-	private String username;
+	private String lastName;	
+	//@Column(unique = true)	
+	private String username;	
 	private String password;
 	private Integer accessLevel = 0;
 	private Boolean isAdmin = false;
@@ -26,6 +30,10 @@ public class UserAccountModel {
 		setLastName(lastName);
 		setUsername(username);
 		setPassword(password);
+	}
+	
+	public UserAccountModel(){
+		
 	}
 
 	public String getFirstName() {
@@ -83,4 +91,16 @@ public class UserAccountModel {
 	public void setId(Long id) {  
 	    this.id = id;  
 	}  
+	
+	public String toString(){
+		return firstName + " " + lastName + " " + username + " " + password;
+	}
+	
+	public boolean authenticate(String username, String password){
+		return this.username.equals(username) && this.password.equals(password);
+	}
+	
+	public UserAccount getUserAccount(){
+		return new UserAccount(firstName, lastName, username, password);
+	}
 }
