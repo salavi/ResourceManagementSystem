@@ -1,4 +1,4 @@
-package controller;
+package controller.userAccount;
 
 import java.io.IOException;
 
@@ -57,7 +57,7 @@ public class LoginController {
 					Stage stage; 
 					Parent root;
 					stage = (Stage) loginButton.getScene().getWindow();
-					root = FXMLLoader.load(getClass().getResource("../view/UserAccount.fxml"));
+					root = FXMLLoader.load(getClass().getResource("../../view/userAccount/UserAccount.fxml"));
 					Scene scene = new Scene(root);
 					stage.setScene(scene);
 					stage.show();
@@ -84,7 +84,7 @@ public class LoginController {
 		Stage stage; 
 		Parent root;
 		stage = (Stage) signUpButton.getScene().getWindow();
-		root = FXMLLoader.load(getClass().getResource("../view/SignUpUI.fxml"));
+		root = FXMLLoader.load(getClass().getResource("../../view/userAccount/SignUpUI.fxml"));
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
