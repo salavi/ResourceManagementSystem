@@ -20,9 +20,9 @@
                   </Tab>
                   <Tab text="ویرایش ">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                        	<!-- <fx:include source="userAccount/EditProfile.fxml"/> 
-                        </AnchorPane>-->
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" >
+                        	<fx:include source="userAccount/EditProfile.fxml"/> 
+                        </AnchorPane>
                      </content>
                   </Tab>
                 <Tab text="تغییر رمز عبور">
