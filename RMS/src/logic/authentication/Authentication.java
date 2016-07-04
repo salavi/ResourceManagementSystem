@@ -17,8 +17,10 @@ public class Authentication {
 		while(it.hasNext()) {
 			UserAccountModel temp = it.next();
 			userFound = temp.authenticate(username, password);
-			if(userFound)
-				return temp.getUserAccount();
+			if(userFound){
+				loggedInUser = temp.getUserAccount();
+				return loggedInUser;
+			}
 		}
 		return null;
 	}

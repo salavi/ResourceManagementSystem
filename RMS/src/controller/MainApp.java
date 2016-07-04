@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import logic.authentication.UserAccount;
 import model.DBInitializatorSingleton;
 
 public class MainApp extends Application {

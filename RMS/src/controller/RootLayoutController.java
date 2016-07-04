@@ -1,4 +1,4 @@
-package controller.userAccount;
+package controller;
 
 public class RootLayoutController {
 	public RootLayoutController() {

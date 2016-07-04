@@ -23,17 +23,17 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField layoutX="251.0" layoutY="128.0">
+      <TextField fx:id="firstName" layoutX="251.0" layoutY="128.0">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField layoutX="251.0" layoutY="194.0">
+      <TextField fx:id="lastName" layoutX="251.0" layoutY="194.0">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <Button fx:id="loginButton" layoutX="403.0" layoutY="293.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="39.0" prefWidth="82.0" text="ثبت">
+      <Button fx:id="registerButton" layoutX="403.0" layoutY="293.0" mnemonicParsing="false" onAction="#handleRegisterButton" prefHeight="39.0" prefWidth="82.0" text="ثبت">
          <font>
             <Font size="20.0" />
          </font>

@@ -11,33 +11,39 @@
          <children>
             <TabPane prefHeight="550.0" prefWidth="900.0" side="RIGHT" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                  <Tab text="مشخصات">
+                  <Tab fx:id="profileTab" text="مشخصات">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      		<fx:include source="Profile.fxml" />
                      	</AnchorPane>
                      </content>
                   </Tab>
-                  <Tab text="ویرایش ">
+                  <Tab fx:id="editTab" text="ویرایش ">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
-                        	<!-- <fx:include source="EditProfile.fxml" /> 
-                        </AnchorPane> -->
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        	<fx:include source="EditProfile.fxml" /> 
+                        </AnchorPane>
                      </content>
                   </Tab>
-                <Tab text="تغییر رمز عبور">
+                <Tab fx:id="passwordTab" text="تغییر رمز عبور">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <fx:include source="ChangePassword.fxml" /> 
+                        </AnchorPane>
                   </content>
                 </Tab>
-                <Tab text="تغییر سطح دسترسی">
+                <Tab fx:id="accessLevelTab" text="تغییر سطح دسترسی">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <fx:include source="ChangeAccessLevel.fxml" /> 
+                        </AnchorPane>
                   </content>
                 </Tab>
-                  <Tab text="حذف حساب کاربری ">
+                  <Tab fx:id="deleteAccountTab" text="حذف حساب کاربری ">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <fx:include source="RemoveAccount.fxml" /> 
+                        </AnchorPane>
                      </content>
                   </Tab>
               </tabs>
