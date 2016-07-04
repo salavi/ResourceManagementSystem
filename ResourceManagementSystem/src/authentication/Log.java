@@ -1,4 +1,4 @@
-package authentication;
+package src.authentication;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,8 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-<<<<<<< HEAD
-=======
+
 import org.apache.log4j.BasicConfigurator;
 
 public class Log extends JFrame {

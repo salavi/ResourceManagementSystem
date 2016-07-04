@@ -30,7 +30,8 @@ public class MainApp extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("سامانه‌ مدیریت منابع سازمانی");
+		this.primaryStage.setTitle("به سامانه مدیریت منابع سازمانی خوش آمدید.");
+
 
 		initLoginLayout();
 		showLogin();
