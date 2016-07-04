@@ -1,9 +1,10 @@
-package authentication;
+package src.authentication;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class newframe extends JFrame {
 
@@ -14,13 +15,18 @@ public class newframe extends JFrame {
 	JLabel welcome = new JLabel("Welcome to a New Frame");
 	JPanel panel = new JPanel();
 
-	newframe(){
+
+	newframe() {
 		super("Welcome");
-		setSize(300,200);
-		setLocation(500,280);
-		panel.setLayout (null); 
+		setSize(300, 200);
+		setLocation(500, 280);
+		panel.setLayout(null);
+
+
+
 
 		welcome.setBounds(70,50,150,60);
+
 
 		panel.add(welcome);
 

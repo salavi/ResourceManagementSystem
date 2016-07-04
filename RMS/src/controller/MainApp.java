@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import controller.userAccount.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -29,7 +30,8 @@ public class MainApp extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("سامانه‌ مدیریت منابع سازمانی");
+		this.primaryStage.setTitle("به سامانه مدیریت منابع سازمانی خوش آمدید.");
+
 
 		initLoginLayout();
 		showLogin();
@@ -41,7 +43,7 @@ public class MainApp extends Application {
 		try {
 			// Load root layout from fxml file.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("../view/LoginSignUpRootLayout.fxml"));
+			loader.setLocation(MainApp.class.getResource("../view/userAccount/LoginSignUpRootLayout.fxml"));
 			rootLayout = (BorderPane) loader.load();
 
 			// Show the scene containing the login sign up root layout.
@@ -58,7 +60,7 @@ public class MainApp extends Application {
 		try {
 			// Load login.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("../view/LoginUI.fxml"));
+			loader.setLocation(MainApp.class.getResource("../view/userAccount/LoginUI.fxml"));
 			AnchorPane login = (AnchorPane) loader.load();
 
 			// Set login into the center of login sign up root layout.

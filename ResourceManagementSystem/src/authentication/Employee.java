@@ -1,11 +1,10 @@
-package authentication;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity 
 public class Employee {
 	
 	@Id
