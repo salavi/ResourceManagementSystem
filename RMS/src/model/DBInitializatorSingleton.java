@@ -10,13 +10,18 @@ public class DBInitializatorSingleton {
 	private Session session;
 	private static DBInitializatorSingleton instance = null;
 	
-	public DBInitializatorSingleton() {
-		// Exists only to defeat instantiation.
-		Configuration cfg = new Configuration();
-		cfg.configure("DBXML/hibernate.cfg.xml");
-		// creating seession factory object
-		SessionFactory factory = cfg.buildSessionFactory();
-		setSession(factory.openSession());
+	private DBInitializatorSingleton() {
+		try{
+			// Exists only to defeat instantiation.
+			Configuration cfg = new Configuration();
+			cfg.configure("DBXML/hibernate.cfg.xml");
+			// creating seession factory object
+			SessionFactory factory = cfg.buildSessionFactory();
+			setSession(factory.openSession());
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	public static DBInitializatorSingleton getInstance() {

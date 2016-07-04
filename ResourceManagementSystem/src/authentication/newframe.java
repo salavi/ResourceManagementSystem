@@ -15,13 +15,18 @@ public class newframe extends JFrame {
 	JLabel welcome = new JLabel("Welcome to a New Frame");
 	JPanel panel = new JPanel();
 
+
 	newframe() {
 		super("Welcome");
 		setSize(300, 200);
 		setLocation(500, 280);
 		panel.setLayout(null);
 
-		welcome.setBounds(70, 50, 150, 60);
+
+
+
+		welcome.setBounds(70,50,150,60);
+
 
 		panel.add(welcome);
 

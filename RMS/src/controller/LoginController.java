@@ -1,4 +1,4 @@
-package view;
+package controller;
 
 import java.io.IOException;
 
@@ -21,12 +21,23 @@ public class LoginController {
 	@FXML private TextField password;
 	@FXML private Button loginButton;
 	@FXML private Button signUpButton;
-	@FXML private Text message = new Text();
+	@FXML private Text message;
 
 	private Authentication auth;
 	private UserAccount loggedInUser;
 
 
+	/**
+	 * The constructor.
+	 * The constructor is called before the initialize() method.
+	 */
+	public LoginController() {
+		auth = new Authentication();
+		message  = new Text();
+	}
+
+	
+	
 	/**
 	 * Called when there is an action on LoginButton
 	 */
@@ -36,16 +47,29 @@ public class LoginController {
 			loggedInUser = auth.login(username.getText(), password.getText());
 			if(loggedInUser == null){
 				message.setFill(Color.RED);
-				message.setText("اطلاعات وارد شده نادرست می‌باشد");
+				message.setText("Ú©Ø§Ø±Ø¨Ø± Ø¨Ø§ Ø§ÛŒÙ† Ù…Ø´Ø®ØµØ§Øª Ù…ÙˆØ¬ÙˆØ¯ Ù†Ù…ÛŒâ€ŒØ¨Ø§Ø´Ø¯");
 			}
 			else{
+				//TODO
 				message.setFill(Color.GREEN);
-				message.setText("ورود شما با موفقیت انجام شد");
+				message.setText("ÙˆØ±ÙˆØ¯ Ø´Ù…Ø§ Ø¨Ø§ Ù…ÙˆÙ�Ù‚ÛŒØª Ø§Ù†Ø¬Ø§Ù… Ø´Ø¯");
+				try{
+					Stage stage; 
+					Parent root;
+					stage = (Stage) loginButton.getScene().getWindow();
+					root = FXMLLoader.load(getClass().getResource("../view/UserAccount.fxml"));
+					Scene scene = new Scene(root);
+					stage.setScene(scene);
+					stage.show();
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}
 			}
 		}
 		else{
 			message.setFill(Color.RED);
-			message.setText("لطفا نام کاربری و رمز عبور را وارد نمایید");
+			message.setText("Ù„Ø·Ù�Ø§ Ù†Ø§Ù… Ú©Ø§Ø±Ø¨Ø±ÛŒ Ùˆ Ø±Ù…Ø² Ø¹Ø¨ÙˆØ± Ø±Ø§ ÙˆØ§Ø±Ø¯ Ù†Ù…Ø§ÛŒÛŒØ¯");
 		}
 
 	}
@@ -60,19 +84,10 @@ public class LoginController {
 		Stage stage; 
 		Parent root;
 		stage = (Stage) signUpButton.getScene().getWindow();
-		root = FXMLLoader.load(getClass().getResource("SignUpUI.fxml"));
+		root = FXMLLoader.load(getClass().getResource("../view/SignUpUI.fxml"));
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
-	}
-
-
-	/**
-	 * The constructor.
-	 * The constructor is called before the initialize() method.
-	 */
-	public LoginController() {
-		auth = new Authentication();
 	}
 
 

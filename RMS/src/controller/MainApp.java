@@ -9,7 +9,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.DBInitializatorSingleton;
-import view.LoginController;
 
 public class MainApp extends Application {
 
@@ -35,7 +34,7 @@ public class MainApp extends Application {
 
 		initLoginLayout();
 		showLogin();
-		dbInit = new DBInitializatorSingleton();
+		dbInit = DBInitializatorSingleton.getInstance();
 		dbInit.initial();
 	}
 

@@ -1,4 +1,4 @@
-package view;
+package controller;
 
 import java.io.IOException;
 
@@ -20,13 +20,14 @@ public class SignUpController {
 	@FXML private TextField password;
 	@FXML private Button signUpButton;
 	@FXML private Button returnToLoginButton;
-	@FXML private Text message = new Text();
+	@FXML private Text message;
 	
 	private Authentication auth;
 
 	
 	public SignUpController(){
 		auth = new Authentication();
+		message = new Text();
 	}
 	
 	
@@ -36,13 +37,18 @@ public class SignUpController {
 	 */
 	@FXML
 	private void handleReturnToLoginButton() throws IOException {
-		Stage stage; 
-		Parent root;
-		stage = (Stage) returnToLoginButton.getScene().getWindow();
-		root = FXMLLoader.load(getClass().getResource("LoginUI.fxml"));
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+		try{
+			Stage stage; 
+			Parent root;
+			stage = (Stage) returnToLoginButton.getScene().getWindow();
+			root = FXMLLoader.load(getClass().getResource("../view/LoginUI.fxml"));
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -54,18 +60,25 @@ public class SignUpController {
 		if(!firstName.getText().isEmpty() && !lastName.getText().isEmpty() && !username.getText().isEmpty() && !password.getText().isEmpty()){
 			int success = auth.signUp(firstName.getText(), lastName.getText(), username.getText(), password.getText());
 			if(success == -1){
-				//dar nazar gerefte shode ke tanha halate adame movafaghiyat, mojud budane username ast
+				//TODO
+				//username is not unique
 				message.setFill(Color.RED);
 				message.setText("این نام کاربری موجود می‌باشد");
 				username.clear();
 			}
 			else if(success == 1){
-				message.setFill(Color.GREEN);
-				message.setText("ثبت‌ نام شما با موفقیت انجام شد");
-				firstName.clear();
-				lastName.clear();
-				username.clear();
-				password.clear();
+				try{
+					Stage stage; 
+					Parent root;
+					stage = (Stage) returnToLoginButton.getScene().getWindow();
+					root = FXMLLoader.load(getClass().getResource("../view/SignupSuccessMessage.fxml"));
+					Scene scene = new Scene(root);
+					stage.setScene(scene);
+					stage.show();
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}
 			}
 		}
 		else{

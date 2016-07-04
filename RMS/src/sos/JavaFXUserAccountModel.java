@@ -1,4 +1,4 @@
-package model;
+package sos;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
