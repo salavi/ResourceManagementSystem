@@ -1,4 +1,4 @@
-package controller;
+package controller.userAccount;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +22,7 @@ public class SignupSuccessMessageController {
 			Stage stage; 
 			Parent root;
 			stage = (Stage) enterButton.getScene().getWindow();
-			root = FXMLLoader.load(getClass().getResource("../view/LoginUI.fxml"));
+			root = FXMLLoader.load(getClass().getResource("../../view/userAccount/LoginUI.fxml"));
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
