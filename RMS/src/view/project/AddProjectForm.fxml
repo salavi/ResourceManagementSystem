@@ -38,14 +38,14 @@
                         <TextField fx:id="projectNameId" GridPane.columnIndex="1" />
                         <TextField fx:id="numOfHumansId" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="numOfModulesId" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="technologyNameId" promptText="نام تکنولوژی" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <TextField fx:id="technologyId" promptText="نام تکنولوژی" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
                         </TextField>
                         <TextField fx:id="goalOfTechId" promptText="هدف استفاده" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Button fx:id="addTechnologyButtonId" mnemonicParsing="false" onAction="#handlerAddTechnologyButton" text="افزودن تکنولوژی" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-                        <Button fx:id="addProjectButtonId" mnemonicParsing="false" onAction="#handleraddProjectButton" text="افزودن پروژه" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+                        <Button fx:id="addTechnologyButtonId" mnemonicParsing="false" text="افزودن تکنولوژی" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                        <Button fx:id="addProjectButtonId" mnemonicParsing="false" text="افزودن پروژه" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
                      </children>
                   </GridPane>
                </children>
