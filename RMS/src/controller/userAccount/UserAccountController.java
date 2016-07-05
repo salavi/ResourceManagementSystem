@@ -2,6 +2,7 @@ package controller.userAccount;
 
 
 import javafx.fxml.FXML;
+import logic.authentication.UserAccount;
 
 
 public class UserAccountController {
@@ -10,6 +11,8 @@ public class UserAccountController {
     @FXML private ChangePasswordController changePasswordController;
     @FXML private ChangeAccessLevelController changeAccessLevelController;
     @FXML private RemoveAccountController removeAccountController;
+    
+    private UserAccount loggedInUser;
     
 	
 	public UserAccountController() {
@@ -23,6 +26,20 @@ public class UserAccountController {
 
 	public void setProfileController(ProfileController profileController) {
 		this.profileController = profileController;
+	}
+	
+	public void initialize(){
+		System.out.println("UserAccountInitialize");
+		System.out.println(profileController);
+		
+	}
+
+	public UserAccount getLoggedInUser() {
+		return loggedInUser;
+	}
+
+	public void setLoggedInUser(UserAccount loggedInUser) {
+		this.loggedInUser = loggedInUser;
 	}
 
 	
