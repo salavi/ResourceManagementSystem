@@ -57,12 +57,9 @@ public class LoginController {
 					Stage stage; 
 					Parent root;
 					stage = (Stage) loginButton.getScene().getWindow();
-					System.out.println("injaaaa");
 					FXMLLoader loader = new FXMLLoader();
 					loader.setLocation(getClass().getResource("../../view/userAccount/UserAccount.fxml"));
-					System.out.println("2");
 					root = (Parent) loader.load();
-					System.out.println("3");
 					UserAccountController userAccountController = loader.<UserAccountController>getController();
 					userAccountController.setLoggedInUser(loggedInUser);
 					userAccountController.getProfileController().setLoggedInUser(loggedInUser);
