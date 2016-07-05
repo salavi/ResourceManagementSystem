@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+ <hibernate-mapping> 
+	<class name="model.ResourceModel" table="Resource">
+	    <id name="id" type="java.lang.Long" column="ID">
+	        <generator class="identity"/>
+	    </id>
+	    <property name="resourceId" type="string" column="ResourceID"/>
+	    <many-to-one name="currentUnit" class="model.UnitModel" column="currentUnit"/>
+	    
+	    
+	    <joined-subclass name="model.HumanResourceModel" table="HumanResource">
+	        <key column="HumanResourceID"/>
+	        <property name="firstName" type="string" column="firstName"/>
+	        <property name="lastName" type="string" column="lastName"/>
+	    </joined-subclass>
+	    <joined-subclass name="model.InformationalResourceModel" table="InformationResource">
+	        <key column="InformationResourceID"/>
+	        <property name="type" type="string" column="type"/>
+	    </joined-subclass>
+	    <joined-subclass name="model.PhysicalResourceModel" table="PhysicalResource">
+	        <key column="PhysicalResourceID"/>
+	        <property name="type" type="string" column="type"/>
+	    </joined-subclass>
+		<joined-subclass name="model.FinancialResourceModel" table="FinancialResource">
+	        <key column="FinancialResourceID"/>
+	        <property name="amount" type="double" column="amount"/>
+	    </joined-subclass>
+	</class>
+</hibernate-mapping>
