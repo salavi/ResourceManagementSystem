@@ -38,5 +38,10 @@
             <Font size="20.0" />
          </font>
       </Button>
+      <Text fx:id="message" layoutX="203.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="494.9999951571226">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

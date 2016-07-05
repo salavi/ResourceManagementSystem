@@ -13,11 +13,7 @@ public class ProfileController {
 	private UserAccount loggedInUser;
 	
 	public void initialize(){
-		System.out.println("initializeeeeeeeeeeee");
-//		firstName.setText(loggedInUser.getFirstName());
-//		lastName.setText(loggedInUser.getLastName());
-//		username.setText(loggedInUser.getUsername());
-//		accessLevel.setText(loggedInUser.getAccessLevel().toString());
+
 	}
 
 	public UserAccount getLoggedInUser() {
@@ -28,5 +24,18 @@ public class ProfileController {
 		this.loggedInUser = loggedInUser;
 	}
 	
-	
+	public void setAllLabels(){
+		firstName.setText(loggedInUser.getFirstName());
+		lastName.setText(loggedInUser.getLastName());
+		username.setText(loggedInUser.getUsername());
+		accessLevel.setText(loggedInUser.getAccessLevel().toString());
+	}
 }
+
+
+//FXMLLoader loader = new FXMLLoader();
+//loader.setLocation(getClass().getResource("../../view/userAccount/Profile.fxml"));
+//root = (Parent) loader.load();
+//ProfileController profileController = loader.<ProfileController>getController();
+//profileController.setLoggedInUser(loggedInUser);
+//profileController.setAllLabels();

@@ -29,7 +29,7 @@ public class UserAccountAdapter {
 			Transaction t = session.beginTransaction();
 			session.persist(userAcModel);// persisting the object
 			t.commit();// transaction is committed
-			System.out.println("successfully saved");
+			System.out.println("saved");
 			return 1;
 
 		}catch(Exception e){
@@ -46,12 +46,27 @@ public class UserAccountAdapter {
 			Query query = session.createQuery("from UserAccountModel");
 			List<UserAccountModel> usersList = query.list();
 			t.commit();// transaction is committed
-			System.out.println("successfully retrieved");
+			System.out.println("retrieved");
 			return usersList;
 
 		}catch(Exception e){
 			e.printStackTrace();
 			return null;
+		}
+	}
+
+	public int updateFirstLastName(UserAccountModel userAccountModel){
+		try{
+			// creating transaction object
+			Transaction t = session.beginTransaction();
+			session.update(userAccountModel);
+			t.commit();// transaction is committed
+			System.out.println("updated");
+			return 1;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return -1;
 		}
 	}
 

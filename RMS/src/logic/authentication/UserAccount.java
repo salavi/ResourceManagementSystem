@@ -1,6 +1,10 @@
 package logic.authentication;
 
+import model.UserAccountAdapter;
+import model.UserAccountModel;
+
 public class UserAccount {
+	private UserAccountModel userAccountModel;
 	private String firstName;
 	private String lastName;
 	private String username;
@@ -13,6 +17,18 @@ public class UserAccount {
 		setLastName(lastName);
 		setUsername(username);
 		setPassword(password);
+	}
+
+	public int editFirstLastName(String firstName, String lastName){
+//		if(firstName == null){
+//			
+//		}
+		this.setLastName(lastName);
+		this.setFirstName(firstName);
+		userAccountModel.setLastName(lastName);
+		userAccountModel.setFirstName(firstName);
+		UserAccountAdapter userAccountAdapter = UserAccountAdapter.getInstance();
+		return userAccountAdapter.updateFirstLastName(userAccountModel);
 	}
 
 	public String getFirstName() {
@@ -63,4 +79,15 @@ public class UserAccount {
 		this.isAdmin = isAdmin;
 	}
 
+	public String toString(){
+		return firstName + " " + lastName + " " + username + " " + password + " " + accessLevel;
+	}
+
+	public UserAccountModel getUserAccountModel() {
+		return userAccountModel;
+	}
+
+	public void setUserAccountModel(UserAccountModel userAccountModel) {
+		this.userAccountModel = userAccountModel;
+	}
 }

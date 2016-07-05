@@ -101,6 +101,8 @@ public class UserAccountModel {
 	}
 	
 	public UserAccount getUserAccount(){
-		return new UserAccount(firstName, lastName, username, password);
+		UserAccount result = new UserAccount(firstName, lastName, username, password);
+		result.setUserAccountModel(this);
+		return result;
 	}
 }

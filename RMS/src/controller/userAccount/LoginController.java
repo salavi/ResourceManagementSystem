@@ -9,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -37,8 +36,8 @@ public class LoginController {
 		message  = new Text();
 	}
 
-	
-	
+
+
 	/**
 	 * Called when there is an action on LoginButton
 	 */
@@ -63,15 +62,13 @@ public class LoginController {
 					loader.setLocation(getClass().getResource("../../view/userAccount/UserAccount.fxml"));
 					root = (Parent) loader.load();
 					UserAccountController userAccountController = loader.<UserAccountController>getController();
-					System.out.println("userAccountController: " + userAccountController.equals(null));
-//					System.out.println("userAccountController.getProfileController(): " + userAccountController.getProfileController().equals(null));
-//					userAccountController.getProfileController().setLoggedInUser(loggedInUser);;
-//					System.out.println("loggedInUser: " + loggedInUser.equals(null));
-					
-//					root = FXMLLoader.load(getClass().getResource("../../view/userAccount/UserAccount.fxml"));
+					userAccountController.setLoggedInUser(loggedInUser);
+					userAccountController.getProfileController().setLoggedInUser(loggedInUser);
+					userAccountController.getProfileController().setAllLabels();
+			
 					Scene scene = new Scene(root);
 					stage.setScene(scene);
-					stage.show();
+					stage.show();	
 				}
 				catch(Exception e){
 					e.printStackTrace();
