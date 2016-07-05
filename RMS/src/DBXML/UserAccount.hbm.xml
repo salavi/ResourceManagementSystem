@@ -12,7 +12,9 @@
             
     <property name="firstName" type="string" column="FirstName" />  
     <property name="lastName" type="string" column="LastName" />  
-    <property name="username" type="string" column="UserName" />  
+    <properties name="uk" unique="true">
+    	<property name="username" type="string" column="UserName" />
+    </properties>  
     <property name="password" type="string" column="Password" />
     <property name="accessLevel" type="integer" column="AccessLevel" />  
     <property name="isAdmin" type="boolean" column="IsAdmin" />
