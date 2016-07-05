@@ -58,20 +58,26 @@ public class LoginController {
 					Stage stage; 
 					Parent root;
 					stage = (Stage) loginButton.getScene().getWindow();
-					
+					System.out.println("injaaaa");
 					FXMLLoader loader = new FXMLLoader();
 					loader.setLocation(getClass().getResource("../../view/userAccount/UserAccount.fxml"));
+					System.out.println("2");
 					root = (Parent) loader.load();
+					System.out.println("3");
 					UserAccountController userAccountController = loader.<UserAccountController>getController();
+					System.out.println("4");
 					System.out.println("userAccountController: " + userAccountController.equals(null));
-//					System.out.println("userAccountController.getProfileController(): " + userAccountController.getProfileController().equals(null));
+//					System.out.println("userAccountController.getProfileController(): " + (userAccountController.getProfileController() == null));
 //					userAccountController.getProfileController().setLoggedInUser(loggedInUser);;
 //					System.out.println("loggedInUser: " + loggedInUser.equals(null));
+					userAccountController.setLoggedInUser(loggedInUser);
 					
 //					root = FXMLLoader.load(getClass().getResource("../../view/userAccount/UserAccount.fxml"));
 					Scene scene = new Scene(root);
 					stage.setScene(scene);
 					stage.show();
+					System.out.println("test : " + (userAccountController.getProfileController() == null));
+					userAccountController.getProfileController().setLoggedInUser(loggedInUser);
 				}
 				catch(Exception e){
 					e.printStackTrace();
