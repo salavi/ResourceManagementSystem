@@ -10,9 +10,18 @@ import model.activity.ActivityModel;
 public class Process {
 	
 	private String typeOfProcess;
+//	private int procesTypeEnum;
+	
+//	private enum ProcessTypeEnum{
+//		Development(1), Maintenance(2);
+//		private int value;
+//		private ProcessTypeEnum(int value){
+//			this.value = value;
+//		}
+//	}
 	
 	public Process(String typeOfProcess){
-		this.setTypeOfProcess(typeOfProcess);
+		this.typeOfProcess = typeOfProcess;
 	}
 	
 	public void addActivity(String name, Module module, Unit unit, Date startDate, Date endDate){
@@ -29,5 +38,4 @@ public class Process {
 	public void setTypeOfProcess(String typeOfProcess) {
 		this.typeOfProcess = typeOfProcess;
 	}
-	
 }
