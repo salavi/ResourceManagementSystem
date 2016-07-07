@@ -1,5 +1,6 @@
-package model.project;
+package model.organization.project;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -10,11 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Technology")
+@Table(name = "Project")
 public class ProjectModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-
+	
 	@Column(name = "id")
 	private Long id;
 	
@@ -23,7 +24,7 @@ public class ProjectModel {
 	private int numOfModules;
 	private ProcessModel developementProcess;
 	private ProcessModel maintananceProcess;
-	private Set<TechnologyModel> listOfTechnologies;
+	private List<TechnologyModel> listOfTechnologies;
 	
 	public Long getId() {
 		return this.id;
@@ -73,11 +74,11 @@ public class ProjectModel {
 		this.maintananceProcess = maintananceProcess;
 	}
 	
-	public Set<TechnologyModel> getListOfTechnologies() {
+	public List<TechnologyModel> getListOfTechnologies() {
 		return this.listOfTechnologies;
 	}
 	
-	public void setListOfTchnologies(Set<TechnologyModel> listOfTechnologies) {
+	public void setListOfTechnologies(List<TechnologyModel> listOfTechnologies) {
 		this.listOfTechnologies = listOfTechnologies;
 	}
 }

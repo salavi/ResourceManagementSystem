@@ -1,4 +1,4 @@
-package model.project;
+package model.organization.project;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

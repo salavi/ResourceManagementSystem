@@ -5,7 +5,7 @@
  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
   
  <hibernate-mapping>  
-  <class name="model.ModuleModel" table="Module">  
+  <class name="model.organization.module.ModuleModel" table="Module">  
     <id name="id" type="java.lang.Long" column="ID" >
      <generator class="identity"/>
     </id>  

@@ -1,4 +1,4 @@
-package model.resource;
+package model.organization.resource;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

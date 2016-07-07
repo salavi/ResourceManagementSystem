@@ -5,7 +5,7 @@
  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
   
  <hibernate-mapping>  
-  <class name="model.UserAccountModel" table="UserAccounts">  
+  <class name="model.authentication.UserAccountModel" table="UserAccount">  
     <id name="id" type="java.lang.Long" column="ID" >
      <generator class="identity"/>
     </id>  

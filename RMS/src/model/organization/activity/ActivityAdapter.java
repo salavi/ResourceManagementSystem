@@ -1,4 +1,4 @@
-package model.project;
+package model.organization.activity;
 
 import java.util.List;
 
@@ -7,30 +7,30 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import model.DBInitializatorSingleton;
-import model.authentication.UserAccountModel;
 
-public class ProjectAdapter {
+public class ActivityAdapter {
+	
 	private Session session;
-	private static ProjectAdapter instance = null;
+	private static ActivityAdapter instance = null;
 
-	private ProjectAdapter(){
+	private ActivityAdapter(){
 		DBInitializatorSingleton dbInit = DBInitializatorSingleton.getInstance();
 		this.setSession(dbInit.getSession());
 	}
 
-	public static ProjectAdapter getInstance() {
+	public static ActivityAdapter getInstance() {
 		if(instance == null) {
-			instance = new ProjectAdapter();
+			instance = new ActivityAdapter();
 		}
 		return instance;
 	}
 	
-	public int addProject(ProjectModel projectModel){
-		//TODO {exception haye transaction va project e tekrari joda shavad}
+	public int addActivity(ActivityModel activityModel){
+		//TODO {exception haye transaction va adapter e tekrari joda shavad}
 		try{
 			// creating transaction object
 			Transaction t = session.beginTransaction();
-			session.persist(projectModel);// persisting the object
+			session.persist(activityModel);// persisting the object
 			t.commit();// transaction is committed
 			System.out.println("successfully saved");
 			return 1;
@@ -41,16 +41,16 @@ public class ProjectAdapter {
 		}
 	}
 	
-	public List<ProjectModel> findAll(){
+	public List<ActivityModel> findAll(){
 		//TODO
 		try{
 			// creating transaction object
 			Transaction t = session.beginTransaction();
-			Query query = session.createQuery("from ProjectModel");
-			List<ProjectModel> projectsList = query.list();
+			Query query = session.createQuery("from ActivityModel");
+			List<ActivityModel> activitiesList = query.list();
 			t.commit();// transaction is committed
 			System.out.println("retrieved");
-			return projectsList;
+			return activitiesList;
 
 		}catch(Exception e){
 			e.printStackTrace();
@@ -58,11 +58,11 @@ public class ProjectAdapter {
 		}
 	}
 	
-	public int updateProject(ProjectModel projectModel){
+	public int updateActivity(ActivityModel activityModel){
 		try{
 			// creating transaction object
 			Transaction t = session.beginTransaction();
-			session.update(projectModel);
+			session.update(activityModel);
 			t.commit();// transaction is committed
 			System.out.println("updated");
 			return 1;
@@ -73,10 +73,9 @@ public class ProjectAdapter {
 		}
 	}
 	
-	public void remove(ProjectModel projectModel){
+	public void remove(ActivityModel activityModel){
 		//TODO
 	}
-	
 
 	public Session getSession() {
 		return session;
@@ -85,5 +84,4 @@ public class ProjectAdapter {
 	public void setSession(Session session) {
 		this.session = session;
 	}
-
 }

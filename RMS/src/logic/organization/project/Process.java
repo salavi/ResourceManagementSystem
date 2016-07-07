@@ -4,7 +4,6 @@ import java.sql.Date;
 
 import logic.organization.module.Module;
 import logic.organization.unit.Unit;
-import model.activity.ActivityAdapter;
 
 public class Process {
 	
