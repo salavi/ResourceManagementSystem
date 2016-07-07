@@ -6,7 +6,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import model.ActivityModel;
 import model.DBInitializatorSingleton;
 
 public class ActivityAdapter {

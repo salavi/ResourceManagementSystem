@@ -1,4 +1,4 @@
-package model;
+package model.activity;
 
 public class ActivityModel {
 
