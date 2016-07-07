@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import logic.organization.module.Module;
+import logic.organization.unit.Unit;
 import model.ModuleModel;
 import model.UnitModel;
 
@@ -27,6 +29,14 @@ public class ActivityModel {
 	private ModuleModel module;
 	private UnitModel unit;
 	
+	public ActivityModel(String name, Date startDate, Date endDate, ModuleModel module, UnitModel unit) {
+		this.setName(name);
+		this.setStartDate(startDate);
+		this.setEndDate(endDate);
+		this.setModule(module);
+		this.setUnit(unit);
+	}
+
 	public String getName() {
 		return this.name;
 	}
