@@ -22,17 +22,32 @@ public class TechnologyAdapter {
 		return instance;
 	}
 	
-	public int addTechnology(TechnologyModel userAcModel){
-		//TODO {exception haye transaction va username e tekrari joda shavad}
+	public int addTechnology(TechnologyModel technologyModel){
+		//TODO {exception haye transaction va technology e tekrari joda shavad}
 		try{
 			// creating transaction object
 			Transaction t = session.beginTransaction();
-			session.persist(userAcModel);// persisting the object
+			session.persist(technologyModel);// persisting the object
 			t.commit();// transaction is committed
 			System.out.println("successfully saved");
 			return 1;
 
 		}catch(Exception e){
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	
+	public int updateFirstLastName(TechnologyModel technologyModel){
+		try{
+			// creating transaction object
+			Transaction t = session.beginTransaction();
+			session.update(technologyModel);
+			t.commit();// transaction is committed
+			System.out.println("updated");
+			return 1;
+		}
+		catch(Exception e){
 			e.printStackTrace();
 			return -1;
 		}
