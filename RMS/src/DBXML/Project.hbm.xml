@@ -13,8 +13,13 @@
     <property name="name" type="string" column="Name" />  
     <property name="numOfInvolvedHumans" type="int" column="NumOfInvolvedHumans" />  
     <property name="numOfModules" type="int" column="NumOfModules" />  
-      
-          
+     
+    <one-to-one name="developementProcess" class="model.ProcessModel"
+			cascade="save-update"></one-to-one>
+	
+	<one-to-one name="maintanaceProcess" class="model.ProcessModel"
+			cascade="save-update"></one-to-one>
+
   </class>  
             
  </hibernate-mapping>  
