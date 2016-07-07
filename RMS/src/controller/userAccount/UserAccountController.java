@@ -58,5 +58,13 @@ public class UserAccountController {
 	public String printUser(){
 		return loggedInUser.getFirstName() + " " + loggedInUser.getLastName() + " " + loggedInUser.getUsername() + " " + loggedInUser.getPassword() + " " + loggedInUser.getAccessLevel();
 	}
+
+	public EditProfileController getEditProfileController() {
+		return editProfileController;
+	}
+
+	public void setEditProfileController(EditProfileController editProfileController) {
+		this.editProfileController = editProfileController;
+	}
 	
 }
