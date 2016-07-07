@@ -14,11 +14,19 @@
     <property name="numOfInvolvedHumans" type="int" column="NumOfInvolvedHumans" />  
     <property name="numOfModules" type="int" column="NumOfModules" />  
      
-    <one-to-one name="developementProcess" class="model.ProcessModel"
-			cascade="save-update"></one-to-one>
+    <many-to-one name="developementProcess" class="model.ProcessModel"
+    	column="DevProcID" unique="true" 
+		cascade="save-update"></many-to-one>
 	
-	<one-to-one name="maintanaceProcess" class="model.ProcessModel"
-			cascade="save-update"></one-to-one>
+	<many-to-one name="maintanaceProcess" class="model.ProcessModel"
+		column="MainProcID" unique="true" 
+		cascade="save-update"></many-to-one>
+	
+	<set name="listOfTechnologies" cascade="all">  
+          <key column="pid"></key>  
+          <index column="type"></index>  
+          <one-to-many class="model.project.TechnologyModel"/>  
+    </set>  
 
   </class>  
             
