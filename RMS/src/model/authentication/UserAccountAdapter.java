@@ -1,10 +1,12 @@
-package model;
+package model.authentication;
 
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import model.DBInitializatorSingleton;
 
 public class UserAccountAdapter {
 	private Session session;

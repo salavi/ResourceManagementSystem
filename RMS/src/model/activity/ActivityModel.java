@@ -9,10 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import logic.organization.module.Module;
-import logic.organization.unit.Unit;
-import model.ModuleModel;
-import model.UnitModel;
+import model.module.ModuleModel;
+import model.unit.UnitModel;
 
 @Entity
 @Table(name = "Activity")

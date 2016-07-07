@@ -1,4 +1,4 @@
-package model;
+package model.resourceUsage;
 
 public class ResourceUsageHistoryModel {
 

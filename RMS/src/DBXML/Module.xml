@@ -5,16 +5,14 @@
  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
   
  <hibernate-mapping>  
-  <class name="model.moduleModel" table="Module">  
+  <class name="model.ModuleModel" table="Module">  
     <id name="id" type="java.lang.Long" column="ID" >
      <generator class="identity"/>
     </id>  
             
     <property name="moduleId" type="string" column="ModuleId" />  
     <property name="name" type="string" column="Name" />  
-
-      
-            
+          
   </class>  
             
  </hibernate-mapping>  

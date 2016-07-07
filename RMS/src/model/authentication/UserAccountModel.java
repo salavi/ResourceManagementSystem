@@ -1,4 +1,4 @@
-package model;
+package model.authentication;
 
 
 import javax.persistence.Entity;
