@@ -1,9 +1,13 @@
 package model.project;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import model.DBInitializatorSingleton;
+
 
 public class TechnologyAdapter {
 	
@@ -38,7 +42,24 @@ public class TechnologyAdapter {
 		}
 	}
 	
-	public int updateFirstLastName(TechnologyModel technologyModel){
+	public List<TechnologyModel> findAll(){
+		//TODO
+		try{
+			// creating transaction object
+			Transaction t = session.beginTransaction();
+			Query query = session.createQuery("from TechnologyModel");
+			List<TechnologyModel> technologiesList = query.list();
+			t.commit();// transaction is committed
+			System.out.println("retrieved");
+			return technologiesList;
+
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public int updateTechnology(TechnologyModel technologyModel){
 		try{
 			// creating transaction object
 			Transaction t = session.beginTransaction();
@@ -51,6 +72,10 @@ public class TechnologyAdapter {
 			e.printStackTrace();
 			return -1;
 		}
+	}
+	
+	public void remove(TechnologyModel technologyModel){
+		//TODO
 	}
 
 	public Session getSession() {
