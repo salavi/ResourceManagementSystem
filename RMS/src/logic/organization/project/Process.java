@@ -5,6 +5,7 @@ import java.sql.Date;
 import logic.organization.module.Module;
 import logic.organization.unit.Unit;
 
+
 public class Process {
 	
 	private String typeOfProcess;
@@ -15,7 +16,7 @@ public class Process {
 	
 	public void addActivity(String name, Module module, Unit unit, Date startDate, Date endDate){
 		//TODO
-//		Activity activityModel = new ActivityModel(name, startDate, endDate, module, unit);
+//		ActivityModel activityModel = new ActivityModel(name, startDate, endDate, module, unit);
 //		ActivityAdapter activityAdapter = ActivityAdapter.getInstance();
 //		activityAdapter.addActivity(activityModel);
 	}

@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import model.organization.module.ModuleModel;
 import model.organization.unit.UnitModel;
 
+
 @Entity
 @Table(name = "Activity")
 public class ActivityModel {
@@ -27,6 +28,15 @@ public class ActivityModel {
 	private ModuleModel module;
 	private UnitModel unit;
 	
+
+	public ActivityModel(String name, Date startDate, Date endDate, ModuleModel module, UnitModel unit) {
+		this.setName(name);
+		this.setStartDate(startDate);
+		this.setEndDate(endDate);
+		this.setModule(module);
+		this.setUnit(unit);
+	}
+
 	public Long getId() {
 		return this.id;
 	}
