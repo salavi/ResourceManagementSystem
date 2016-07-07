@@ -1,4 +1,4 @@
-package model;
+package model.unit;
 
 import java.util.List;
 import java.util.Set;
@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import model.resource.ResourceModel;
 
 @Entity
 @Table(name = "Unit")

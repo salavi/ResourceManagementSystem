@@ -1,7 +1,7 @@
 package logic.authentication;
 
-import model.UserAccountAdapter;
-import model.UserAccountModel;
+import model.authentication.UserAccountAdapter;
+import model.authentication.UserAccountModel;
 
 public class UserAccount {
 	private UserAccountModel userAccountModel;

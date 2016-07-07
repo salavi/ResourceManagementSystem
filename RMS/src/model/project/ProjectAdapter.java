@@ -7,7 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import model.DBInitializatorSingleton;
-import model.UserAccountModel;
+import model.authentication.UserAccountModel;
 
 public class ProjectAdapter {
 	private Session session;

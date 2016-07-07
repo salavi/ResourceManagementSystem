@@ -1,4 +1,4 @@
-package model;
+package model.resource;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,10 +6,10 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity  
-@Table(name="PhysicalResource")  
+@Table(name="InformationalResource")  
 @PrimaryKeyJoinColumn(name="ID")
-public class PhysicalResourceModel extends ResourceModel{
-
+public class InformationalResourceModel extends ResourceModel{
+	
 	private String type;
 	
 	public String getType() {

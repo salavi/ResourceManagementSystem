@@ -3,8 +3,8 @@ package logic.authentication;
 import java.util.Iterator;
 import java.util.List;
 
-import model.UserAccountAdapter;
-import model.UserAccountModel;
+import model.authentication.UserAccountAdapter;
+import model.authentication.UserAccountModel;
 
 public class Authentication {
 	UserAccount loggedInUser;
