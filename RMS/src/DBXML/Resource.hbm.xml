@@ -5,28 +5,28 @@
  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
   
  <hibernate-mapping> 
-	<class name="model.ResourceModel" table="Resource">
+	<class name="model.organization.resource.ResourceModel" table="Resource">
 	    <id name="id" type="java.lang.Long" column="ID">
 	        <generator class="identity"/>
 	    </id>
 	    <property name="resourceId" type="string" column="ResourceID"/>
-	    <many-to-one name="currentUnit" class="model.UnitModel" column="currentUnit"/>
+	    <many-to-one name="currentUnit" class="model.organization.unit.UnitModel" column="currentUnit"/>
 	    
 	    
-	    <joined-subclass name="model.HumanResourceModel" table="HumanResource">
+	    <joined-subclass name="model.organization.resource.HumanResourceModel" table="HumanResource">
 	        <key column="HumanResourceID"/>
 	        <property name="firstName" type="string" column="firstName"/>
 	        <property name="lastName" type="string" column="lastName"/>
 	    </joined-subclass>
-	    <joined-subclass name="model.InformationalResourceModel" table="InformationResource">
+	    <joined-subclass name="model.organization.resource.InformationalResourceModel" table="InformationResource">
 	        <key column="InformationResourceID"/>
 	        <property name="type" type="string" column="type"/>
 	    </joined-subclass>
-	    <joined-subclass name="model.PhysicalResourceModel" table="PhysicalResource">
+	    <joined-subclass name="model.organization.resource.PhysicalResourceModel" table="PhysicalResource">
 	        <key column="PhysicalResourceID"/>
 	        <property name="type" type="string" column="type"/>
 	    </joined-subclass>
-		<joined-subclass name="model.FinancialResourceModel" table="FinancialResource">
+		<joined-subclass name="model.organization.resource.FinancialResourceModel" table="FinancialResource">
 	        <key column="FinancialResourceID"/>
 	        <property name="amount" type="double" column="amount"/>
 	    </joined-subclass>

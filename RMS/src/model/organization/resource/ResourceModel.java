@@ -1,4 +1,4 @@
-package model.resource;
+package model.organization.resource;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +9,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
-import model.unit.UnitModel;
+import model.organization.unit.UnitModel;
 
 @Entity
 @Table(name = "Resource")

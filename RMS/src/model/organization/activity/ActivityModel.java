@@ -1,4 +1,4 @@
-package model.activity;
+package model.organization.activity;
 
 import java.util.Date;
 
@@ -9,8 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import model.module.ModuleModel;
-import model.unit.UnitModel;
+import model.organization.module.ModuleModel;
+import model.organization.unit.UnitModel;
+
 
 @Entity
 @Table(name = "Activity")
@@ -27,6 +28,7 @@ public class ActivityModel {
 	private ModuleModel module;
 	private UnitModel unit;
 	
+
 	public ActivityModel(String name, Date startDate, Date endDate, ModuleModel module, UnitModel unit) {
 		this.setName(name);
 		this.setStartDate(startDate);
@@ -35,6 +37,14 @@ public class ActivityModel {
 		this.setUnit(unit);
 	}
 
+	public Long getId() {
+		return this.id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public String getName() {
 		return this.name;
 	}
@@ -59,7 +69,7 @@ public class ActivityModel {
 		this.endDate = endDate;
 	}
 	
-	public ModuleModel getModul() {
+	public ModuleModel getModule() {
 		return this.module;
 	}
 	

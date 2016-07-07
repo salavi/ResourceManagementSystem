@@ -5,18 +5,18 @@
  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
   
  <hibernate-mapping>  
-  <class name="model.project.ProjectModel" table="Process">  
+  <class name="model.organization.project.ProcessModel" table="Process">  
     <id name="id" type="java.lang.Long" column="ID" >
      <generator class="identity"/>
     </id>  
             
     <property name="typeOfProcess" type="string" column="TypeOfProcess" />  
 	
-	<set name="activities" cascade="all">  
+	<list name="activities" cascade="all">  
           <key column="pid"></key>  
           <index column="type"></index>  
-          <one-to-many class="model.activity.ActivityModel"/>  
-    </set>  
+          <one-to-many class="model.organization.activity.ActivityModel"/>  
+    </list>  
 
   </class>  
             

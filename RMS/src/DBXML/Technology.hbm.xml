@@ -5,7 +5,7 @@
  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
   
  <hibernate-mapping>  
-  <class name="model.TechnologyModel" table="Technology">  
+  <class name="model.organization.project.TechnologyModel" table="Technology">  
     <id name="id" type="java.lang.Long" column="ID" >
      <generator class="identity"/>
     </id>  

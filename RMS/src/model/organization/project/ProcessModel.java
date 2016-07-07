@@ -1,5 +1,6 @@
-package model.project;
+package model.organization.project;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -9,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import model.activity.ActivityModel;
+import model.organization.activity.ActivityModel;
 
 @Entity
 @Table(name = "Process")
@@ -21,7 +22,15 @@ public class ProcessModel {
 	private Long id;
 
 	private String typeOfProcess;
-	private Set<ActivityModel> activities;
+	private List<ActivityModel> activities;
+	
+	public Long getId() {
+		return this.id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
 	
 	public String getTypeOfProcess() {
 		return this.typeOfProcess;
@@ -31,11 +40,11 @@ public class ProcessModel {
 		this.typeOfProcess = typeOfProcess;
 	}
 	
-	public Set<ActivityModel> getActivities() {
+	public List<ActivityModel> getActivities() {
 		return this.activities;
 	}
 	
-	public void setActivities(Set<ActivityModel> activities) {
+	public void setActivities(List<ActivityModel> activities) {
 		this.activities = activities;
 	}
 }

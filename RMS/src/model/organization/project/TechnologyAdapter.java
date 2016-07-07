@@ -1,4 +1,4 @@
-package model.project;
+package model.organization.project;
 
 import java.util.List;
 

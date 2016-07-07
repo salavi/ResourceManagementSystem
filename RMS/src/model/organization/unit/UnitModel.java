@@ -1,6 +1,5 @@
-package model.unit;
+package model.organization.unit;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -10,11 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import model.resource.ResourceModel;
+import model.organization.resource.ResourceModel;
 
 @Entity
 @Table(name = "Unit")
-
 public class UnitModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

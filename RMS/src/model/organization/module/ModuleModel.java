@@ -1,4 +1,4 @@
-package model.module;
+package model.organization.module;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Technology")
+@Table(name = "Module")
 public class ModuleModel {	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
