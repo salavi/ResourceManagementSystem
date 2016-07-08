@@ -53,6 +53,6 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="60.0" text="خروج" />
+      <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="37.0" prefWidth="60.0" text="خروج" />
    </children>
 </AnchorPane>
