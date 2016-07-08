@@ -47,7 +47,7 @@ public class RootLayoutController {
 		Parent root;
 		stage = (Stage) logoutButton.getScene().getWindow();
 		try {
-			root = FXMLLoader.load(getClass().getResource("../view/userAccount/LoginUI.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/view/userAccount/LoginUI.fxml"));
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();

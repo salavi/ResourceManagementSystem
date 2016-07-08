@@ -59,7 +59,7 @@ public class LoginController {
 //					Parent root;
 //					stage = (Stage) loginButton.getScene().getWindow();
 //					FXMLLoader loader = new FXMLLoader();
-//					loader.setLocation(getClass().getResource("../../view/userAccount/UserAccount.fxml"));
+//					loader.setLocation(getClass().getResource("/view/userAccount/UserAccount.fxml"));
 //					root = (Parent) loader.load();
 //					UserAccountController userAccountController = loader.<UserAccountController>getController();
 //					userAccountController.setLoggedInUser(loggedInUser);
@@ -89,7 +89,7 @@ public class LoginController {
 			Parent root;
 			stage = (Stage) loginButton.getScene().getWindow();
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("../../view/RootLayout.fxml"));
+			loader.setLocation(getClass().getResource("/view/RootLayout.fxml"));
 			root = (Parent) loader.load();
 			RootLayoutController rootLayoutController = loader.<RootLayoutController> getController();
 			rootLayoutController.setLoggedInUser(loggedInUser);
@@ -117,7 +117,7 @@ public class LoginController {
 		Stage stage; 
 		Parent root;
 		stage = (Stage) signUpButton.getScene().getWindow();
-		root = FXMLLoader.load(getClass().getResource("../../view/userAccount/SignUpUI.fxml"));
+		root = FXMLLoader.load(getClass().getResource("/view/userAccount/SignUpUI.fxml"));
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
