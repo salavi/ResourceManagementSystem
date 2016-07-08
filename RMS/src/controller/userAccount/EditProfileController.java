@@ -73,7 +73,7 @@ public class EditProfileController {
 			Parent root;
 			stage = (Stage) registerButton.getScene().getWindow();
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("../../view/RootLayout.fxml"));
+			loader.setLocation(getClass().getResource("/view/RootLayout.fxml"));
 			root = (Parent) loader.load();
 			RootLayoutController rootLayoutController = loader.<RootLayoutController> getController();
 			rootLayoutController.setLoggedInUser(loggedInUser);
