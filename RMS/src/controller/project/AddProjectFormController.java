@@ -13,13 +13,15 @@ public class AddProjectFormController {
 	@FXML Button addTechnologyButtonId;
 	@FXML Button addProjectButtonId;
 	
-	@FXML public void handlerAddTechnologyButton(){
+	@FXML public void handleAddTechnologyButton(){
 		
+		System.out.println("handleAddTechnologyButton");
 		
 	}
 	
-	@FXML public void handleraddProjectButton(){
+	@FXML public void handleaddProjectButton(){
 			
+		System.out.println("handleAddProjectButton");
 	}
 	
 	
