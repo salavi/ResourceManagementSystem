@@ -33,10 +33,10 @@ public class UserAccountAdapter extends Adapter {
 			System.out.println("Constraint Violation Exception");
 			return -1;
 		}
-//		catch(Exception e){
-//			e.printStackTrace();
-//			return -1;
-//		}
+		catch(Exception e){
+			e.printStackTrace();
+			return -1;
+		}
 	}
 
 	public List<UserAccountModel> findAll() {

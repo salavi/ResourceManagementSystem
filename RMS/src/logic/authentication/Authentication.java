@@ -9,7 +9,7 @@ import model.authentication.UserAccountModel;
 public class Authentication {
 	private static Authentication instance = null;
 	
-	UserAccount loggedInUser;
+	private UserAccount loggedInUser;
 	
 	private Authentication(){
 		
@@ -47,5 +47,13 @@ public class Authentication {
 		UserAccountModel userAcModel = new UserAccountModel(firstName, lastName, username, password);
 		UserAccountAdapter userAccountAdapter = UserAccountAdapter.getInstance();
 		return userAccountAdapter.addUserAccount(userAcModel);		
+	}
+
+	public UserAccount getLoggedInUser() {
+		return loggedInUser;
+	}
+
+	public void setLoggedInUser(UserAccount loggedInUser) {
+		this.loggedInUser = loggedInUser;
 	}
 }

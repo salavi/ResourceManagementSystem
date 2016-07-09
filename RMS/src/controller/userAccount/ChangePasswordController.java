@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import logic.authentication.UserAccount;
+import logic.authentication.Authentication;
 
 public class ChangePasswordController {
 	@FXML private PasswordField oldPassword;
@@ -14,8 +14,12 @@ public class ChangePasswordController {
 	@FXML private Button enterButton;
 	@FXML private Text message = new Text();
 	
-	private UserAccount loggedInUser;
+	private Authentication auth;
 	
+	public ChangePasswordController() {
+		auth = Authentication.getInstance();
+	}
+
 	@FXML public void handleEnterButton(){
 		if (oldPassword.getText().isEmpty() || newPassword.getText().isEmpty() || newPasswordConfirmation.getText().isEmpty()) {
 			message.setFill(Color.RED);
@@ -23,7 +27,7 @@ public class ChangePasswordController {
 		} else {
 			// TODO agar yeki az field ha khali bud
 			message.setText("");
-			int success = loggedInUser.editPassword(oldPassword.getText(), newPassword.getText(), newPasswordConfirmation.getText());
+			int success = auth.getLoggedInUser().editPassword(oldPassword.getText(), newPassword.getText(), newPasswordConfirmation.getText());
 			if (success == 1) {
 				message.setFill(Color.GREEN);
 				message.setText("اطلاعات وارد شده با موفقیت ویرایش شد");
@@ -38,13 +42,12 @@ public class ChangePasswordController {
 		}
 	}
 	
-	public UserAccount getLoggedInUser() {
-		return loggedInUser;
+	public Authentication getAuth() {
+		return auth;
 	}
 
-	public void setLoggedInUser(UserAccount loggedInUser) {
-		this.loggedInUser = loggedInUser;
+	public void setAuth(Authentication auth) {
+		this.auth = auth;
 	}
-	
 	
 }

@@ -73,13 +73,13 @@ public class LoginController {
 			loader.setLocation(getClass().getResource("/view/RootLayout.fxml"));
 			root = (Parent) loader.load();
 			RootLayoutController rootLayoutController = loader.<RootLayoutController> getController();
-			rootLayoutController.setLoggedInUser(loggedInUser);
+//			rootLayoutController.setLoggedInUser(loggedInUser);
 			UserAccountController userAccountController =rootLayoutController.getUserAccountController();
-			userAccountController.setLoggedInUser(loggedInUser);
-			userAccountController.getProfileController().setLoggedInUser(loggedInUser);
+//			userAccountController.setLoggedInUser(loggedInUser);
+//			userAccountController.getProfileController().setLoggedInUser(loggedInUser);
 			userAccountController.getProfileController().setAllLabels();
-			userAccountController.getEditProfileController().setLoggedInUser(loggedInUser);
-			userAccountController.getChangePasswordController().setLoggedInUser(loggedInUser);
+//			userAccountController.getEditProfileController().setLoggedInUser(loggedInUser);
+//			userAccountController.getChangePasswordController().setLoggedInUser(loggedInUser);
 
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
