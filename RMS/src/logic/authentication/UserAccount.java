@@ -30,6 +30,22 @@ public class UserAccount {
 		UserAccountAdapter userAccountAdapter = UserAccountAdapter.getInstance();
 		return userAccountAdapter.updateFirstLastName(userAccountModel);
 	}
+	
+	public int editPassword(String oldPass, String newPass, String newPassConfirmation){
+		if(this.getPassword().equals(oldPass) && newPass.equals(newPassConfirmation)){
+			this.setPassword(newPass);
+			userAccountModel.setPassword(newPass);
+			UserAccountAdapter userAccountAdapter = UserAccountAdapter.getInstance();
+			return userAccountAdapter.updatePassword(userAccountModel);
+		}
+		else if(!this.getPassword().equals(oldPass)){
+			return 0;
+		}
+		else if(!newPass.equals(newPassConfirmation)){
+			return 2;
+		}
+		return 9;
+	}
 
 	public String getFirstName() {
 		return firstName;

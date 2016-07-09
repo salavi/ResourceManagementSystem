@@ -13,7 +13,24 @@ public class UserAccountController {
  	@FXML private EditProfileController editProfileController;
     @FXML private ChangePasswordController changePasswordController;
     @FXML private ChangeAccessLevelController changeAccessLevelController;
-    @FXML private RemoveAccountController removeAccountController;
+	@FXML private RemoveAccountController removeAccountController;
+
+    
+    public RemoveAccountController getRemoveAccountController() {
+		return removeAccountController;
+	}
+
+	public void setRemoveAccountController(RemoveAccountController removeAccountController) {
+		this.removeAccountController = removeAccountController;
+	}
+
+	public ChangeAccessLevelController getChangeAccessLevelController() {
+		return changeAccessLevelController;
+	}
+
+	public void setChangeAccessLevelController(ChangeAccessLevelController changeAccessLevelController) {
+		this.changeAccessLevelController = changeAccessLevelController;
+	}
         
     private UserAccount loggedInUser;
 	
@@ -65,6 +82,14 @@ public class UserAccountController {
 
 	public void setEditProfileController(EditProfileController editProfileController) {
 		this.editProfileController = editProfileController;
+	}
+
+	public ChangePasswordController getChangePasswordController() {
+		return changePasswordController;
+	}
+
+	public void setChangePasswordController(ChangePasswordController changePasswordController) {
+		this.changePasswordController = changePasswordController;
 	}
 	
 }

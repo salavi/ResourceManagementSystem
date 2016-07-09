@@ -37,36 +37,16 @@ public class EditProfileController {
 			// TODO agar yeki az field ha khali bud
 			int success = loggedInUser.editFirstLastName(firstName.getText(), lastName.getText());
 			if (success == 1) {
-				// message.setFill(Color.GREEN);
-				// message.setText("اطلاعات وارد شده با موفقیت ویرایش شد");
-
-				// try {
-				// Stage stage;
-				// Parent root;
-				// stage = (Stage) registerButton.getScene().getWindow();
-				// FXMLLoader loader = new FXMLLoader();
-				// loader.setLocation(getClass().getResource("../../view/userAccount/Profile.fxml"));
-				// root = (Parent) loader.load();
-				// ProfileController profileController =
-				// loader.<ProfileController>getController();
-				// //TODO all loggedInUsers should be updated
-				// profileController.setLoggedInUser(loggedInUser);
-				// profileController.setAllLabels();
-				// Scene scene = new Scene(root);
-				// stage.setScene(scene);
-				// stage.show();
-				// } catch (IOException e) {
-				// e.printStackTrace();
-				// }
-
-				showHomePage();
+				message.setFill(Color.GREEN);
+				message.setText("اطلاعات وارد شده با موفقیت ویرایش شد");
+//				showHomePage();
 			} else if (success == -1) {
 				message.setFill(Color.RED);
 				message.setText("ویرایش اطلاعات ناموفق بود");
 			}
 		}
 	}
-	
+
 	private void showHomePage() {
 		try {
 			Stage stage;
