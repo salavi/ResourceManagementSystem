@@ -13,6 +13,7 @@ public class Authentication {
 		boolean userFound = false;
 		UserAccountAdapter userAccountAdapter = UserAccountAdapter.getInstance();
 		List<UserAccountModel> users = userAccountAdapter.findAll();
+//		System.out.println("users is null:" + (users == null));
 		Iterator<UserAccountModel> it = users.iterator();
 		while(it.hasNext()) {
 			UserAccountModel temp = it.next();
