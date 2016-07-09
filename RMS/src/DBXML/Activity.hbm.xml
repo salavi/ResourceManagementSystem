@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+ <hibernate-mapping>  
+  <class name="model.organization.activity.ActivityModel" table="Activity">  
+    <id name="id" type="java.lang.Long" column="ID" >
+     <generator class="identity"/>
+    </id>  
+            
+    <property name="name" type="string" column="Name" />  
+    <property name="startDate" type="date" column="StartDate" />  
+    <property name="endDate" type="date" column="EndDate" />  
+     
+    <many-to-one name="unit" class="model.organization.unit.UnitModel"
+    	column="Unit" 
+		cascade="save-update"></many-to-one>
+	
+	<many-to-one name="module" class="model.organization.module.ModuleModel"
+		column="module"
+		cascade="save-update"></many-to-one>  
+  </class>       
+ </hibernate-mapping>  

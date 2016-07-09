@@ -61,9 +61,10 @@
                         <Label text="منابع" GridPane.rowIndex="6" />
                      </children>
                   </GridPane>
-                  <ButtonBar prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0">
+                  <ButtonBar prefHeight="40.0" prefWidth="627.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0">
                     <buttons>
-                        <Button mnemonicParsing="false" text="افزودن" />
+                        <Button mnemonicParsing="false" text="افزودن فرآیند ایجاد" />
+                        <Button mnemonicParsing="false" prefHeight="21.0" prefWidth="208.0" text="افزودن فرآیند نگهداری" />
                       <Button mnemonicParsing="false" text="ویرایش" />
                         <Button mnemonicParsing="false" text="حذف" />
                     </buttons>

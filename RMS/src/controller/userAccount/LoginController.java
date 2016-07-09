@@ -3,6 +3,7 @@ package controller.userAccount;
 import java.io.IOException;
 
 import controller.MainApp;
+import controller.RootLayoutController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -53,25 +54,26 @@ public class LoginController {
 				//TODO
 				message.setFill(Color.GREEN);
 				message.setText("ورود شما با موفقیت انجام شد");
-				try{
-					Stage stage; 
-					Parent root;
-					stage = (Stage) loginButton.getScene().getWindow();
-					FXMLLoader loader = new FXMLLoader();
-					loader.setLocation(getClass().getResource("../../view/userAccount/UserAccount.fxml"));
-					root = (Parent) loader.load();
-					UserAccountController userAccountController = loader.<UserAccountController>getController();
-					userAccountController.setLoggedInUser(loggedInUser);
-					userAccountController.getProfileController().setLoggedInUser(loggedInUser);
-					userAccountController.getProfileController().setAllLabels();
-			
-					Scene scene = new Scene(root);
-					stage.setScene(scene);
-					stage.show();	
-				}
-				catch(Exception e){
-					e.printStackTrace();
-				}
+//				try{
+//					Stage stage; 
+//					Parent root;
+//					stage = (Stage) loginButton.getScene().getWindow();
+//					FXMLLoader loader = new FXMLLoader();
+//					loader.setLocation(getClass().getResource("/view/userAccount/UserAccount.fxml"));
+//					root = (Parent) loader.load();
+//					UserAccountController userAccountController = loader.<UserAccountController>getController();
+//					userAccountController.setLoggedInUser(loggedInUser);
+//					userAccountController.getProfileController().setLoggedInUser(loggedInUser);
+//					userAccountController.getProfileController().setAllLabels();
+//			
+//					Scene scene = new Scene(root);
+//					stage.setScene(scene);
+//					stage.show();	
+//				}
+//				catch(Exception e){
+//					e.printStackTrace();
+//				}
+				showHomePage();
 			}
 		}
 		else{
@@ -80,7 +82,31 @@ public class LoginController {
 		}
 
 	}
+	
+	private void showHomePage(){
+		try {
+			Stage stage;
+			Parent root;
+			stage = (Stage) loginButton.getScene().getWindow();
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/RootLayout.fxml"));
+			root = (Parent) loader.load();
+			RootLayoutController rootLayoutController = loader.<RootLayoutController> getController();
+			rootLayoutController.setLoggedInUser(loggedInUser);
+			UserAccountController userAccountController =rootLayoutController.getUserAccountController();
+			userAccountController.setLoggedInUser(loggedInUser);
+			userAccountController.getProfileController().setLoggedInUser(loggedInUser);
+			userAccountController.getProfileController().setAllLabels();
+			userAccountController.getEditProfileController().setLoggedInUser(loggedInUser);
 
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * Called when there is an action on SignUpButton
@@ -91,7 +117,7 @@ public class LoginController {
 		Stage stage; 
 		Parent root;
 		stage = (Stage) signUpButton.getScene().getWindow();
-		root = FXMLLoader.load(getClass().getResource("../../view/userAccount/SignUpUI.fxml"));
+		root = FXMLLoader.load(getClass().getResource("/view/userAccount/SignUpUI.fxml"));
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
@@ -106,5 +132,5 @@ public class LoginController {
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
 	}
-
+	
 }

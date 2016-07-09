@@ -16,6 +16,11 @@
     <mapping resource="DBXML/UserAccount.hbm.xml"/>
     <mapping resource="DBXML/Resource.hbm.xml"/>
     <mapping resource="DBXML/Unit.hbm.xml"/>
+    <mapping resource="DBXML/Module.hbm.xml"/>
+    <mapping resource="DBXML/Activity.hbm.xml"/>
+    <mapping resource="DBXML/Process.hbm.xml"/>
+    <mapping resource="DBXML/Technology.hbm.xml"/>
+    <mapping resource="DBXML/Project.hbm.xml"/>
     </session-factory>  
   
 </hibernate-configuration>  

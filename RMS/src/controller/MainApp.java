@@ -43,7 +43,7 @@ public class MainApp extends Application {
 		try {
 			// Load root layout from fxml file.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("../view/userAccount/LoginSignUpRootLayout.fxml"));
+			loader.setLocation(MainApp.class.getResource("/view/userAccount/LoginSignUpRootLayout.fxml"));
 			rootLayout = (BorderPane) loader.load();
 
 			// Show the scene containing the login sign up root layout.
@@ -60,7 +60,7 @@ public class MainApp extends Application {
 		try {
 			// Load login.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("../view/userAccount/LoginUI.fxml"));
+			loader.setLocation(MainApp.class.getResource("/view/userAccount/LoginUI.fxml"));
 			AnchorPane login = (AnchorPane) loader.load();
 
 			// Set login into the center of login sign up root layout.
