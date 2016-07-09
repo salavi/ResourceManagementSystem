@@ -3,19 +3,20 @@ package logic.organization.project;
 import java.util.ArrayList;
 
 public class Project {
-	
+
 	private String name;
 	private int numOfInvolvedHumans;
 	private int numOfModules;
 	private Process developmentProcess;
 	private Process maintenanceProcess;
 	private ArrayList<Technology> listOfTechnologies;
-	
-	public Project(String name, int numOfHumans, int numOfModules){
+
+	public Project(String name, int numOfHumans, int numOfModules, Process developmentProcess,
+			Process maintananceProcess, ArrayList<Technology> listOfTechnologies) {
 		this.setName(name);
 		this.setNumOfInvolvedHumans(numOfHumans);
 		this.setNumOfModules(numOfModules);
-		this.listOfTechnologies = new ArrayList<>();
+		this.setListOfTechnologies(listOfTechnologies);
 	}
 
 	public String getName() {
@@ -62,17 +63,25 @@ public class Project {
 		return listOfTechnologies;
 	}
 
-	public void addTech(Technology technology){
-		this.listOfTechnologies.add(technology);
-	}
-	
-	public void removeTech(Technology technology){
-		this.listOfTechnologies.remove(technology);
+	public void addTech(Technology technology) {
+		this.getListOfTechnologies().add(technology);
 	}
 
-	public Project [] findSimilarProjects(Project project){
-		//TODO
+	public void removeTech(Technology technology) {
+		this.getListOfTechnologies().remove(technology);
+	}
+
+	public Project[] findSimilarProjects(Project project) {
+		// TODO
 		return null;
+	}
+
+	public void setListOfTechnologies(ArrayList<Technology> listOfTechnologies) {
+		this.listOfTechnologies = listOfTechnologies;
+	}
+	
+	public void addProjectToDB(){
+		//TODO
 	}
 
 }

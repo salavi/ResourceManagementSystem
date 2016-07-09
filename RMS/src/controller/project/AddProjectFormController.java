@@ -1,13 +1,13 @@
 package controller.project;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import logic.organization.project.Process;
 import logic.organization.project.Project;
-import model.organization.project.ProjectModel;
-
+import logic.organization.project.Technology;
 
 public class AddProjectFormController {
 	@FXML
@@ -24,23 +24,30 @@ public class AddProjectFormController {
 	private Button addTechnologyButtonId;
 	@FXML
 	private Button addProjectButtonId;
-	
-//	private List<Technology> listOfTechnologies;
-	
+
+	private ArrayList<Technology> listOfTechnologies;
+
 	@FXML
 	public void handleAddTechnologyButton() {
 
 		System.out.println("handleAddTechnologyButton");
-//		Project project = new Project(projectNameId.getText(), Integer.parseInt(numOfHumansId.getText()),
-//				Integer.parseInt(numOfModulesId.getText()));
-//		
-
+		String technologyName = technologyNameId.getText();
+		String technologyGoal = goalOfTechId.getText();
+		Technology technology = new Technology(technologyName, technologyGoal);
+		listOfTechnologies.add(technology);
+		technologyNameId.setText("");
+		goalOfTechId.setText("");
 	}
 
 	@FXML
 	public void handleAddProjectButton() {
 
 		System.out.println("handleAddProjectButton");
+		Process developmentProcess = new Process("DevelopmentProcess");
+		Process maintananceProcess = new Process("MaintananceProcess");
+		Project project = new Project(projectNameId.getText(), Integer.parseInt(numOfHumansId.getText()),
+				Integer.parseInt(numOfModulesId.getText()), developmentProcess, maintananceProcess, listOfTechnologies);
+		project.addProjectToDB();
 	}
 
 }

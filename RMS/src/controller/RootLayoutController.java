@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import logic.authentication.Authentication;
 import logic.authentication.UserAccount;
 
 public class RootLayoutController {
@@ -19,20 +20,14 @@ public class RootLayoutController {
 	@FXML
 	private Button logoutButton;
 	
-	private UserAccount loggedInUser;
+	private Authentication auth;
 	
 
 	public RootLayoutController() {
 		// TODO Auto-generated constructor stub
+		auth = Authentication.getInstance();
 	}
 
-	public UserAccount getLoggedInUser() {
-		return loggedInUser;
-	}
-
-	public void setLoggedInUser(UserAccount loggedInUser) {
-		this.loggedInUser = loggedInUser;
-	}
 
 	public UserAccountController getUserAccountController() {
 		return userAccountController;
@@ -56,5 +51,15 @@ public class RootLayoutController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+
+	public Authentication getAuth() {
+		return auth;
+	}
+
+
+	public void setAuth(Authentication auth) {
+		this.auth = auth;
 	}
 }
