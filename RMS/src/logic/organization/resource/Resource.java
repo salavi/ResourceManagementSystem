@@ -22,5 +22,6 @@ public abstract class Resource {
 	public void setResourceId(String resourceId) {
 		ResourceId = resourceId;
 	}
-
+	
+	
 }
