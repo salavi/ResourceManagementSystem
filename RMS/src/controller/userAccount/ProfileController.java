@@ -2,7 +2,7 @@ package controller.userAccount;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import logic.authentication.UserAccount;
+import logic.authentication.Authentication;
 
 public class ProfileController {
 	@FXML Label firstName;
@@ -10,32 +10,26 @@ public class ProfileController {
 	@FXML Label username;
 	@FXML Label accessLevel;
 	
-	private UserAccount loggedInUser;
+	private Authentication auth;
 	
-	public void initialize(){
-
-	}
-
-	public UserAccount getLoggedInUser() {
-		return loggedInUser;
-	}
-
-	public void setLoggedInUser(UserAccount loggedInUser) {
-		this.loggedInUser = loggedInUser;
-	}
 	
+	public ProfileController() {
+		auth = Authentication.getInstance();
+	}
+
 	public void setAllLabels(){
-		firstName.setText(loggedInUser.getFirstName());
-		lastName.setText(loggedInUser.getLastName());
-		username.setText(loggedInUser.getUsername());
-		accessLevel.setText(loggedInUser.getAccessLevel().toString());
+		firstName.setText(auth.getLoggedInUser().getFirstName());
+		lastName.setText(auth.getLoggedInUser().getLastName());
+		username.setText(auth.getLoggedInUser().getUsername());
+		accessLevel.setText(auth.getLoggedInUser().getAccessLevel().toString());
+	}
+
+	public Authentication getAuth() {
+		return auth;
+	}
+
+	public void setAuth(Authentication auth) {
+		this.auth = auth;
 	}
 }
 
-
-//FXMLLoader loader = new FXMLLoader();
-//loader.setLocation(getClass().getResource("../../view/userAccount/Profile.fxml"));
-//root = (Parent) loader.load();
-//ProfileController profileController = loader.<ProfileController>getController();
-//profileController.setLoggedInUser(loggedInUser);
-//profileController.setAllLabels();

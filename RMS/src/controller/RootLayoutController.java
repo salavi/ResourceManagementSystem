@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 
-import controller.resourceManagement.ResourceManagementController;
 import controller.userAccount.UserAccountController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import logic.authentication.Authentication;
-import logic.authentication.UserAccount;
+
 
 public class RootLayoutController {
 
@@ -24,10 +23,16 @@ public class RootLayoutController {
 	
 
 	public RootLayoutController() {
-		// TODO Auto-generated constructor stub
 		auth = Authentication.getInstance();
 	}
 
+	public Authentication getAuth() {
+		return auth;
+	}
+
+	public void setAuth(Authentication auth) {
+		this.auth = auth;
+	}
 
 	public UserAccountController getUserAccountController() {
 		return userAccountController;
@@ -54,12 +59,5 @@ public class RootLayoutController {
 	}
 
 
-	public Authentication getAuth() {
-		return auth;
-	}
 
-
-	public void setAuth(Authentication auth) {
-		this.auth = auth;
-	}
 }
