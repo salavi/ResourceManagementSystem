@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.resourceManagement.ResourceManagementController">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" prefHeight="550.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -40,7 +40,7 @@
                         <Label text="واحد کنونی سازمان" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
-                <Button layoutX="358.0" layoutY="509.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="افزودن" />
+                <Button fx:id="addResourceButton" layoutX="358.0" layoutY="509.0" mnemonicParsing="false" onAction="#handleAddResourceButton" prefHeight="25.0" prefWidth="78.0" text="افزودن" />
                   <Button layoutX="441.0" layoutY="509.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="ویرایش" />
                   <Button layoutX="522.0" layoutY="509.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="حذف" />
                </children>
