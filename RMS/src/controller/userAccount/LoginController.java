@@ -54,25 +54,6 @@ public class LoginController {
 				//TODO
 				message.setFill(Color.GREEN);
 				message.setText("ورود شما با موفقیت انجام شد");
-//				try{
-//					Stage stage; 
-//					Parent root;
-//					stage = (Stage) loginButton.getScene().getWindow();
-//					FXMLLoader loader = new FXMLLoader();
-//					loader.setLocation(getClass().getResource("/view/userAccount/UserAccount.fxml"));
-//					root = (Parent) loader.load();
-//					UserAccountController userAccountController = loader.<UserAccountController>getController();
-//					userAccountController.setLoggedInUser(loggedInUser);
-//					userAccountController.getProfileController().setLoggedInUser(loggedInUser);
-//					userAccountController.getProfileController().setAllLabels();
-//			
-//					Scene scene = new Scene(root);
-//					stage.setScene(scene);
-//					stage.show();	
-//				}
-//				catch(Exception e){
-//					e.printStackTrace();
-//				}
 				showHomePage();
 			}
 		}
@@ -98,6 +79,7 @@ public class LoginController {
 			userAccountController.getProfileController().setLoggedInUser(loggedInUser);
 			userAccountController.getProfileController().setAllLabels();
 			userAccountController.getEditProfileController().setLoggedInUser(loggedInUser);
+			userAccountController.getChangePasswordController().setLoggedInUser(loggedInUser);
 
 			Scene scene = new Scene(root);
 			stage.setScene(scene);

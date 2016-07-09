@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
 
 import model.Adapter;
 
@@ -27,10 +28,15 @@ public class UserAccountAdapter extends Adapter {
 			System.out.println("saved");
 			return 1;
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		}
+		catch(ConstraintViolationException e){
+			System.out.println("Constraint Violation Exception");
 			return -1;
 		}
+//		catch(Exception e){
+//			e.printStackTrace();
+//			return -1;
+//		}
 	}
 
 	public List<UserAccountModel> findAll() {
@@ -59,6 +65,21 @@ public class UserAccountAdapter extends Adapter {
 			System.out.println("updated");
 			return 1;
 		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	
+	public int updatePassword(UserAccountModel userAccountModel){
+		try{
+			// creating transaction object
+			Transaction t = session.beginTransaction();
+			session.update(userAccountModel);
+			t.commit();// transaction is committed
+			System.out.println("updated");
+			return 1;
+		}
+		catch(Exception e){
 			e.printStackTrace();
 			return -1;
 		}
