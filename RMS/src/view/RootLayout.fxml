@@ -19,14 +19,14 @@
           <Tab text="مدیریت منابع">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-              	<fx:include source="ResourceManagement.fxml" />
+              	<fx:include source="resourceManagement/ResourceManagement.fxml" />
               </AnchorPane>
             </content>
           </Tab>
             <Tab text="توزیع منابع">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                	<fx:include source="ResourceAllocation.fxml" />
+                	<fx:include source="resourceAllocation/ResourceAllocation.fxml" />
               	</AnchorPane>
               </content>
             </Tab>
