@@ -7,7 +7,24 @@ import model.authentication.UserAccountAdapter;
 import model.authentication.UserAccountModel;
 
 public class Authentication {
+	private static Authentication instance = null;
+	
 	UserAccount loggedInUser;
+	
+	private Authentication(){
+		
+	}
+	
+	public static Authentication getInstance(){
+		if(instance == null) {
+			instance = new Authentication();
+		}
+		return instance;
+	}
+	
+	public static void setInstanceToNull(){
+		instance = null;
+	}
 
 	public UserAccount login(String username, String password){
 		boolean userFound = false;

@@ -33,7 +33,7 @@ public class LoginController {
 	 * The constructor is called before the initialize() method.
 	 */
 	public LoginController() {
-		auth = new Authentication();
+		auth = Authentication.getInstance();
 		message  = new Text();
 	}
 
