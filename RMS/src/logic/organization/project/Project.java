@@ -2,6 +2,11 @@ package logic.organization.project;
 
 import java.util.ArrayList;
 
+import model.organization.project.ProcessModel;
+import model.organization.project.ProjectAdapter;
+import model.organization.project.ProjectModel;
+import model.organization.project.TechnologyModel;
+
 public class Project {
 
 	private String name;
@@ -10,12 +15,15 @@ public class Project {
 	private Process developmentProcess;
 	private Process maintenanceProcess;
 	private ArrayList<Technology> listOfTechnologies;
+	private ProjectModel projectModel;
 
 	public Project(String name, int numOfHumans, int numOfModules, Process developmentProcess,
 			Process maintananceProcess, ArrayList<Technology> listOfTechnologies) {
 		this.setName(name);
 		this.setNumOfInvolvedHumans(numOfHumans);
 		this.setNumOfModules(numOfModules);
+		this.setDevelopmentProcess(developmentProcess);
+		this.setMaintenanceProcess(maintananceProcess);
 		this.setListOfTechnologies(listOfTechnologies);
 	}
 
@@ -79,9 +87,19 @@ public class Project {
 	public void setListOfTechnologies(ArrayList<Technology> listOfTechnologies) {
 		this.listOfTechnologies = listOfTechnologies;
 	}
-	
-	public void addProjectToDB(){
-		//TODO
+
+	public void addProjectToDB() {
+		ArrayList<TechnologyModel> listOfTechnologyModel = new ArrayList<>();
+		for (Technology technology : listOfTechnologies) {
+			listOfTechnologyModel.add(new TechnologyModel(technology.getName(), technology.getGoalOfUsage()));
+		}
+		ProcessModel developmentProcessModel = new ProcessModel(this.getDevelopmentProcess().getTypeOfProcess());
+		ProcessModel maintananceProcessModel = new ProcessModel(this.getMaintenanceProcess().getTypeOfProcess());
+		this.projectModel = new ProjectModel(this.getName(), this.getNumOfInvolvedHumans(), this.getNumOfModules(),
+				developmentProcessModel, maintananceProcessModel, listOfTechnologyModel);
+		
+		ProjectAdapter projectAdpt = ProjectAdapter.getInstance();
+		projectAdpt.addProject(this.projectModel);
 	}
 
 }

@@ -23,27 +23,31 @@ public class ProcessModel {
 
 	private String typeOfProcess;
 	private List<ActivityModel> activities;
-	
+
+	public ProcessModel(String typeOfProcess) {
+		this.setTypeOfProcess(typeOfProcess);
+	}
+
 	public Long getId() {
 		return this.id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getTypeOfProcess() {
 		return this.typeOfProcess;
 	}
-	
+
 	public void setTypeOfProcess(String typeOfProcess) {
 		this.typeOfProcess = typeOfProcess;
 	}
-	
+
 	public List<ActivityModel> getActivities() {
 		return this.activities;
 	}
-	
+
 	public void setActivities(List<ActivityModel> activities) {
 		this.activities = activities;
 	}

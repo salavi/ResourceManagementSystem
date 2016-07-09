@@ -26,6 +26,10 @@ public class AddProjectFormController {
 	private Button addProjectButtonId;
 
 	private ArrayList<Technology> listOfTechnologies;
+	
+	public AddProjectFormController(){
+		listOfTechnologies = new ArrayList<>();
+	}
 
 	@FXML
 	public void handleAddTechnologyButton() {

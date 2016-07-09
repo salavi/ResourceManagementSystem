@@ -38,7 +38,7 @@
                         <TextField fx:id="projectNameId" GridPane.columnIndex="1" />
                         <TextField fx:id="numOfHumansId" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="numOfModulesId" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="technologyId" promptText="نام تکنولوژی" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <TextField fx:id="technologyNameId" promptText="نام تکنولوژی" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
