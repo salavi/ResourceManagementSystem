@@ -71,7 +71,7 @@ public class SignUpController {
 					Stage stage; 
 					Parent root;
 					stage = (Stage) returnToLoginButton.getScene().getWindow();
-					root = FXMLLoader.load(getClass().getResource("../../view/userAccount/SignupSuccessMessage.fxml"));
+					root = FXMLLoader.load(getClass().getResource("/view/userAccount/SignupSuccessMessage.fxml"));
 					Scene scene = new Scene(root);
 					stage.setScene(scene);
 					stage.show();
