@@ -1,7 +1,6 @@
 package model.organization.project;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,6 +25,16 @@ public class ProjectModel {
 	private ProcessModel maintananceProcess;
 	private List<TechnologyModel> listOfTechnologies;
 
+	public ProjectModel(String name, int numOfInvolvedHumans, int numOfModules, ProcessModel developmentProcess,
+			ProcessModel maintananceProcess, List<TechnologyModel> listOfTechnologies) {
+		this.setName(name);
+		this.setNumOfInvolvedHumans(numOfInvolvedHumans);
+		this.setNumOfModules(numOfModules);
+		this.setDevelopementProcess(developmentProcess);
+		this.setMaintananceProcess(maintananceProcess);
+		this.setListOfTechnologies(listOfTechnologies);
+
+	}
 
 	public Long getId() {
 		return this.id;

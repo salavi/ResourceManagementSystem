@@ -1,15 +1,32 @@
 package logic.organization.unit;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import logic.organization.resource.Resource;
+import model.organization.unit.UnitAdapter;
+import model.organization.unit.UnitModel;
 
 public class Unit {
 	//TODO
 	private String unitId;
 	private String speciality;
 	private ArrayList<Resource> RequiredResources;
-	private ArrayList<Resource> ExistingResource;
+	private ArrayList<Resource> ExistingResources;
+	
+	
+	public Map<String, Long> getAllUnits() {
+		UnitAdapter unitAdapter = new UnitAdapter();
+		List<UnitModel> units = unitAdapter.findAll();
+		Map<String, Long> convertedUnits = new HashMap<>();
+		for (UnitModel unit: units) {
+			convertedUnits.put(unit.getUnitId() + ": " + unit.getSpecialty(), unit.getId());
+		}
+		
+		return convertedUnits;
+	}
 	
 	public String getUnitId() {
 		return unitId;
@@ -30,10 +47,10 @@ public class Unit {
 		RequiredResources = requiredResources;
 	}
 	public ArrayList<Resource> getExistingResource() {
-		return ExistingResource;
+		return ExistingResources;
 	}
-	public void setExistingResource(ArrayList<Resource> existingResource) {
-		ExistingResource = existingResource;
+	public void setExistingResource(ArrayList<Resource> existingResources) {
+		ExistingResources = existingResources;
 	}
 	
 }

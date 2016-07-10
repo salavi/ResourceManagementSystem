@@ -1,3 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/controller/MainApp.java=UTF-8
+encoding//src/controller/resourceManagement/AddResourceController.java=UTF-8
+encoding//src/controller/resourceManagement/ResourceType.java=UTF-8
 encoding//src/controller/userAccount/LoginController.java=UTF-8

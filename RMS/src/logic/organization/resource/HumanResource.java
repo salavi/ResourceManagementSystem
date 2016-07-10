@@ -1,9 +1,15 @@
 package logic.organization.resource;
 
+import logic.organization.unit.Unit;
+
 class HumanResource extends Resource {
 
 	private String firstName;
 	private String lastName;
+
+	public HumanResource() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public String getFirstName() {
 		return firstName;
