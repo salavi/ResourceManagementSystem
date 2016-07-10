@@ -51,6 +51,7 @@
                         <Label text="تعداد ماژول ها" GridPane.rowIndex="4" />
                         <TextField fx:id="numOfModulesId" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <Button fx:id="addProjectButtonId" mnemonicParsing="false" onAction="#handleAddProjectButton" text="افزودن پروژه" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                        <Button fx:id="returnButtonId" mnemonicParsing="false" onAction="#handleReturnButton" prefHeight="26.0" prefWidth="79.0" text="بازگشت" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
                   <Label layoutX="361.0" layoutY="14.0" text="ثبت پروژه" />
