@@ -8,9 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
 import javafx.stage.Stage;
 import logic.authentication.Authentication;
-
 
 public class RootLayoutController {
 
@@ -18,9 +18,10 @@ public class RootLayoutController {
 	private UserAccountController userAccountController;
 	@FXML
 	private Button logoutButton;
-	
+	@FXML
+	private Tab resourceAllocationTabId;
+
 	private Authentication auth;
-	
 
 	public RootLayoutController() {
 		auth = Authentication.getInstance();
@@ -41,10 +42,10 @@ public class RootLayoutController {
 	public void setUserAccountController(UserAccountController userAccountController) {
 		this.userAccountController = userAccountController;
 	}
-	
+
 	@FXML
-	private void handleLogoutButton(){
-		Stage stage; 
+	private void handleLogoutButton() {
+		Stage stage;
 		Parent root;
 		stage = (Stage) logoutButton.getScene().getWindow();
 		try {
@@ -58,6 +59,11 @@ public class RootLayoutController {
 		}
 	}
 
-
+	@FXML
+	private void onResourceAllocationSelection() {
+		if (resourceAllocationTabId.isSelected()) {
+			System.out.println("ResourceAllocation is selected");
+		}
+	}
 
 }

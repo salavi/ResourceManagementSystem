@@ -15,6 +15,8 @@ public class ResourceAllocation {
 	private Button addAllocatedResourceButtonId;
 	@FXML
 	private Button addProjectButtonId;
+	@FXML 
+	private Button addRequiredResourceButtonId;
 
 	@FXML
 	public void handleAddProjectButton() {
@@ -51,5 +53,21 @@ public class ResourceAllocation {
 			e.printStackTrace();
 		}
 
+	}
+	
+	@FXML
+	public void handleRequiredResourceButton(){
+		Stage stage;
+		Parent root;
+		stage = (Stage) addRequiredResourceButtonId.getScene().getWindow();
+		try {
+			root = FXMLLoader.load(getClass().getResource("/view/resourceAllocation/AddRequiredResourceForm.fxml"));
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
