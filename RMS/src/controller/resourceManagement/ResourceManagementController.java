@@ -34,6 +34,7 @@ public class ResourceManagementController {
 			AddResourceController addResourceController = loader.<AddResourceController> getController();
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
+			addResourceController.initial();
 			stage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

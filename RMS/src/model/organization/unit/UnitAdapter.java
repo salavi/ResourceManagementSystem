@@ -5,7 +5,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Transaction;
 
-import model.organization.project.ProjectModel;
+import model.Adapter;
 
 public class UnitAdapter extends Adapter{
 
@@ -38,6 +38,12 @@ public class UnitAdapter extends Adapter{
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public UnitModel getUnit(Long unitId) {
+		Transaction t = session.beginTransaction();
+		UnitModel unit = (UnitModel)session.get(UnitModel.class, unitId);
+		return unit;
 	}
 	
 
