@@ -52,11 +52,11 @@ public class RootLayoutController {
 		Parent root;
 		stage = (Stage) logoutButton.getScene().getWindow();
 		try {
+			Authentication.setInstanceToNull();
 			root = FXMLLoader.load(getClass().getResource("/view/userAccount/LoginUI.fxml"));
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
-			Authentication.setInstanceToNull();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
