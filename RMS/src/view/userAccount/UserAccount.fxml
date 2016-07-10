@@ -9,9 +9,9 @@
 	<children>
 		<Pane prefHeight="550.0" prefWidth="900.0">
 			<children>
-				<TabPane prefHeight="550.0" prefWidth="900.0" side="RIGHT" tabClosingPolicy="UNAVAILABLE">
+				<TabPane fx:id="tabPane" prefHeight="550.0" prefWidth="900.0" side="RIGHT" tabClosingPolicy="UNAVAILABLE">
 					<tabs>
-						<Tab fx:id="profileTab" text="مشخصات">
+						<Tab fx:id="profileTab" onSelectionChanged="#handleProfileTab" text="مشخصات">
 							<content>
 								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
 									
@@ -19,28 +19,28 @@
 								</AnchorPane>
 							</content>
 						</Tab>
-						<Tab fx:id="editTab" text="ویرایش ">
+						<Tab fx:id="editProfileTab" onSelectionChanged="#handleEditProfileTab" text="ویرایش ">
 							<content>
 								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
 									<fx:include fx:id="editProfile" source="EditProfile.fxml" />
 								</AnchorPane>
 							</content>
 						</Tab>
-						<Tab fx:id="passwordTab" text="تغییر رمز عبور">
+						<Tab fx:id="changePasswordTab" onSelectionChanged="#handleChangePasswordTab" text="تغییر رمز عبور">
 							<content>
 								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
 									<fx:include fx:id="changePassword" source="ChangePassword.fxml" />
 								</AnchorPane>
 							</content>
 						</Tab>
-						<Tab fx:id="accessLevelTab" text="تغییر سطح دسترسی">
+						<Tab fx:id="changeAccessLevelTab" onSelectionChanged="#handleChangeAccessLevelTab" text="تغییر سطح دسترسی">
 							<content>
 								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
 									<fx:include fx:id="changeAccessLevel" source="ChangeAccessLevel.fxml" />
 								</AnchorPane>
 							</content>
 						</Tab>
-						<Tab fx:id="deleteAccountTab" text="حذف حساب کاربری ">
+						<Tab fx:id="removeAccountTab" onSelectionChanged="#handleRemoveAccountTab" text="حذف حساب کاربری ">
 							<content>
 								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
 									<fx:include fx:id="removeAccount" source="RemoveAccount.fxml" />

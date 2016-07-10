@@ -75,12 +75,12 @@ public class SignUpController {
 					Scene scene = new Scene(root);
 					stage.setScene(scene);
 					stage.show();
+					Authentication.setInstanceToNull();
 				}
 				catch(Exception e){
 					e.printStackTrace();
 				}
 			}
-			Authentication.setInstanceToNull();
 		}
 		else{
 			message.setFill(Color.RED);

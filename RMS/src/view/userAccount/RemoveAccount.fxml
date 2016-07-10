@@ -18,15 +18,20 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField layoutX="233.0" layoutY="137.0">
+      <TextField fx:id="username" layoutX="233.0" layoutY="137.0">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <Button layoutX="402.0" layoutY="216.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="82.0" text="حذف">
+      <Button fx:id="removeButton" layoutX="402.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleRemoveButton" prefHeight="39.0" prefWidth="82.0" text="حذف">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
+      <Text fx:id="message" layoutX="168.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="564.6829261779785">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
