@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 
 import controller.resourceAllocation.ResourceAllocationController;
+import controller.resourceManagement.ResourceManagementController;
 import controller.userAccount.UserAccountController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,9 +21,13 @@ public class RootLayoutController {
 	@FXML
 	private ResourceAllocationController resourceAllocationController;
 	@FXML
+	private ResourceManagementController resourceManagementController;
+	@FXML
 	private Button logoutButton;
 	@FXML
 	private Tab resourceAllocationTabId;
+	@FXML
+	private Tab resourceManagementTabId;
 
 	private Authentication auth;
 
@@ -65,9 +70,15 @@ public class RootLayoutController {
 	@FXML
 	private void onResourceAllocationSelection() {
 		if (resourceAllocationTabId.isSelected()) {
-			System.out.println("ResourceAllocation is selected");
-			System.out.println(resourceAllocationController == null);
 			resourceAllocationController.showAllProjects();
+		}
+	}
+	
+	@FXML
+	private void onResourceManagementSelection() {
+		System.out.println("resourceManagement tab selected");
+		if (resourceManagementTabId.isSelected()) {
+			resourceManagementController.showAllResources();
 		}
 	}
 
