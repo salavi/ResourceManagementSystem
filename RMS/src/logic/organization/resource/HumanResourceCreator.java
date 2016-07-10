@@ -1,7 +1,11 @@
 package logic.organization.resource;
 
-import model.organization.resource.FinancialResourceModel;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import model.organization.resource.HumanResourceModel;
+import model.organization.resource.ResourceAdapter;
 import model.organization.resource.ResourceModel;
 import model.organization.unit.UnitAdapter;
 import model.organization.unit.UnitModel;
@@ -24,6 +28,16 @@ public class HumanResourceCreator extends ResourceFactory {
 		
 		resourceAdapter.addResource(humanResourceModel);
 		return humanResourceModel;
+	}
+	
+	public Map<String, Long> getAllHumanResources() {
+		List<HumanResourceModel> resources = new ResourceAdapter() .findAllHumanResources();
+		Map<String, Long> convertedResources = new HashMap<>();
+		for (HumanResourceModel humanResource : resources) {
+			convertedResources.put(humanResource.getResourceId() + ": " + humanResource.getFirstName() + " " + humanResource.getLastName(), humanResource.getId());
+		}
+		
+		return convertedResources;
 	}
 
 }
