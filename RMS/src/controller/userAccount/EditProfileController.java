@@ -1,22 +1,11 @@
 package controller.userAccount;
 
-import java.io.IOException;
-
-import controller.RootLayoutController;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.SingleSelectionModel;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import logic.authentication.Authentication;
-import logic.authentication.UserAccount;
 
 public class EditProfileController {
 	@FXML
@@ -51,30 +40,6 @@ public class EditProfileController {
 		}
 	}
 
-//	private void showHomePage() {
-//		try {
-//			Stage stage;
-//			Parent root;
-//			stage = (Stage) registerButton.getScene().getWindow();
-//			FXMLLoader loader = new FXMLLoader();
-//			loader.setLocation(getClass().getResource("/view/RootLayout.fxml"));
-//			root = (Parent) loader.load();
-//			RootLayoutController rootLayoutController = loader.<RootLayoutController> getController();
-////			rootLayoutController.setLoggedInUser(loggedInUser);
-//			UserAccountController userAccountController = rootLayoutController.getUserAccountController();
-////			userAccountController.setLoggedInUser(loggedInUser);
-////			userAccountController.getProfileController().setLoggedInUser(loggedInUser);
-//			userAccountController.getProfileController().setAllLabels();
-////			userAccountController.getEditProfileController().setLoggedInUser(loggedInUser);
-//
-//			Scene scene = new Scene(root);
-//			stage.setScene(scene);
-//			stage.show();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
 
 	public Authentication getAuth() {
 		return auth;

@@ -93,15 +93,19 @@ public class UserAccountModel {
 	}  
 	
 	public String toString(){
-		return firstName + " " + lastName + " " + username + " " + password;
+		return firstName + " " + lastName + " " + username + " " + password + " " + accessLevel;
 	}
 	
 	public boolean authenticate(String username, String password){
 		return this.username.equals(username) && this.password.equals(password);
 	}
 	
+	public boolean doesThisUsernameBelongTo(String username){
+		return this.username.equals(username);
+	}
+	
 	public UserAccount getUserAccount(){
-		UserAccount result = new UserAccount(firstName, lastName, username, password);
+		UserAccount result = new UserAccount(firstName, lastName, username, password, accessLevel);
 		result.setUserAccountModel(this);
 		return result;
 	}
