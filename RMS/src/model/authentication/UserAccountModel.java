@@ -97,7 +97,7 @@ public class UserAccountModel {
 	}
 	
 	public boolean authenticate(String username, String password){
-		return this.username.equals(username) && this.password.equals(password);
+		return (this.username.equals(username) && this.password.equals(password));
 	}
 	
 	public boolean doesThisUsernameBelongTo(String username){

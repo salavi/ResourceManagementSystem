@@ -9,12 +9,12 @@ import javafx.scene.text.Text;
 import logic.authentication.Authentication;
 
 public class ChangeAccessLevelController {
-	@FXML private TextField username;
-	@FXML private RadioButton uppestLevelButton;
-	@FXML private RadioButton mediumLevelButton;
-	@FXML private RadioButton lowestLevelButton;
-	@FXML private Button enterButton;
-	@FXML private Text message;
+	@FXML TextField username;
+	@FXML RadioButton uppestLevelButton;
+	@FXML RadioButton mediumLevelButton;
+	@FXML RadioButton lowestLevelButton;
+	@FXML Button enterButton;
+	@FXML Text message;
 
 	private Authentication auth;
 

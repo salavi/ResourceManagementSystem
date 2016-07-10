@@ -21,13 +21,20 @@ public class UserAccount {
 	}
 
 	public int editFirstLastName(String firstName, String lastName){
-//		if(firstName == null){
-//			
-//		}
-		this.setLastName(lastName);
-		this.setFirstName(firstName);
-		userAccountModel.setLastName(lastName);
-		userAccountModel.setFirstName(firstName);
+		if(firstName.equals("")){
+			this.setLastName(lastName);
+			userAccountModel.setLastName(lastName);
+		}
+		else if(lastName.equals("")){
+			this.setFirstName(firstName);
+			userAccountModel.setFirstName(firstName);
+		}
+		else{
+			this.setLastName(lastName);
+			this.setFirstName(firstName);
+			userAccountModel.setLastName(lastName);
+			userAccountModel.setFirstName(firstName);
+		}
 		UserAccountAdapter userAccountAdapter = UserAccountAdapter.getInstance();
 		return userAccountAdapter.update(userAccountModel);
 	}
@@ -58,6 +65,23 @@ public class UserAccount {
 			if(matchedUserAccount.getAccessLevel() < this.getAccessLevel()){
 				matchedUserAccount.setAccessLevel(accessLevel);
 				return userAccountAdapter.update(matchedUserAccount);
+			}
+			else if(matchedUserAccount.getAccessLevel() >= this.getAccessLevel()){
+				return 0;
+			}
+		}
+		return -1;
+	}
+	
+	public int removeAccount(String username){
+		UserAccountAdapter userAccountAdapter = UserAccountAdapter.getInstance();
+		UserAccountModel matchedUserAccount = userAccountAdapter.find(username);
+		if(matchedUserAccount == null) {
+			return -1;
+		}
+		else{
+			if(matchedUserAccount.getAccessLevel() < this.getAccessLevel()){
+				return userAccountAdapter.remove(matchedUserAccount);
 			}
 			else if(matchedUserAccount.getAccessLevel() >= this.getAccessLevel()){
 				return 0;

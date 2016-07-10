@@ -8,11 +8,16 @@ import javafx.scene.text.Text;
 import logic.authentication.Authentication;
 
 public class ChangePasswordController {
-	@FXML private PasswordField oldPassword;
-	@FXML private PasswordField newPassword;
-	@FXML private PasswordField newPasswordConfirmation;
-	@FXML private Button enterButton;
-	@FXML private Text message = new Text();
+	@FXML 
+	PasswordField oldPassword;
+	@FXML 
+	PasswordField newPassword;
+	@FXML 
+	PasswordField newPasswordConfirmation;
+	@FXML 
+	Button enterButton;
+	@FXML 
+	Text message = new Text();
 	
 	private Authentication auth;
 	

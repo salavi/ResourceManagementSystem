@@ -2,6 +2,8 @@ package controller.userAccount;
 
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import logic.authentication.Authentication;
 
 
@@ -11,6 +13,14 @@ public class UserAccountController {
     @FXML private ChangePasswordController changePasswordController;
     @FXML private ChangeAccessLevelController changeAccessLevelController;
 	@FXML private RemoveAccountController removeAccountController;
+	
+	@FXML private TabPane tabPane;
+	@FXML private Tab profileTab;
+	@FXML private Tab editProfileTab;
+	@FXML private Tab changePasswordTab;
+	@FXML private Tab changeAccessLevelTab;
+	@FXML private Tab removeAccountTab;
+	
 		
     private Authentication auth;
 	
@@ -18,6 +28,47 @@ public class UserAccountController {
 //		super();
 		auth = Authentication.getInstance();
 //		profileController.setAllLabels();
+	}
+	
+	@FXML public void handleProfileTab(){
+		if(profileTab.isSelected()){
+			profileController.setAllLabels();
+		}
+	}
+	
+	@FXML public void handleEditProfileTab(){
+		if(editProfileTab.isSelected()){
+			editProfileController.firstName.clear();
+			editProfileController.lastName.clear();
+			editProfileController.message.setText("");
+		}
+	}
+	
+	@FXML public void handleChangePasswordTab(){
+		if(changePasswordTab.isSelected()){
+			changePasswordController.oldPassword.clear();
+			changePasswordController.newPassword.clear();
+			changePasswordController.newPasswordConfirmation.clear();
+			changePasswordController.message.setText("");
+		}
+	}
+	
+	@FXML public void handleChangeAccessLevelTab(){
+		if(changeAccessLevelTab.isSelected()){
+			changeAccessLevelController.username.clear();
+			changeAccessLevelController.message.setText("");
+			changeAccessLevelController.uppestLevelButton.setSelected(false);
+			changeAccessLevelController.mediumLevelButton.setSelected(false);
+			changeAccessLevelController.lowestLevelButton.setSelected(false);
+		}
+		
+	}
+	
+	@FXML public void handleRemoveAccountTab(){
+		if(removeAccountTab.isSelected()){
+			removeAccountController.username.clear();
+			removeAccountController.message.setText("");
+		}
 	}
 	
 	public Authentication getAuth() {

@@ -84,7 +84,16 @@ public class UserAccountAdapter extends Adapter {
 		}
 	}
 
-	public void remove(UserAccountModel userAccount) {
-		// TODO
+	public int remove(UserAccountModel userAccount) {
+		try {
+			// creating transaction object
+			Transaction t = session.beginTransaction();
+			session.delete(userAccount);
+			t.commit();// transaction is committed
+			return 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
 	}
 }
