@@ -23,6 +23,10 @@ public class ProcessModel {
 
 	private String typeOfProcess;
 	private List<ActivityModel> activities;
+	
+	public ProcessModel(){
+		
+	}
 
 	public ProcessModel(String typeOfProcess) {
 		this.setTypeOfProcess(typeOfProcess);

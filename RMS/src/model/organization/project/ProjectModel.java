@@ -24,6 +24,10 @@ public class ProjectModel {
 	private ProcessModel developementProcess;
 	private ProcessModel maintananceProcess;
 	private List<TechnologyModel> listOfTechnologies;
+	
+	public ProjectModel(){
+		
+	}
 
 	public ProjectModel(String name, int numOfInvolvedHumans, int numOfModules, ProcessModel developmentProcess,
 			ProcessModel maintananceProcess, List<TechnologyModel> listOfTechnologies) {
