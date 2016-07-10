@@ -40,6 +40,10 @@ public class ResourceManagementController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+	}
+	
+	public void showAllResources() {
+		System.out.println("show all resources");
+		
 	}
 }
