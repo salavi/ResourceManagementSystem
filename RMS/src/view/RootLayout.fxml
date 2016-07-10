@@ -26,7 +26,7 @@
             <Tab fx:id="resourceAllocationTabId" onSelectionChanged="#onResourceAllocationSelection" text="توزیع منابع">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                	<fx:include source="resourceAllocation/ResourceAllocation.fxml" />
+                	<fx:include fx:id="resourceAllocation" source="resourceAllocation/ResourceAllocation.fxml" />
               	</AnchorPane>
               </content>
             </Tab>
