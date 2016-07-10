@@ -5,7 +5,11 @@ import logic.organization.unit.Unit;
 public abstract class Resource {
 
 	private Unit currentUnit;
-	private String ResourceId;
+	private String resourceId;
+	
+	public Resource() {
+		
+	}
 
 	public Unit getCurrentUnit() {
 		return currentUnit;
@@ -16,11 +20,12 @@ public abstract class Resource {
 	}
 
 	public String getResourceId() {
-		return ResourceId;
+		return resourceId;
 	}
 
 	public void setResourceId(String resourceId) {
-		ResourceId = resourceId;
+		this.resourceId = resourceId;
 	}
-
+	
+	
 }

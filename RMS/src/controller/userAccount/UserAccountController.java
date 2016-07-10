@@ -11,11 +11,13 @@ public class UserAccountController {
     @FXML private ChangePasswordController changePasswordController;
     @FXML private ChangeAccessLevelController changeAccessLevelController;
 	@FXML private RemoveAccountController removeAccountController;
-	
+		
     private Authentication auth;
 	
 	public UserAccountController() {
+//		super();
 		auth = Authentication.getInstance();
+//		profileController.setAllLabels();
 	}
 	
 	public Authentication getAuth() {

@@ -12,11 +12,12 @@ public class UserAccount {
 	private Integer accessLevel = 0;
 	private Boolean isAdmin = false;
 
-	public UserAccount(String firstName, String lastName, String username, String password) {
+	public UserAccount(String firstName, String lastName, String username, String password, int accessLevel) {
 		setFirstName(firstName);
 		setLastName(lastName);
 		setUsername(username);
 		setPassword(password);
+		setAccessLevel(accessLevel);
 	}
 
 	public int editFirstLastName(String firstName, String lastName){
@@ -28,7 +29,7 @@ public class UserAccount {
 		userAccountModel.setLastName(lastName);
 		userAccountModel.setFirstName(firstName);
 		UserAccountAdapter userAccountAdapter = UserAccountAdapter.getInstance();
-		return userAccountAdapter.updateFirstLastName(userAccountModel);
+		return userAccountAdapter.update(userAccountModel);
 	}
 	
 	public int editPassword(String oldPass, String newPass, String newPassConfirmation){
@@ -36,7 +37,7 @@ public class UserAccount {
 			this.setPassword(newPass);
 			userAccountModel.setPassword(newPass);
 			UserAccountAdapter userAccountAdapter = UserAccountAdapter.getInstance();
-			return userAccountAdapter.updatePassword(userAccountModel);
+			return userAccountAdapter.update(userAccountModel);
 		}
 		else if(!this.getPassword().equals(oldPass)){
 			return 0;
@@ -46,7 +47,25 @@ public class UserAccount {
 		}
 		return 9;
 	}
-
+	
+	public int changeAccesssLevel(String username, int accessLevel){
+		UserAccountAdapter userAccountAdapter = UserAccountAdapter.getInstance();
+		UserAccountModel matchedUserAccount = userAccountAdapter.find(username);
+		if(matchedUserAccount == null) {
+			return -1;
+		}
+		else{
+			if(matchedUserAccount.getAccessLevel() < this.getAccessLevel()){
+				matchedUserAccount.setAccessLevel(accessLevel);
+				return userAccountAdapter.update(matchedUserAccount);
+			}
+			else if(matchedUserAccount.getAccessLevel() >= this.getAccessLevel()){
+				return 0;
+			}
+		}
+		return -1;
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
