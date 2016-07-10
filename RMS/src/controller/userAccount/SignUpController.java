@@ -26,7 +26,7 @@ public class SignUpController {
 
 	
 	public SignUpController(){
-		auth = new Authentication();
+		auth = Authentication.getInstance();
 		message = new Text();
 	}
 	
@@ -80,6 +80,7 @@ public class SignUpController {
 					e.printStackTrace();
 				}
 			}
+			Authentication.setInstanceToNull();
 		}
 		else{
 			message.setFill(Color.RED);

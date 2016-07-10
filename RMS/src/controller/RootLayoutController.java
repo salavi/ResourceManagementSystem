@@ -2,15 +2,15 @@ package controller;
 
 import java.io.IOException;
 
-import controller.resourceManagement.ResourceManagementController;
 import controller.userAccount.UserAccountController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
 import javafx.stage.Stage;
-import logic.authentication.UserAccount;
+import logic.authentication.Authentication;
 
 public class RootLayoutController {
 
@@ -18,20 +18,21 @@ public class RootLayoutController {
 	private UserAccountController userAccountController;
 	@FXML
 	private Button logoutButton;
-	
-	private UserAccount loggedInUser;
-	
+	@FXML
+	private Tab resourceAllocationTabId;
+
+	private Authentication auth;
 
 	public RootLayoutController() {
-		// TODO Auto-generated constructor stub
+		auth = Authentication.getInstance();
 	}
 
-	public UserAccount getLoggedInUser() {
-		return loggedInUser;
+	public Authentication getAuth() {
+		return auth;
 	}
 
-	public void setLoggedInUser(UserAccount loggedInUser) {
-		this.loggedInUser = loggedInUser;
+	public void setAuth(Authentication auth) {
+		this.auth = auth;
 	}
 
 	public UserAccountController getUserAccountController() {
@@ -41,10 +42,10 @@ public class RootLayoutController {
 	public void setUserAccountController(UserAccountController userAccountController) {
 		this.userAccountController = userAccountController;
 	}
-	
+
 	@FXML
-	private void handleLogoutButton(){
-		Stage stage; 
+	private void handleLogoutButton() {
+		Stage stage;
 		Parent root;
 		stage = (Stage) logoutButton.getScene().getWindow();
 		try {
@@ -57,4 +58,12 @@ public class RootLayoutController {
 			e.printStackTrace();
 		}
 	}
+
+	@FXML
+	private void onResourceAllocationSelection() {
+		if (resourceAllocationTabId.isSelected()) {
+			System.out.println("ResourceAllocation is selected");
+		}
+	}
+
 }

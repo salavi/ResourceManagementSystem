@@ -7,7 +7,24 @@ import model.authentication.UserAccountAdapter;
 import model.authentication.UserAccountModel;
 
 public class Authentication {
-	UserAccount loggedInUser;
+	private static Authentication instance = null;
+	
+	private UserAccount loggedInUser;
+	
+	private Authentication(){
+		
+	}
+	
+	public static Authentication getInstance(){
+		if(instance == null) {
+			instance = new Authentication();
+		}
+		return instance;
+	}
+	
+	public static void setInstanceToNull(){
+		instance = null;
+	}
 
 	public UserAccount login(String username, String password){
 		boolean userFound = false;
@@ -30,5 +47,13 @@ public class Authentication {
 		UserAccountModel userAcModel = new UserAccountModel(firstName, lastName, username, password);
 		UserAccountAdapter userAccountAdapter = UserAccountAdapter.getInstance();
 		return userAccountAdapter.addUserAccount(userAcModel);		
+	}
+
+	public UserAccount getLoggedInUser() {
+		return loggedInUser;
+	}
+
+	public void setLoggedInUser(UserAccount loggedInUser) {
+		this.loggedInUser = loggedInUser;
 	}
 }

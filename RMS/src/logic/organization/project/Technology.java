@@ -1,6 +1,6 @@
 package logic.organization.project;
 
-class Technology {
+public class Technology {
 	
 	private String name;
 	private String goalOfUsage;
