@@ -40,7 +40,6 @@ public class UserAccountAdapter extends Adapter {
 	}
 
 	public List<UserAccountModel> findAll() {
-		// TODO
 		try {
 			// creating transaction object
 			Transaction t = session.beginTransaction();
@@ -56,7 +55,22 @@ public class UserAccountAdapter extends Adapter {
 		}
 	}
 
-	public int updateFirstLastName(UserAccountModel userAccountModel) {
+	public UserAccountModel find(String username){
+		try {
+			// creating transaction object
+			Transaction t = session.beginTransaction();
+			Query query = session.createQuery("FROM UserAccountModel userAccountModel WHERE userAccountModel.username = :un");
+			query.setParameter("un",username);
+			List<UserAccountModel> user = query.list();
+			t.commit();// transaction is committed
+			return user.get(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public int update(UserAccountModel userAccountModel) {
 		try {
 			// creating transaction object
 			Transaction t = session.beginTransaction();
@@ -65,21 +79,6 @@ public class UserAccountAdapter extends Adapter {
 			System.out.println("updated");
 			return 1;
 		} catch (Exception e) {
-			e.printStackTrace();
-			return -1;
-		}
-	}
-	
-	public int updatePassword(UserAccountModel userAccountModel){
-		try{
-			// creating transaction object
-			Transaction t = session.beginTransaction();
-			session.update(userAccountModel);
-			t.commit();// transaction is committed
-			System.out.println("updated");
-			return 1;
-		}
-		catch(Exception e){
 			e.printStackTrace();
 			return -1;
 		}

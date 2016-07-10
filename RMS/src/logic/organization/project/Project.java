@@ -1,6 +1,9 @@
 package logic.organization.project;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import model.organization.project.ProcessModel;
 import model.organization.project.ProjectAdapter;
@@ -16,6 +19,10 @@ public class Project {
 	private Process maintenanceProcess;
 	private ArrayList<Technology> listOfTechnologies;
 	private ProjectModel projectModel;
+
+	public Project() {
+
+	}
 
 	public Project(String name, int numOfHumans, int numOfModules, Process developmentProcess,
 			Process maintananceProcess, ArrayList<Technology> listOfTechnologies) {
@@ -97,9 +104,21 @@ public class Project {
 		ProcessModel maintananceProcessModel = new ProcessModel(this.getMaintenanceProcess().getTypeOfProcess());
 		this.projectModel = new ProjectModel(this.getName(), this.getNumOfInvolvedHumans(), this.getNumOfModules(),
 				developmentProcessModel, maintananceProcessModel, listOfTechnologyModel);
-		
+
 		ProjectAdapter projectAdpt = ProjectAdapter.getInstance();
 		projectAdpt.addProject(this.projectModel);
+	}
+
+	public Map<String, Long> getAllProjects() {
+		ProjectAdapter projectAdapter = new ProjectAdapter();
+		List<ProjectModel> projectModels = projectAdapter.findAll();
+		Map<String, Long> map = new HashMap<>();
+		int counter = 0;
+		for (ProjectModel projectModel : projectModels) {
+			map.put(Integer.toString(counter) + projectModel.getName(), projectModel.getId());
+			++counter;
+		}
+		return map;
 	}
 
 }

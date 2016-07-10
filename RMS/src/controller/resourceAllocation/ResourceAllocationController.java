@@ -1,6 +1,7 @@
 package controller.resourceAllocation;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +9,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import logic.organization.project.Project;
 
-public class ResourceAllocation {
+public class ResourceAllocationController {
 
 	@FXML
 	private Button addAllocatedResourceButtonId;
@@ -69,5 +71,11 @@ public class ResourceAllocation {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void showAllProjects(){
+		System.out.println("fetchProjects");
+		Project project = new Project();
+		Map<String, Long> projectsMap = project.getAllProjects();
 	}
 }
