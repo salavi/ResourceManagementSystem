@@ -2,8 +2,11 @@ package controller.project;
 
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import logic.organization.project.Process;
 import logic.organization.project.Project;
@@ -24,11 +27,16 @@ public class AddProjectFormController {
 	private Button addTechnologyButtonId;
 	@FXML
 	private Button addProjectButtonId;
+	@FXML
+	private ListView<String> technologyListViewId;
 
 	private ArrayList<Technology> listOfTechnologies;
-	
-	public AddProjectFormController(){
+	private int numberOfTechnologies;
+	ObservableList<String> data;
+
+	public AddProjectFormController() {
 		listOfTechnologies = new ArrayList<>();
+		data = FXCollections.observableArrayList();
 	}
 
 	@FXML
@@ -39,6 +47,10 @@ public class AddProjectFormController {
 		String technologyGoal = goalOfTechId.getText();
 		Technology technology = new Technology(technologyName, technologyGoal);
 		listOfTechnologies.add(technology);
+		data.add(Integer.toString(++numberOfTechnologies) + "." + "نام تکنولوژی:" + technologyName + "\n   "
+				+ "هدف استفاده:" + technologyGoal);
+		technologyListViewId.setItems(data);
+
 		technologyNameId.setText("");
 		goalOfTechId.setText("");
 	}
