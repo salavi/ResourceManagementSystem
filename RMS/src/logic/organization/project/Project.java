@@ -109,17 +109,22 @@ public class Project {
 		projectAdpt.addProject(this.projectModel);
 	}
 
-	public Map<String, Long> getAllProjects() {
+	public List<ProjectModel> getAllProjects() {
 		ProjectAdapter projectAdapter = new ProjectAdapter();
 		List<ProjectModel> projectModels = projectAdapter.findAll();
-		Map<String, Long> map = new HashMap<>();
-		int counter = 0;
-		for (ProjectModel projectModel : projectModels) {
-			System.out.println(Integer.toString(counter) + projectModel.getName() + " " + projectModel.getId());
-			map.put(Integer.toString(counter) + projectModel.getName(), projectModel.getId());
-			++counter;
-		}
-		return map;
+//		List<RetrievedProject> retrievedProject = new ArrayList<>();
+//		int counter = 0;
+//		for (ProjectModel projectModel : projectModels) {
+//			System.out.println(Integer.toString(counter) + projectModel.getName() + " " + projectModel.getId());
+//			RetrievedProject rp = new RetrievedProject(projectModel.getName(),)
+//			map.put(Integer.toString(counter) + projectModel.getName(), projectModel.getId());
+//			++counter;
+//			
+//		}
+		return projectModels;
 	}
 
 }
+
+
+
