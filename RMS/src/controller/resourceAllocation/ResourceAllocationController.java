@@ -1,13 +1,19 @@
 package controller.resourceAllocation;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import logic.organization.project.Project;
 
@@ -17,9 +23,20 @@ public class ResourceAllocationController {
 	private Button addAllocatedResourceButtonId;
 	@FXML
 	private Button addProjectButtonId;
-	@FXML 
+	@FXML
 	private Button addRequiredResourceButtonId;
+	@FXML
+	private TableView<String> tableViewId;
+	@FXML
+	private TableColumn<String,String> projectsColumn;
+	
 
+	Map<String, Long> projectsMap;
+	
+	public ResourceAllocationController(){
+		
+	}
+	
 	@FXML
 	public void handleAddProjectButton() {
 
@@ -56,9 +73,9 @@ public class ResourceAllocationController {
 		}
 
 	}
-	
+
 	@FXML
-	public void handleRequiredResourceButton(){
+	public void handleRequiredResourceButton() {
 		Stage stage;
 		Parent root;
 		stage = (Stage) addRequiredResourceButtonId.getScene().getWindow();
@@ -72,10 +89,15 @@ public class ResourceAllocationController {
 			e.printStackTrace();
 		}
 	}
-	
-	public void showAllProjects(){
+
+	public void showAllProjects() {
 		System.out.println("fetchProjects");
 		Project project = new Project();
-		Map<String, Long> projectsMap = project.getAllProjects();
+		this.projectsMap = project.getAllProjects();
+		ObservableList<String> data = FXCollections.observableArrayList();
+		data.addAll(projectsMap.keySet());
+		System.out.println(data);
+		tableViewId.getItems().setAll(data);
+
 	}
 }

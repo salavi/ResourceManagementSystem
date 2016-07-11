@@ -115,6 +115,7 @@ public class Project {
 		Map<String, Long> map = new HashMap<>();
 		int counter = 0;
 		for (ProjectModel projectModel : projectModels) {
+			System.out.println(Integer.toString(counter) + projectModel.getName() + " " + projectModel.getId());
 			map.put(Integer.toString(counter) + projectModel.getName(), projectModel.getId());
 			++counter;
 		}
