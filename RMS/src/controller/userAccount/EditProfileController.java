@@ -28,8 +28,16 @@ public class EditProfileController {
 			message.setFill(Color.RED);
 			message.setText("لطفا اطلاعات را برای ویرایش وارد نمایید");
 		} else {
-			// TODO agar yeki az field ha khali bud
-			int success = auth.getLoggedInUser().editFirstLastName(firstName.getText(), lastName.getText());
+			int success;
+			if(firstName.getText().isEmpty()){
+				success = auth.getLoggedInUser().editFirstLastName("", lastName.getText());
+			}
+			else if(lastName.getText().isEmpty()){
+				success = auth.getLoggedInUser().editFirstLastName(firstName.getText(), "");
+			}
+			else{
+				success = auth.getLoggedInUser().editFirstLastName(firstName.getText(), lastName.getText());
+			}
 			if (success == 1) {
 				message.setFill(Color.GREEN);
 				message.setText("اطلاعات وارد شده با موفقیت ویرایش شد");

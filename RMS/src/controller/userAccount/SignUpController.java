@@ -68,6 +68,7 @@ public class SignUpController {
 			}
 			else if(success == 1){
 				try{
+					Authentication.setInstanceToNull();
 					Stage stage; 
 					Parent root;
 					stage = (Stage) returnToLoginButton.getScene().getWindow();
@@ -79,8 +80,8 @@ public class SignUpController {
 				catch(Exception e){
 					e.printStackTrace();
 				}
+				
 			}
-			Authentication.setInstanceToNull();
 		}
 		else{
 			message.setFill(Color.RED);

@@ -72,10 +72,6 @@ public class LoginController {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/RootLayout.fxml"));
 			root = (Parent) loader.load();
-			RootLayoutController rootLayoutController = loader.<RootLayoutController> getController();
-			UserAccountController userAccountController =rootLayoutController.getUserAccountController();
-			userAccountController.getProfileController().setAllLabels();
-
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
