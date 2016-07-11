@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import logic.organization.resource.Resource;
+import model.organization.resource.ResourceAdapter;
+import model.organization.resource.ResourceModel;
 import model.organization.unit.UnitAdapter;
 import model.organization.unit.UnitModel;
 
@@ -51,6 +54,15 @@ public class Unit {
 	}
 	public void setExistingResource(ArrayList<Resource> existingResources) {
 		ExistingResources = existingResources;
+	}
+
+	public void addRequiredResourceToUnit(Long resourceId, Long unitId) {
+		UnitAdapter unitAdapter = new UnitAdapter();
+		UnitModel retrievedUnit = unitAdapter.getUnit(unitId);
+		ResourceAdapter resourceAdapter = new ResourceAdapter();
+		ResourceModel retrievedResource = resourceAdapter.getResource(resourceId);
+		retrievedUnit.addRequiredResources(retrievedResource);
+		unitAdapter.addUnit(retrievedUnit);
 	}
 	
 }

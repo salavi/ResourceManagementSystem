@@ -55,5 +55,9 @@ public class UnitModel {
 	public void setRequiredResources(Set<ResourceModel> requiredResources) {  
 	    this.requiredResources = requiredResources;  
 	} 
+	
+	public void addRequiredResources(ResourceModel requiredResource){
+		this.requiredResources.add(requiredResource);
+	}
 }
 

@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Transaction;
 
 import model.Adapter;
+import model.authentication.UserAccountModel;
 
 public class ResourceAdapter extends Adapter{
 
@@ -15,6 +16,22 @@ public class ResourceAdapter extends Adapter{
 		t.commit();// transaction is committed
 		System.out.println("saved");
 	}	
+	
+	public ResourceModel getResource(Long resourceId){
+		try {
+			// creating transaction object
+			Transaction t = session.beginTransaction();
+			Query query = session.createQuery("FROM ResourceModel resourceModel WHERE resourceModel.id = :un");
+			query.setParameter("un", resourceId);
+			List<ResourceModel> resourceModel = query.list();
+			t.commit();// transaction is committed
+			return resourceModel.get(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
 	
 	public List<HumanResourceModel> findAll() {
 		try{
