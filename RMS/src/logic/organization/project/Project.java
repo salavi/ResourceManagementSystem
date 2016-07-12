@@ -1,14 +1,17 @@
 package logic.organization.project;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import logic.organization.module.Module;
 import model.organization.project.ProcessModel;
 import model.organization.project.ProjectAdapter;
 import model.organization.project.ProjectModel;
 import model.organization.project.TechnologyModel;
+import net.sf.cglib.core.ProcessArrayCallback;
 
 public class Project {
 
@@ -21,7 +24,8 @@ public class Project {
 	private ProjectModel projectModel;
 
 	public Project() {
-
+		developmentProcess = new Process("developmentProcess ");
+		maintenanceProcess= new Process("maintenanceProcess");
 	}
 
 	public Project(String name, int numOfHumans, int numOfModules, Process developmentProcess,
@@ -109,16 +113,35 @@ public class Project {
 		projectAdpt.addProject(this.projectModel);
 	}
 
+
 	public Map<String, Long> getAllProjects() {
-		ProjectAdapter projectAdapter = new ProjectAdapter();
+		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
 		List<ProjectModel> projectModels = projectAdapter.findAll();
 		Map<String, Long> map = new HashMap<>();
-		int counter = 0;
+		int counter = 1;
 		for (ProjectModel projectModel : projectModels) {
-			map.put(Integer.toString(counter) + projectModel.getName(), projectModel.getId());
+			map.put(counter + ". " + projectModel.getName(), projectModel.getId());
 			++counter;
 		}
 		return map;
 	}
-
+	
+	public void addDevelopementProcess(Long projectId, Long unitId, String activiy, String moduleName, String moduleId, LocalDate startDate, LocalDate endDate) {
+		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
+		projectModel =  projectAdapter.getProject(projectId);
+		
+		Module module = new Module();
+		module.setModuleId(moduleId);
+		module.setName(moduleName);
+		
+		developmentProcess.setProcessModel(projectModel.getDevelopementProcess());
+		developmentProcess.addActivity(activiy, module, unitId, startDate, endDate);
+		
+		projectAdapter.addProject(projectModel);
+	}
+	
+	
 }
+
+
+

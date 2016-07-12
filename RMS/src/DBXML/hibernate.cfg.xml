@@ -21,6 +21,7 @@
     <mapping resource="DBXML/Process.hbm.xml"/>
     <mapping resource="DBXML/Technology.hbm.xml"/>
     <mapping resource="DBXML/Project.hbm.xml"/>
+    <mapping resource="DBXML/ResourceUsageHistory.hbm.xml"/>
     </session-factory>  
   
 </hibernate-configuration>  

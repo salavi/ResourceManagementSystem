@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="550.0" style="-fx-background-color: #FF0000;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="550.0" style="-fx-background-color: #FF0000;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.project.DevelopementProcessController">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -60,10 +60,10 @@
                         <Label text="منابع" GridPane.rowIndex="6" />
                      </children>
                   </GridPane>
-                  <Button layoutX="3.0" layoutY="509.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="144.0" text="افزودن فرآیند نگهداری" />
+                  <Button fx:id="addDevProcessButton" layoutX="3.0" layoutY="509.0" mnemonicParsing="false" onAction="#handleAddDevProcessButton" prefHeight="21.0" prefWidth="144.0" text="افزودن فرآیند ایجاد" />
                 <Button layoutX="157.0" layoutY="509.0" mnemonicParsing="false" prefWidth="144.0" text="ویرایش" />
                   <Button layoutX="313.0" layoutY="509.0" mnemonicParsing="false" prefWidth="144.0" text="حذف" />
-                  <Button layoutX="468.0" layoutY="509.0" mnemonicParsing="false" prefWidth="144.0" text="افزودن فرآیند ایجاد" />
+                  <Button fx:id="addMainProcessButton" layoutX="468.0" layoutY="509.0" mnemonicParsing="false" onAction="#handleAddMainProcessButton" prefWidth="144.0" text="افزودن فرآیند نگهداری" />
                </children>
             </AnchorPane>
         </items>

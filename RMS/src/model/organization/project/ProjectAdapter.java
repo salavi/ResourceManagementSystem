@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Transaction;
 
 import model.Adapter;
+import model.organization.unit.UnitModel;
 
 public class ProjectAdapter extends Adapter {
 	private static ProjectAdapter instance = null;
@@ -26,7 +27,6 @@ public class ProjectAdapter extends Adapter {
 			t.commit();// transaction is committed
 			System.out.println("successfully saved");
 			return 1;
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			return -1;
@@ -66,6 +66,12 @@ public class ProjectAdapter extends Adapter {
 
 	public void remove(ProjectModel projectModel) {
 		// TODO
+	}
+
+	public ProjectModel getProject(Long projectId) {
+		Transaction t = session.beginTransaction();
+		ProjectModel project= (ProjectModel)session.get(ProjectModel.class, projectId);
+		return project;
 	}
 
 }

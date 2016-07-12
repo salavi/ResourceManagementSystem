@@ -1,34 +1,35 @@
 package logic.organization.project;
 
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
+import logic.organization.activity.Activity;
 import logic.organization.module.Module;
-import logic.organization.unit.Unit;
+import model.organization.activity.ActivityModel;
+import model.organization.project.ProcessModel;
 
 
 public class Process {
 	
 	private String typeOfProcess;
-//	private int procesTypeEnum;
+	private ArrayList<Activity> activities;
 	
-//	private enum ProcessTypeEnum{
-//		Development(1), Maintenance(2);
-//		private int value;
-//		private ProcessTypeEnum(int value){
-//			this.value = value;
-//		}
-//	}
+	private ProcessModel processModel;
+	
 	
 	public Process(String typeOfProcess){
 		this.typeOfProcess = typeOfProcess;
+		activities = new ArrayList<>();
 	}
 	
-	public void addActivity(String name, Module module, Unit unit, Date startDate, Date endDate){
+	public void addActivity(String name, Module module, Long unitId, LocalDate startDate, LocalDate endDate){
 		//TODO
-//		ActivityModel activityModel = new ActivityModel(name, startDate, endDate, module, unit);
-//		ActivityAdapter activityAdapter = ActivityAdapter.getInstance();
-//		activityAdapter.addActivity(activityModel);
+		Activity activity = new Activity(name, startDate, endDate);
+		activity.setModule(module);
+		this.activities.add(activity);
+		
+		activity.createActivityModel(unitId);
 	}
 
 	public String getTypeOfProcess() {
@@ -38,4 +39,13 @@ public class Process {
 	public void setTypeOfProcess(String typeOfProcess) {
 		this.typeOfProcess = typeOfProcess;
 	}
+
+	public ProcessModel getProcessModel() {
+		return processModel;
+	}
+
+	public void setProcessModel(ProcessModel processModel) {
+		this.processModel = processModel;
+	}
+
 }

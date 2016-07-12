@@ -4,14 +4,15 @@ import java.util.List;
 
 import logic.organization.unit.Unit;
 import model.organization.resource.ResourceAdapter;
+import model.organization.resource.ResourceModel;
 
 public abstract class Resource {
 
 	private Unit currentUnit;
 	private String resourceId;
-	
+
 	public Resource() {
-		
+
 	}
 
 	public Unit getCurrentUnit() {
@@ -40,4 +41,9 @@ public abstract class Resource {
 		return unitCounts;
 	}
 	
+	public static ResourceModel findResource(Long resourceId) {
+		
+		ResourceAdapter resourceAdapter = new ResourceAdapter();
+		return resourceAdapter.getResource(resourceId);
+	}
 }

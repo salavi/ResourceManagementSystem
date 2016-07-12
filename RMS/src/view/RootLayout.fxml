@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RootLayoutController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RootLayoutController">
    <children>
       <TabPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="300.0" tabMaxWidth="200.0" tabMinHeight="30.0" tabMinWidth="100.0">
         <tabs>
@@ -37,10 +37,10 @@
               	</AnchorPane>
               </content>
             </Tab>
-            <Tab text="پیش بینی">
+            <Tab fx:id="predictionTabId" onSelectionChanged="#onPredictionSelection" text="پیش بینی">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="180.0" prefWidth="200.0">
-                	<fx:include source="prediction/Prediction.fxml" />
+                	<fx:include fx:id="prediction" source="prediction/Prediction.fxml" />
               	</AnchorPane>
               </content>
             </Tab>

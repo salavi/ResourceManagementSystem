@@ -59,8 +59,8 @@ public class AddProjectFormController {
 				+ "هدف استفاده:" + technologyGoal);
 		technologyListViewId.setItems(data);
 
-		technologyNameId.setText("");
-		goalOfTechId.setText("");
+		technologyNameId.clear();;
+		goalOfTechId.clear();;
 	}
 
 	@FXML

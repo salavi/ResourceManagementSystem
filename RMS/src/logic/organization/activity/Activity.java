@@ -1,18 +1,23 @@
 package logic.organization.activity;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import logic.organization.module.Module;
 import logic.organization.unit.Unit;
+import model.organization.activity.ActivityAdapter;
+import model.organization.activity.ActivityModel;
+import model.organization.module.ModuleModel;
+import model.organization.unit.UnitAdapter;
+import model.organization.unit.UnitModel;
 
 public class Activity {
 	private String name;
-	private Date startDate;
-	private Date endDate;
+	private LocalDate startDate;
+	private LocalDate endDate;
 	private Module module;
 	private Unit unit;
 	
-	public Activity(String name, Date startDate, Date endDate, Module module, Unit unit){
+	public Activity(String name, LocalDate startDate, LocalDate endDate, Module module, Unit unit){
 		this.setName(name);
 		this.setStartDate(startDate);
 		this.setEndDate(endDate);
@@ -20,7 +25,7 @@ public class Activity {
 		this.setUnit(unit);
 	}
 	
-	public Activity(String name, Date startDate, Date endDate){
+	public Activity(String name, LocalDate startDate, LocalDate endDate){
 		this.setName(name);
 		this.setStartDate(startDate);
 		this.setEndDate(endDate);
@@ -34,19 +39,19 @@ public class Activity {
 		this.name = name;
 	}
 
-	public Date getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 
@@ -66,4 +71,23 @@ public class Activity {
 		this.unit = unit;
 	}
 	
+	public ActivityModel createActivityModel() {
+		ModuleModel module = this.module.createModuleModel();
+		UnitModel unit = this.unit.createUnitModel();
+		
+		ActivityModel activityModel = new ActivityModel(this.name, startDate, endDate, module, unit);
+		ActivityAdapter.getInstance().addActivity(activityModel);
+		
+		return activityModel;
+	}
+
+	public ActivityModel createActivityModel(Long unitId) {
+		ModuleModel module = this.module.createModuleModel(); 
+		UnitModel unit = UnitAdapter.getInstance().getUnit(unitId);
+				
+		ActivityModel activityModel = new ActivityModel(this.name, startDate, endDate, module, unit);
+		ActivityAdapter.getInstance().addActivity(activityModel);
+		
+		return activityModel;
+	}
 }
