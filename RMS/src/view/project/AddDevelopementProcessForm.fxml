@@ -57,7 +57,7 @@
                         <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAddButton" prefWidth="88.0" text="افزودن" GridPane.columnIndex="4" GridPane.rowIndex="7" />
                         <ComboBox fx:id="resourceTypeCombo" onAction="#handleResourceTypeCombo" prefWidth="189.0" promptText="نوع منبع" GridPane.columnIndex="4" />
                         <ListView fx:id="resourceList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                        <ListView fx:id="selectedResourceList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
                         <Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.valignment="BOTTOM" />
                      </children>
                   </GridPane>
