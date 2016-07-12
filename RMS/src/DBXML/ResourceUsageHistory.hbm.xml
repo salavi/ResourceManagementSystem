@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+ <hibernate-mapping> 
+	<class name="model.organization.resourceUsage.ResourceUsageHistoryModel" table="ResourceUsageHistory">
+	    <id name="id" type="java.lang.Long" column="ID">
+	        <generator class="identity"/>
+	    </id>
+	    <many-to-one name="project" class="model.organization.project.ProjectModel" column="project"/>	    
+	    <many-to-one name="unit" class="model.organization.unit.UnitModel" column="unit"/>
+	    <many-to-one name="activity" class="model.organization.activity.ActivityModel" column="activity"/>
+		
+		
+		<list name="resources" cascade="all">  
+          <key column="ruhid"></key>  
+          <index column="type"></index>
+          <one-to-many class="model.organization.resource.ResourceModel"/>
+    </list>	    
+	</class>
+</hibernate-mapping>

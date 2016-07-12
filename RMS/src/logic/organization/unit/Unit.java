@@ -12,7 +12,7 @@ import model.organization.unit.UnitModel;
 public class Unit {
 	//TODO
 	private String unitId;
-	private String speciality;
+	private String specialty;
 	private ArrayList<Resource> RequiredResources;
 	private ArrayList<Resource> ExistingResources;
 	
@@ -35,10 +35,10 @@ public class Unit {
 		this.unitId = unitId;
 	}
 	public String getSpeciality() {
-		return speciality;
+		return specialty;
 	}
-	public void setSpeciality(String speciality) {
-		this.speciality = speciality;
+	public void setSpeciality(String specialty) {
+		this.specialty = specialty;
 	}
 	public ArrayList<Resource> getRequiredResources() {
 		return RequiredResources;
@@ -51,6 +51,14 @@ public class Unit {
 	}
 	public void setExistingResource(ArrayList<Resource> existingResources) {
 		ExistingResources = existingResources;
+	}
+
+	public UnitModel createUnitModel() {
+		UnitModel unitModel = new UnitModel();
+		unitModel.setSpecialty(this.specialty);
+		unitModel.setUnitId(unitId);
+		
+		return unitModel;
 	}
 	
 }

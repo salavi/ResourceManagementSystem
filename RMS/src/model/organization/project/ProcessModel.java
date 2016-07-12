@@ -55,4 +55,8 @@ public class ProcessModel {
 	public void setActivities(List<ActivityModel> activities) {
 		this.activities = activities;
 	}
+	
+	public void addAcitity(ActivityModel activity) {
+		this.activities.add(activity);
+	}
 }

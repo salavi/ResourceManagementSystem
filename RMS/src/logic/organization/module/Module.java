@@ -1,5 +1,8 @@
 package logic.organization.module;
 
+import model.organization.module.ModuleAdapter;
+import model.organization.module.ModuleModel;
+
 public class Module {
 
 	private String name;
@@ -19,5 +22,14 @@ public class Module {
 
 	public void setModuleId(String moduleId) {
 		this.moduleId = moduleId;
+	}
+
+	public ModuleModel createModuleModel() {
+		ModuleModel moduleModel = new ModuleModel();
+		moduleModel.setModuleId(moduleId);
+		moduleModel.setName(name);
+		
+		ModuleAdapter.getInstance().addModule(moduleModel);
+		return moduleModel;
 	}
 }

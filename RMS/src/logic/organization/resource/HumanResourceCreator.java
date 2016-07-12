@@ -17,6 +17,7 @@ public class HumanResourceCreator extends ResourceFactory {
 		HumanResource humanResource = new HumanResource();
 		return humanResource;
 	}
+	
 	public ResourceModel createHumanResource(Long unitId, String resourceId, String firstName, String lastName){
 		HumanResourceModel humanResourceModel = new HumanResourceModel();
 		humanResourceModel.setFirstName(firstName);

@@ -19,6 +19,10 @@ public class TechnologyModel {
 	private String name;
 	private String goalOfUsage;
 	
+	public TechnologyModel() {
+		
+	}
+	
 	public TechnologyModel(String name, String goalOfUsage){
 		this.setName(name);
 		this.setGoalOfUsage(goalOfUsage);

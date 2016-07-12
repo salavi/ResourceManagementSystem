@@ -1,5 +1,6 @@
 package model.organization.activity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -23,13 +24,13 @@ public class ActivityModel {
 	private Long id;
 
 	private String name;
-	private Date startDate;
-	private Date endDate;
+	private LocalDate startDate;
+	private LocalDate endDate;
 	private ModuleModel module;
 	private UnitModel unit;
 	
 
-	public ActivityModel(String name, Date startDate, Date endDate, ModuleModel module, UnitModel unit) {
+	public ActivityModel(String name, LocalDate startDate, LocalDate endDate, ModuleModel module, UnitModel unit) {
 		this.setName(name);
 		this.setStartDate(startDate);
 		this.setEndDate(endDate);
@@ -53,19 +54,19 @@ public class ActivityModel {
 		this.name = name;
 	}
 	
-	public Date getStartDate() {
+	public LocalDate getStartDate() {
 		return this.startDate;
 	}
 	
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 	
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return this.endDate;
 	}
 	
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 	
