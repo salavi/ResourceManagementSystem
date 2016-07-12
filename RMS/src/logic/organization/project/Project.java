@@ -113,6 +113,7 @@ public class Project {
 		projectAdpt.addProject(this.projectModel);
 	}
 
+
 	public Map<String, Long> getAllProjects() {
 		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
 		List<ProjectModel> projectModels = projectAdapter.findAll();
@@ -141,3 +142,6 @@ public class Project {
 	
 	
 }
+
+
+

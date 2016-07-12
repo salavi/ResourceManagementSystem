@@ -59,6 +59,7 @@ public class ResourceManagementController {
 			loader.setLocation(getClass().getResource("/view/resourceManagement/AddResourceForm.fxml"));
 			root = (Parent) loader.load();
 			AddResourceController addResourceController = loader.<AddResourceController> getController();
+			addResourceController.setReturnState("/view/RootLayout.fxml");
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			addResourceController.initial();
