@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 
+import controller.prediction.PredictionController;
+import controller.prediction.ResourcePredictionController;
 import controller.resourceAllocation.ResourceAllocationController;
 import controller.resourceManagement.ResourceManagementController;
 import controller.userAccount.UserAccountController;
@@ -23,11 +25,15 @@ public class RootLayoutController {
 	@FXML
 	private ResourceManagementController resourceManagementController;
 	@FXML
+	private PredictionController predictionController;
+	@FXML
 	private Button logoutButton;
 	@FXML
 	private Tab resourceAllocationTabId;
 	@FXML
 	private Tab resourceManagementTabId;
+	@FXML
+	private Tab predictionTabId;
 
 	private Authentication auth;
 
@@ -74,12 +80,18 @@ public class RootLayoutController {
 			resourceAllocationController.showAllProjects();
 		}
 	}
-	
+
 	@FXML
 	private void onResourceManagementSelection() {
-		System.out.println("resourceManagement tab selected");
 		if (resourceManagementTabId.isSelected()) {
 			resourceManagementController.showAllResources();
+		}
+	}
+
+	@FXML
+	private void onPredictionSelection() {
+		if (predictionTabId.isSelected()) {
+			predictionController.getResourcePredictionController().showAllTechnologies();
 		}
 	}
 
