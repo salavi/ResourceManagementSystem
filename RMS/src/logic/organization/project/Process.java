@@ -1,8 +1,8 @@
 package logic.organization.project;
 
 
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 import logic.organization.activity.Activity;
 import logic.organization.module.Module;
@@ -23,13 +23,23 @@ public class Process {
 		activities = new ArrayList<>();
 	}
 	
-	public void addActivity(String name, Module module, Long unitId, LocalDate startDate, LocalDate endDate){
+	public void addActivity(String name, Module module, Long unitId, Date startDate, Date endDate){
 		//TODO
 		Activity activity = new Activity(name, startDate, endDate);
 		activity.setModule(module);
 		this.activities.add(activity);
 		
-		activity.createActivityModel(unitId);
+		ActivityModel activityModel = activity.createActivityModel(unitId);
+		this.processModel.addAcitity(activityModel);
+	}
+	
+	public void addActivity(String name, Long moduleId, Long unitId, Date startDate, Date endDate){
+		//TODO
+		Activity activity = new Activity(name, startDate, endDate);
+		this.activities.add(activity);
+		
+		ActivityModel activityModel = activity.createActivityModel(moduleId, unitId);
+		this.processModel.addAcitity(activityModel);
 	}
 
 	public String getTypeOfProcess() {

@@ -6,20 +6,20 @@ public enum ResourceType {
 	HUMANRESOUCE("منبع انسانی", "Human"),
 	FINANCIALRESOURCE("منبع مالی", "Financial");
 	
-	private final String farsi_type;
-	private final String english_type;
+	private final String farsiType;
+	private final String englishType;
 	
-	ResourceType(String f_type, String en_type) {
-		this.farsi_type = f_type;
-		this.english_type = en_type;
+	ResourceType(String fType, String enType) {
+		this.farsiType = fType;
+		this.englishType = enType;
 	}
 
 	
-	public String getFarsi_Type() {
-		return farsi_type;
+	public String getFarsiType() {
+		return farsiType;
 	}
 
-	public String getEnglish_type() {
-		return english_type;
+	public String getEnglishType() {
+		return englishType;
 	}
 }

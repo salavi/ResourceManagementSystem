@@ -79,10 +79,10 @@ public class ReportMainPageController {
 	}
 	
 	private TreeItem<String> createARoot(ResourceType type){
-		TreeItem<String> rootItem = new TreeItem<String> (type.getFarsi_Type());
+		TreeItem<String> rootItem = new TreeItem<String> (type.getFarsiType());
 		rootItem.setExpanded(true);
-		List<String> financialResourcesUnitsInformation = Resource.getResourcesUnits(type.getEnglish_type());
-		List<String> financialResourcesUnitsCount = Resource.getResourcesUnitCounts(type.getEnglish_type());
+		List<String> financialResourcesUnitsInformation = Resource.getResourcesUnits(type.getEnglishType());
+		List<String> financialResourcesUnitsCount = Resource.getResourcesUnitCounts(type.getEnglishType());
 		rootItem.getChildren().addAll(createTreeItems(financialResourcesUnitsInformation, financialResourcesUnitsCount));
 		return rootItem;
 	}
