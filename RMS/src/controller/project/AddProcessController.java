@@ -111,7 +111,6 @@ abstract class AddProcessController {
 				selectedResourcesIds.add(resourceId);
 			}
 		}
-		
 	}
 
 	@FXML
@@ -169,5 +168,8 @@ abstract class AddProcessController {
 		ObservableList<String> items = FXCollections.observableArrayList(projects.keySet());
 		projectList.setItems(items);
 	}
-
+	
+	private void showSelectedResourceList() {
+		
+	}
 }
