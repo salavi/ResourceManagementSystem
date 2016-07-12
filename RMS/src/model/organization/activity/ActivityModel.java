@@ -24,13 +24,17 @@ public class ActivityModel {
 	private Long id;
 
 	private String name;
-	private LocalDate startDate;
-	private LocalDate endDate;
+	private Date startDate;
+	private Date endDate;
 	private ModuleModel module;
 	private UnitModel unit;
 	
+	public ActivityModel() {
+		
+	}
+	
 
-	public ActivityModel(String name, LocalDate startDate, LocalDate endDate, ModuleModel module, UnitModel unit) {
+	public ActivityModel(String name, Date startDate, Date endDate, ModuleModel module, UnitModel unit) {
 		this.setName(name);
 		this.setStartDate(startDate);
 		this.setEndDate(endDate);
@@ -54,19 +58,19 @@ public class ActivityModel {
 		this.name = name;
 	}
 	
-	public LocalDate getStartDate() {
+	public Date getStartDate() {
 		return this.startDate;
 	}
 	
-	public void setStartDate(LocalDate startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 	
-	public LocalDate getEndDate() {
+	public Date getEndDate() {
 		return this.endDate;
 	}
 	
-	public void setEndDate(LocalDate endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 	

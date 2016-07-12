@@ -32,7 +32,7 @@ public class DevelopementProcessController {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/project/AddDevelopementProcessForm.fxml"));
 			root = (Parent) loader.load();
-			AddDevelopementProcessController addDevelopementProcessController = loader.<AddDevelopementProcessController> getController();
+			AddProcessController addDevelopementProcessController = loader.<AddProcessController> getController();
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			addDevelopementProcessController.initial();
