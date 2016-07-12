@@ -1,6 +1,7 @@
 package model.organization.resourceUsage;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +30,7 @@ public class ResourceUsageHistoryModel {
 	private ActivityModel activity;
 	private UnitModel unit;
 	
-	private List<ResourceModel> resources;
+	private Set<ResourceModel> resources;
 	
 	public Long getId() {
 		return id;
@@ -63,11 +64,11 @@ public class ResourceUsageHistoryModel {
 		this.unit = unit;
 	}
 
-	public List<ResourceModel> getResources() {
+	public Set<ResourceModel> getResources() {
 		return resources;
 	}
 
-	public void setResources(List<ResourceModel> resources) {
+	public void setResources(Set<ResourceModel> resources) {
 		this.resources = resources;
 	}
 	
