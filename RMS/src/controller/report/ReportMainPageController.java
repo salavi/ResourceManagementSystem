@@ -17,6 +17,7 @@ public class ReportMainPageController {
 	@FXML private TreeView<String> existingResourcesListTree; 
 
 	@FXML public void handleExistingResourcesButton(){
+		existingResourcesListTree.setRoot(null);
 		buildAndShowTheTree();
 	}
 
