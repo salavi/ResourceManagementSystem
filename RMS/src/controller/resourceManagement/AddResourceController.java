@@ -39,17 +39,17 @@ public class AddResourceController {
 	@FXML
 	private void handleResourceTypeCombo() {
 		String value = (String) resourceTypeCombo.getValue();
-		if(value.equals(ResourceType.FINANCIALRESOURCE.getType())) {
+		if(value.equals(ResourceType.FINANCIALRESOURCE.getFarsi_Type())) {
 			firstLabel.setText("میزان بودجه");
 			secondLabel.setVisible(false);
 			secondInput.setVisible(false);
 		} 
-		else if (value.equals(ResourceType.INFORMATIONALRESOURCE.getType()) || value.equals(ResourceType.PHYSICALRESOURCE.getType())) {
+		else if (value.equals(ResourceType.INFORMATIONALRESOURCE.getFarsi_Type()) || value.equals(ResourceType.PHYSICALRESOURCE.getFarsi_Type())) {
 			firstLabel.setText("نوع");
 			secondLabel.setVisible(false);
 			secondInput.setVisible(false);
 		}
-		else if (value.equals(ResourceType.HUMANRESOUCE.getType())) {
+		else if (value.equals(ResourceType.HUMANRESOUCE.getFarsi_Type())) {
 			firstLabel.setText("نام");
 			secondLabel.setText("نام خانوادگی");
 			secondLabel.setVisible(true);
@@ -88,21 +88,21 @@ public class AddResourceController {
 		if (unit != null) {
 			unitId = units.get(unit);
 		}
-		if(resourceType == null || resourceId == null || firstValue == null || (resourceType.equals(ResourceType.HUMANRESOUCE.getType()) && secondValue == null)) {
+		if(resourceType == null || resourceId == null || firstValue == null || (resourceType.equals(ResourceType.HUMANRESOUCE.getFarsi_Type()) && secondValue == null)) {
 			System.out.println("error");
 		}
 		else {
-			if(resourceType.equals(ResourceType.FINANCIALRESOURCE.getType())) {
+			if(resourceType.equals(ResourceType.FINANCIALRESOURCE.getFarsi_Type())) {
 				double amount = Double.parseDouble(firstValue);
 				new FinancialResourceCreator().createFinancialResource(unitId, resourceId, amount);
 			} 
-			else if (resourceType.equals(ResourceType.INFORMATIONALRESOURCE.getType())) {
+			else if (resourceType.equals(ResourceType.INFORMATIONALRESOURCE.getFarsi_Type())) {
 				new InformationResourceCreator().createInformationalResource(unitId, resourceId, firstValue);
 			}
-			else if (resourceType.equals(ResourceType.PHYSICALRESOURCE.getType())) {
+			else if (resourceType.equals(ResourceType.PHYSICALRESOURCE.getFarsi_Type())) {
 				new PhysicalResourceCreator().createPhysicalResource(unitId, resourceId, firstValue);
 			}
-			else if (resourceType.equals(ResourceType.HUMANRESOUCE.getType())) {
+			else if (resourceType.equals(ResourceType.HUMANRESOUCE.getFarsi_Type())) {
 				new HumanResourceCreator().createHumanResource(unitId, resourceId, firstValue, secondValue);
 			}
 		}

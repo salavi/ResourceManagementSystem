@@ -1,6 +1,9 @@
 package logic.organization.resource;
 
+import java.util.List;
+
 import logic.organization.unit.Unit;
+import model.organization.resource.ResourceAdapter;
 
 public abstract class Resource {
 
@@ -27,5 +30,14 @@ public abstract class Resource {
 		this.resourceId = resourceId;
 	}
 	
+	public static List<String> getResourcesUnits(String type){
+		List<String> units = ResourceAdapter.getInstance().findUnitsOfResources(type);
+		return units;
+	}
+	
+	public static List<String> getResourcesUnitCounts(String type){
+		List<String> unitCounts = ResourceAdapter.getInstance().findUnitCountsOfResources(type);
+		return unitCounts;
+	}
 	
 }
