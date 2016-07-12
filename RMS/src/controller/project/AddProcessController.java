@@ -41,6 +41,8 @@ abstract class AddProcessController {
 	@FXML
 	protected ListView<String> resourceList;
 	@FXML
+	protected ListView<String> selectedResourceList;
+	@FXML
 	protected TextField activityNameInput;
 	@FXML
 	protected DatePicker startDateInput;
@@ -86,6 +88,7 @@ abstract class AddProcessController {
 	protected void handleAddResourceButton() {
 		String resourceType = resourceTypeCombo.getValue();
 		ObservableList<String> items = resourceList.getSelectionModel().getSelectedItems();
+		selectedResourceList.getItems().addAll(items);
 		Long resourceId;
 		if(resourceType.equals(ResourceType.FINANCIALRESOURCE.getFarsiType())) {
 			for (String item : items) {	
@@ -164,12 +167,8 @@ abstract class AddProcessController {
 	private void showProjectList() {
 		Project project = new Project();
 		projects = project.getAllProjects();
-		System.out.println(projects.keySet().size());
 		ObservableList<String> items = FXCollections.observableArrayList(projects.keySet());
 		projectList.setItems(items);
 	}
 	
-	private void showSelectedResourceList() {
-		
-	}
 }
