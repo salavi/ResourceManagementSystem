@@ -32,11 +32,11 @@ public class ResourcePredictionController {
 		int maxNumOfModules = Integer.parseInt(this.maxNumOfModulesId.getText());
 		String[] technologies = partseTechnologyList(technologiesListId.getText());
 		Project project = new Project();
-		List<ProjectModel> projectModels = project.findSimilarProjects(minNumOfHumans, maxNumOfHumans, minNumOfModules,
+		List<Long> projectModels = project.findSimilarProjects(minNumOfHumans, maxNumOfHumans, minNumOfModules,
 				maxNumOfModules, technologies);
 		
-		for(ProjectModel projectModel: projectModels){
-			System.out.println(projectModel.getName());
+		for(Long projectModel: projectModels){
+			System.out.println(projectModel);
 		}
 		// ModulesNum humansNum
 	}
