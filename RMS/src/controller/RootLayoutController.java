@@ -90,9 +90,9 @@ public class RootLayoutController {
 
 	@FXML
 	private void onPredictionSelection() {
-		if (predictionTabId.isSelected()) {
-			predictionController.getResourcePredictionController().showAllTechnologies();
-		}
+//		if (predictionTabId.isSelected()) {
+//			predictionController.getResourcePredictionController().showAllTechnologies();
+//		}
 	}
 
 }

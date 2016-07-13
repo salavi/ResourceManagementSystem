@@ -1,9 +1,21 @@
 package logic.organization.project;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import model.organization.project.TechnologyAdapter;
+import model.organization.project.TechnologyModel;
+import model.organization.unit.UnitModel;
+
 public class Technology {
 	
 	private String name;
 	private String goalOfUsage;
+	
+	public Technology(){
+		
+	}
 	
 	public Technology(String name, String goalOfUsage){
 		this.setName(name);
@@ -26,4 +38,16 @@ public class Technology {
 	public void setGoalOfUsage(String goalOfUsage) {
 		this.goalOfUsage = goalOfUsage;
 	}
+
+//	public Map<String, Long> getAllTechnologies() {
+//		TechnologyAdapter technologyAdapter = TechnologyAdapter.getInstance();
+//		List<TechnologyModel> technologyModels = technologyAdapter.findAll();
+//		Map<String, Long> technologyNameIdMap = new HashMap<>();
+//		int counter = 1;
+//		for (TechnologyModel technologyModel : technologyModels) {
+//			technologyNameIdMap.put(counter + "." + technologyModel.getName(), technologyModel.getId());
+//			counter++;
+//		}	
+//		return technologyNameIdMap;
+//	}
 }

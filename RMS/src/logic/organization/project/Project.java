@@ -25,7 +25,7 @@ public class Project {
 
 	public Project() {
 		developmentProcess = new Process("developmentProcess ");
-		maintenanceProcess= new Process("maintenanceProcess");
+		maintenanceProcess = new Process("maintenanceProcess");
 	}
 
 	public Project(String name, int numOfHumans, int numOfModules, Process developmentProcess,
@@ -90,11 +90,6 @@ public class Project {
 		this.getListOfTechnologies().remove(technology);
 	}
 
-	public Project[] findSimilarProjects(Project project) {
-		// TODO
-		return null;
-	}
-
 	public void setListOfTechnologies(ArrayList<Technology> listOfTechnologies) {
 		this.listOfTechnologies = listOfTechnologies;
 	}
@@ -113,7 +108,6 @@ public class Project {
 		projectAdpt.addProject(this.projectModel);
 	}
 
-
 	public Map<String, Long> getAllProjects() {
 		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
 		List<ProjectModel> projectModels = projectAdapter.findAll();
@@ -125,23 +119,28 @@ public class Project {
 		}
 		return map;
 	}
-	
-	public void addDevelopementProcess(Long projectId, Long unitId, String activiy, String moduleName, String moduleId, LocalDate startDate, LocalDate endDate) {
+
+	public void addDevelopementProcess(Long projectId, Long unitId, String activiy, String moduleName, String moduleId,
+			LocalDate startDate, LocalDate endDate) {
 		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
-		projectModel =  projectAdapter.getProject(projectId);
-		
+		projectModel = projectAdapter.getProject(projectId);
+
 		Module module = new Module();
 		module.setModuleId(moduleId);
 		module.setName(moduleName);
-		
+
 		developmentProcess.setProcessModel(projectModel.getDevelopementProcess());
 		developmentProcess.addActivity(activiy, module, unitId, startDate, endDate);
-		
+
 		projectAdapter.addProject(projectModel);
 	}
-	
-	
+
+	public List<ProjectModel> findSimilarProjects(int minNumOfHumans, int maxNumOfHumans, int minNumOfModules,
+			int maxNumOfModules, String[] technologies) {
+
+		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
+		List<ProjectModel> projectModels = projectAdapter.findSimilarProjects(minNumOfHumans, maxNumOfHumans,
+				minNumOfModules, maxNumOfModules, technologies);
+		return projectModels;
+	}
 }
-
-
-
