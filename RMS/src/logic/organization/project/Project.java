@@ -1,7 +1,9 @@
 package logic.organization.project;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +13,6 @@ import model.organization.project.ProcessModel;
 import model.organization.project.ProjectAdapter;
 import model.organization.project.ProjectModel;
 import model.organization.project.TechnologyModel;
-import net.sf.cglib.core.ProcessArrayCallback;
 
 public class Project {
 
@@ -26,6 +27,7 @@ public class Project {
 	public Project() {
 		developmentProcess = new Process("developmentProcess ");
 		maintenanceProcess = new Process("maintenanceProcess");
+
 	}
 
 	public Project(String name, int numOfHumans, int numOfModules, Process developmentProcess,
@@ -74,8 +76,8 @@ public class Project {
 		return maintenanceProcess;
 	}
 
-	public void setMaintenanceProcess(Process maintenanceProcess) {
-		this.maintenanceProcess = maintenanceProcess;
+	public void setMaintenanceProcess(Process maintananceProcess) {
+		this.maintenanceProcess = maintananceProcess;
 	}
 
 	public ArrayList<Technology> getListOfTechnologies() {
@@ -119,9 +121,8 @@ public class Project {
 		}
 		return map;
 	}
-
-	public void addDevelopementProcess(Long projectId, Long unitId, String activiy, String moduleName, String moduleId,
-			LocalDate startDate, LocalDate endDate) {
+	
+	public void addDevelopementProcess(Long projectId, Long unitId, String activiy, String moduleName, String moduleId, LocalDate localStartDate, LocalDate localEndDate) {
 		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
 		projectModel = projectAdapter.getProject(projectId);
 
@@ -129,6 +130,9 @@ public class Project {
 		module.setModuleId(moduleId);
 		module.setName(moduleName);
 
+		Date startDate = Date.from(localStartDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date endDate = Date.from(localEndDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		
 		developmentProcess.setProcessModel(projectModel.getDevelopementProcess());
 		developmentProcess.addActivity(activiy, module, unitId, startDate, endDate);
 
@@ -142,5 +146,20 @@ public class Project {
 		List<ProjectModel> projectModels = projectAdapter.findSimilarProjects(minNumOfHumans, maxNumOfHumans,
 				minNumOfModules, maxNumOfModules, technologies);
 		return projectModels;
+	}
+	
+	public void addMaintananceProcess(Long projectId, Long moduleId, Long unitId, String activity, LocalDate localStartDate, LocalDate localEndDate) {
+		Date startDate = Date.from(localStartDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date endDate = Date.from(localEndDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		
+		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
+		projectModel =  projectAdapter.getProject(projectId);
+		
+		maintenanceProcess.setProcessModel(projectModel.getMaintananceProcess());
+		maintenanceProcess.addActivity(activity, moduleId, unitId, startDate, endDate);
+		
+		projectAdapter.addProject(projectModel);
+		
+
 	}
 }

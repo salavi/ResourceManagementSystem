@@ -1,18 +1,25 @@
 package controller.resourceManagement;
 
 public enum ResourceType {
-	INFORMATIONALRESOURCE("منبع اطلاعاتی"),
-	PHYSICALRESOURCE("منبع فیزیکی"),
-	HUMANRESOUCE("منبع انسانی"),
-	FINANCIALRESOURCE("منبع مالی");
+	INFORMATIONALRESOURCE("منبع اطلاعاتی", "Information"),
+	PHYSICALRESOURCE("منبع فیزیکی", "Physical"),
+	HUMANRESOUCE("منبع انسانی", "Human"),
+	FINANCIALRESOURCE("منبع مالی", "Financial");
 	
-	private final String type;
+	private final String farsiType;
+	private final String englishType;
 	
-	ResourceType(String type) {
-		this.type = type;
+	ResourceType(String fType, String enType) {
+		this.farsiType = fType;
+		this.englishType = enType;
 	}
 
-	public String getType() {
-		return type;
+	
+	public String getFarsiType() {
+		return farsiType;
+	}
+
+	public String getEnglishType() {
+		return englishType;
 	}
 }

@@ -87,7 +87,7 @@ public class ResourceManagementController {
 	public void showAllResources() {
 		TreeItem<String> resourceRoot = new TreeItem<String> ("منابع سازمان");
 		
-		TreeItem<String> financialRootItem = new TreeItem<String> (ResourceType.FINANCIALRESOURCE.getType());
+		TreeItem<String> financialRootItem = new TreeItem<String> (ResourceType.FINANCIALRESOURCE.getFarsiType());
 		financialRootItem.setExpanded(true);
 		financialResources = new FinancialResourceCreator().getAllFinancialResources();
 		financialRootItem.getChildren().addAll(createTreeItems(financialResources.keySet()));
@@ -95,20 +95,20 @@ public class ResourceManagementController {
 
 
 		
-		TreeItem<String> humanRootItem = new TreeItem<String> (ResourceType.HUMANRESOUCE.getType());
+		TreeItem<String> humanRootItem = new TreeItem<String> (ResourceType.HUMANRESOUCE.getFarsiType());
 		humanRootItem.setExpanded(true);
 		humanResources = new HumanResourceCreator().getAllHumanResources();
 		humanRootItem.getChildren().addAll(createTreeItems(humanResources.keySet()));
 		resourceRoot.getChildren().add(humanRootItem);
 		
 		
-		TreeItem<String> physicalRootItem = new TreeItem<String> (ResourceType.PHYSICALRESOURCE.getType());
+		TreeItem<String> physicalRootItem = new TreeItem<String> (ResourceType.PHYSICALRESOURCE.getFarsiType());
 		physicalRootItem.setExpanded(true);
 		physicalResources = new PhysicalResourceCreator().getAllPhysicalResources();
 		physicalRootItem.getChildren().addAll(createTreeItems(physicalResources.keySet()));
 		resourceRoot.getChildren().add(physicalRootItem);
 		
-		TreeItem<String> informationalRootItem = new TreeItem<String> (ResourceType.INFORMATIONALRESOURCE.getType());
+		TreeItem<String> informationalRootItem = new TreeItem<String> (ResourceType.INFORMATIONALRESOURCE.getFarsiType());
 		informationalRootItem.setExpanded(true);
 		informationalResources = new InformationResourceCreator().getAllInformationalResources();
 		informationalRootItem.getChildren().addAll(createTreeItems(informationalResources.keySet()));

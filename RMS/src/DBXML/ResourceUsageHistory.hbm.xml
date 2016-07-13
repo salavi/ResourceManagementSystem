@@ -13,11 +13,10 @@
 	    <many-to-one name="unit" class="model.organization.unit.UnitModel" column="unit"/>
 	    <many-to-one name="activity" class="model.organization.activity.ActivityModel" column="activity"/>
 		
-		
-		<list name="resources" cascade="all">  
-          <key column="ruhid"></key>  
-          <index column="type"></index>
-          <one-to-many class="model.organization.resource.ResourceModel"/>
-    </list>	    
+		 
+    	<set name="resources" table="RUHResources" cascade="all">  
+			<key column="ruhID"></key>    
+			<many-to-many class="model.organization.resource.ResourceModel" column="ResourceID"></many-to-many>  
+		</set>
 	</class>
 </hibernate-mapping>

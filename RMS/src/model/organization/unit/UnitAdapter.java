@@ -25,7 +25,6 @@ public class UnitAdapter extends Adapter{
 	}
 	
 	public List<UnitModel> findAll(){
-		//TODO
 		try{
 			// creating transaction object
 			Transaction t = session.beginTransaction();

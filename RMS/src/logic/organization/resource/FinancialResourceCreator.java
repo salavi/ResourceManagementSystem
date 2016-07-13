@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import model.organization.resource.FinancialResourceModel;
-import model.organization.resource.HumanResourceModel;
 import model.organization.resource.ResourceAdapter;
 import model.organization.resource.ResourceModel;
 import model.organization.unit.UnitAdapter;
@@ -41,5 +40,6 @@ public class FinancialResourceCreator extends ResourceFactory {
 		
 		return convertedResources;
 	}
+
 
 }

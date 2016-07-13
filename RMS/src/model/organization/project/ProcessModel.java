@@ -1,5 +1,6 @@
 package model.organization.project;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -25,7 +26,7 @@ public class ProcessModel {
 	private List<ActivityModel> activities;
 	
 	public ProcessModel(){
-		
+		activities = new ArrayList<ActivityModel>();
 	}
 
 	public ProcessModel(String typeOfProcess) {

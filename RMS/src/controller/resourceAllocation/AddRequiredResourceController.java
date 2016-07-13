@@ -54,17 +54,17 @@ public class AddRequiredResourceController {
 	@FXML
 	public void handleResourceTypeCombo() {
 		String value = (String) resourceTypeComboId.getValue();
-		if (value.equals(ResourceType.FINANCIALRESOURCE.getType())) {
+		if (value.equals(ResourceType.FINANCIALRESOURCE.getFarsiType())) {
 			financialResources = new FinancialResourceCreator().getAllFinancialResources();
 			showResourcesList(financialResources);
-		} else if (value.equals(ResourceType.INFORMATIONALRESOURCE.getType())
-				|| value.equals(ResourceType.PHYSICALRESOURCE.getType())) {
+		} else if (value.equals(ResourceType.INFORMATIONALRESOURCE.getFarsiType())
+				|| value.equals(ResourceType.PHYSICALRESOURCE.getFarsiType())) {
 			informationalResources = new InformationResourceCreator().getAllInformationalResources();
 			showResourcesList(informationalResources);
-		} else if (value.equals(ResourceType.HUMANRESOUCE.getType())) {
+		} else if (value.equals(ResourceType.HUMANRESOUCE.getFarsiType())) {
 			humanResources = new HumanResourceCreator().getAllHumanResources();
 			showResourcesList(humanResources);
-		} else if (value.equals(ResourceType.PHYSICALRESOURCE.getType())) {
+		} else if (value.equals(ResourceType.PHYSICALRESOURCE.getFarsiType())) {
 			physicalResources = new PhysicalResourceCreator().getAllPhysicalResources();
 			showResourcesList(physicalResources);
 		}
@@ -143,13 +143,13 @@ public class AddRequiredResourceController {
 	}
 
 	private Long findResourceId(String resourceType, String resource) {
-		if (resourceType.equals(ResourceType.FINANCIALRESOURCE.getType())) {
+		if (resourceType.equals(ResourceType.FINANCIALRESOURCE.getFarsiType())) {
 			return financialResources.get(resource);
-		} else if (resourceType.equals(ResourceType.INFORMATIONALRESOURCE.getType())) {
+		} else if (resourceType.equals(ResourceType.INFORMATIONALRESOURCE.getFarsiType())) {
 			return informationalResources.get(resource);
-		} else if (resourceType.equals(ResourceType.PHYSICALRESOURCE.getType())) {
+		} else if (resourceType.equals(ResourceType.PHYSICALRESOURCE.getFarsiType())) {
 			return physicalResources.get(resource);
-		} else if (resourceType.equals(ResourceType.HUMANRESOUCE.getType())) {
+		} else if (resourceType.equals(ResourceType.HUMANRESOUCE.getFarsiType())) {
 			return humanResources.get(resource);
 		}
 		return null;
