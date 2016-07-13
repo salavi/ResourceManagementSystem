@@ -1,5 +1,6 @@
 package model.organization.project;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -70,8 +71,38 @@ public class ProjectAdapter extends Adapter {
 
 	public ProjectModel getProject(Long projectId) {
 		Transaction t = session.beginTransaction();
-		ProjectModel project= (ProjectModel)session.get(ProjectModel.class, projectId);
+		ProjectModel project = (ProjectModel) session.get(ProjectModel.class, projectId);
 		return project;
+	}
+
+	public List<ProjectModel> findSimilarProjects(int minNumOfHumans, int maxNumOfHumans, int minNumOfModules,
+			int maxNumOfModules, String[] technologies) {
+		List<ProjectModel> result = new ArrayList<>();
+		for (String technology : technologies) {
+			String query1 = "from ProjectModel as projectModel left join TechnologyModel as technologyModel"
+					+ "WHERE projectModel.numOfInvolvedHumans < :maxNumHumans AND projectModel.numOfInvolvedHumans > :minNumHumans "
+					+ "AND projectModel.numOfModules < :maxNumModules AND projectModel.numOfModules > :minNumModules "
+					+ "AND technologyModel.name = :technologyName";
+
+			// String query1 = "Select * FROM Project JOIN Technology "
+			// + "WHERE (NumOfInvolvedHumans < :maxNumHumans AND
+			// NumOfInvolvedHumans > :minNumHumans) "
+			// + "AND (NumOfModules < :maxNumModules AND NumOfModules >
+			// :minNumModules) "
+			// + "AND Technology.Name = 'soheilTech'";
+			Transaction t = session.beginTransaction();
+			Query query = session.createQuery(query1);
+			query.setParameter("minNumHumans", minNumOfHumans);
+			query.setParameter("maxNumHumans", maxNumOfHumans);
+			query.setParameter("minNumModules", minNumOfModules);
+			query.setParameter("maxNumModules", maxNumOfModules);
+			query.setParameter("technologyName", technology);
+			List<ProjectModel> projectsList = query.list();
+			result.addAll(projectsList);
+			t.commit();// transaction is committed
+		}
+		System.out.println("retrieved");
+		return result;
 	}
 
 }

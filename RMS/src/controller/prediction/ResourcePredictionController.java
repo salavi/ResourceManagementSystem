@@ -1,45 +1,51 @@
 package controller.prediction;
 
-import java.util.Map;
+import java.util.List;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import logic.organization.project.Technology;
-import logic.organization.unit.Unit;
+import logic.organization.project.Project;
+import model.organization.project.ProjectModel;
 
 public class ResourcePredictionController {
-	
+
 	@FXML
-	private ListView technologyList;
+	private TextField minNumOfHumansId;
 	@FXML
-	private TextField numOfHumansId;
+	private TextField maxNumOfHumansId;
 	@FXML
-	private TextField numOfModulesId;
+	private TextField minNumOfModulesId;
+	@FXML
+	private TextField maxNumOfModulesId;
+	@FXML
+	private TextField technologiesListId;
 	@FXML
 	private Button searchButonId;
-	
-	private Map<String, Long> technologies;
-	
-	
+
 	@FXML
-	public void handleSearchButton(){
+	public void handleSearchButton() {
+		System.out.println("search button");
+		int minNumOfHumans = Integer.parseInt(this.minNumOfHumansId.getText());
+		int maxNumOfHumans = Integer.parseInt(this.maxNumOfHumansId.getText());
+		int minNumOfModules = Integer.parseInt(this.minNumOfModulesId.getText());
+		int maxNumOfModules = Integer.parseInt(this.maxNumOfModulesId.getText());
+		String[] technologies = partseTechnologyList(technologiesListId.getText());
+		Project project = new Project();
+		List<ProjectModel> projectModels = project.findSimilarProjects(minNumOfHumans, maxNumOfHumans, minNumOfModules,
+				maxNumOfModules, technologies);
 		
+		for(ProjectModel projectModel: projectModels){
+			System.out.println(projectModel.getName());
+		}
+		// ModulesNum humansNum
 	}
 
-
-	public void showAllTechnologies() {
-//		System.out.println("showAllTechnologies");
-//		Technology technology = new Technology();
-//		technologies = technology.getAllUnits();
-//		ObservableList<String> items = FXCollections.observableArrayList(technology.keySet());
-//		technologyList.setItems(items);
-		
+	private String[] partseTechnologyList(String text) {
+		String[] techs = text.split(",");
+		for (int i = 0; i < techs.length; i++) {
+			techs[i] = techs[i].trim();
+		}
+		return techs;
 	}
-	
-	
-	
 }

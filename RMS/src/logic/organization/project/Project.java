@@ -20,13 +20,14 @@ public class Project {
 	private int numOfInvolvedHumans;
 	private int numOfModules;
 	private Process developmentProcess;
-	private Process maintananceProcess;
+	private Process maintenanceProcess;
 	private ArrayList<Technology> listOfTechnologies;
 	private ProjectModel projectModel;
 
 	public Project() {
 		developmentProcess = new Process("developmentProcess ");
-		maintananceProcess= new Process("maintenanceProcess");
+		maintenanceProcess = new Process("maintenanceProcess");
+
 	}
 
 	public Project(String name, int numOfHumans, int numOfModules, Process developmentProcess,
@@ -72,11 +73,11 @@ public class Project {
 	}
 
 	public Process getMaintenanceProcess() {
-		return maintananceProcess;
+		return maintenanceProcess;
 	}
 
 	public void setMaintenanceProcess(Process maintananceProcess) {
-		this.maintananceProcess = maintananceProcess;
+		this.maintenanceProcess = maintananceProcess;
 	}
 
 	public ArrayList<Technology> getListOfTechnologies() {
@@ -89,11 +90,6 @@ public class Project {
 
 	public void removeTech(Technology technology) {
 		this.getListOfTechnologies().remove(technology);
-	}
-
-	public Project[] findSimilarProjects(Project project) {
-		// TODO
-		return null;
 	}
 
 	public void setListOfTechnologies(ArrayList<Technology> listOfTechnologies) {
@@ -114,7 +110,6 @@ public class Project {
 		projectAdpt.addProject(this.projectModel);
 	}
 
-
 	public Map<String, Long> getAllProjects() {
 		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
 		List<ProjectModel> projectModels = projectAdapter.findAll();
@@ -129,21 +124,30 @@ public class Project {
 	
 	public void addDevelopementProcess(Long projectId, Long unitId, String activiy, String moduleName, String moduleId, LocalDate localStartDate, LocalDate localEndDate) {
 		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
-		projectModel =  projectAdapter.getProject(projectId);
-		
+		projectModel = projectAdapter.getProject(projectId);
+
 		Module module = new Module();
 		module.setModuleId(moduleId);
 		module.setName(moduleName);
-		
+
 		Date startDate = Date.from(localStartDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		Date endDate = Date.from(localEndDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		
 		developmentProcess.setProcessModel(projectModel.getDevelopementProcess());
 		developmentProcess.addActivity(activiy, module, unitId, startDate, endDate);
-		
+
 		projectAdapter.addProject(projectModel);
 		
 		
+	}
+
+	public List<ProjectModel> findSimilarProjects(int minNumOfHumans, int maxNumOfHumans, int minNumOfModules,
+			int maxNumOfModules, String[] technologies) {
+
+		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
+		List<ProjectModel> projectModels = projectAdapter.findSimilarProjects(minNumOfHumans, maxNumOfHumans,
+				minNumOfModules, maxNumOfModules, technologies);
+		return projectModels;
 	}
 	
 	public void addMaintananceProcess(Long projectId, Long moduleId, Long unitId, String activity, LocalDate localStartDate, LocalDate localEndDate) {
@@ -153,13 +157,11 @@ public class Project {
 		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
 		projectModel =  projectAdapter.getProject(projectId);
 		
-		maintananceProcess.setProcessModel(projectModel.getMaintananceProcess());
-		maintananceProcess.addActivity(activity, moduleId, unitId, startDate, endDate);
+		maintenanceProcess.setProcessModel(projectModel.getMaintananceProcess());
+		maintenanceProcess.addActivity(activity, moduleId, unitId, startDate, endDate);
 		
 		projectAdapter.addProject(projectModel);
 		
+
 	}
 }
-
-
-
