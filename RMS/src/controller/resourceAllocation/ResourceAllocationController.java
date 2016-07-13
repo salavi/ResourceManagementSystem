@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import controller.project.AddProjectFormController;
+import controller.resourceManagement.AddResourceController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -53,7 +55,11 @@ public class ResourceAllocationController {
 		Parent root;
 		stage = (Stage) addProjectButtonId.getScene().getWindow();
 		try {
-			root = FXMLLoader.load(getClass().getResource("/view/project/AddProjectForm.fxml"));
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/project/AddProjectForm.fxml"));
+			root = (Parent) loader.load();
+			AddProjectFormController addProjectFormController = loader.<AddProjectFormController> getController();
+			addProjectFormController.setReturnState("/view/RootLayout.fxml");
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();

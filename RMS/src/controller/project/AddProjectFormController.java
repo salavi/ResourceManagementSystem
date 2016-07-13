@@ -37,7 +37,7 @@ public class AddProjectFormController {
 	@FXML
 	private ListView<String> technologyListViewId;
 	
-
+	private String returnState;
 	private ArrayList<Technology> listOfTechnologies;
 	private int numberOfTechnologies;
 	ObservableList<String> data;
@@ -80,7 +80,18 @@ public class AddProjectFormController {
 		Parent root;
 		stage = (Stage) returnButtonId.getScene().getWindow();
 		try {
-			root = FXMLLoader.load(getClass().getResource("/view/RootLayout.fxml"));
+			System.out.println(returnState);
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource(returnState));
+			root = (Parent) loader.load();
+			if (returnState.equals("/view/project/AddDevelopementProcessForm.fxml")){
+				AddDevelopementProcessController addDevelopementProcessController = loader.<AddDevelopementProcessController> getController();
+				addDevelopementProcessController.initial();
+			}else if (returnState.equals("/view/project/AddMaintananceProcessForm.fxml")){
+				AddMaintananceProcessController addMaintananceProcessController = loader.<AddMaintananceProcessController> getController();
+				addMaintananceProcessController.initial();
+			}
+			root = FXMLLoader.load(getClass().getResource(returnState));
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
@@ -88,6 +99,14 @@ public class AddProjectFormController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public String getReturnState() {
+		return returnState;
+	}
+
+	public void setReturnState(String returnState) {
+		this.returnState = returnState;
 	}
 
 }

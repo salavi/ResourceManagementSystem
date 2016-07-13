@@ -37,6 +37,8 @@ abstract class AddProcessController {
 	@FXML
 	protected Button addResourceButton;
 	@FXML
+	protected Button addProjectButton;
+	@FXML
 	protected ListView<String> projectList;
 	@FXML
 	protected ListView<String> unitList;
@@ -118,6 +120,9 @@ abstract class AddProcessController {
 			}
 		}
 	}
+	
+	@FXML
+	protected abstract void handleAddProjectButton();
 
 	@FXML
 	protected void handleResourceTypeCombo() {
