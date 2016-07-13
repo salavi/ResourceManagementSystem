@@ -64,16 +64,19 @@ public class ResourceAllocationController {
 	}
 
 	@FXML
-	public void handleAddResourceToProjectButton() {
-
-		System.out.println("handleAddResourceToProjectButton");
+	public void handleAllocatedResourceButton() {
 		Stage stage;
 		Parent root;
 		stage = (Stage) addAllocatedResourceButtonId.getScene().getWindow();
 		try {
-			root = FXMLLoader.load(getClass().getResource("/view/resourceAllocation/AddAllocatedResourceForm.fxml"));
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/resourceAllocation/AddAllocatedResourceForm.fxml"));
+			root = (Parent) loader.load();
+			AddAllocatedResourceController addAllocatedResourceController = loader.<AddAllocatedResourceController> getController();
 			Scene scene = new Scene(root);
+			addAllocatedResourceController.initial();
 			stage.setScene(scene);
+			
 			stage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

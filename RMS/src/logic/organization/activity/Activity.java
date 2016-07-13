@@ -1,7 +1,11 @@
 package logic.organization.activity;
 
-import java.time.LocalDate;
+import java.math.BigInteger;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import logic.organization.module.Module;
 import logic.organization.unit.Unit;
@@ -31,6 +35,10 @@ public class Activity {
 		this.setName(name);
 		this.setStartDate(startDate);
 		this.setEndDate(endDate);
+	}
+	
+	public Activity() {
+		
 	}
 
 	public String getName() {
@@ -104,4 +112,42 @@ public class Activity {
 		
 		return activityModel;
 	}
+	
+	public Map<String, Long> getDevActivities() {
+		List<Object> activities = ActivityAdapter.getInstance().findAll("DevelopmentProcess");
+		Map<String, Long> convertedActivities = new HashMap<String, Long>();
+		Iterator it = activities.iterator();
+		while (it.hasNext()) {
+			Object[] triple = (Object[]) it.next();
+			for (Object object : triple) {
+				System.out.println(object);
+			}
+			convertedActivities.put(triple[0] +  ": " + triple[1], ((BigInteger) triple[0]).longValue());
+
+		}
+		return convertedActivities;
+	}
+	
+	public Map<String, Long> getMainActivities() {
+		List<Object> activities = ActivityAdapter.getInstance().findAll("MaintananceProcess");
+		Map<String, Long> convertedActivities = new HashMap<String, Long>();
+		Iterator it = activities.iterator();
+		while (it.hasNext()) {
+			Object[] triple = (Object[]) it.next();
+			convertedActivities.put(triple[0] +  ": " + triple[1], ((BigInteger) triple[0]).longValue());
+		}
+		return convertedActivities;
+	}
+
+	public Map<String, Long> getActivitiesOfProject(Long projectId) {
+		List<ActivityModel> activities = ActivityAdapter.getInstance().findActivitiesOfProject(projectId);
+		Map<String, Long> convertedActivities = new HashMap<String, Long>();
+		int i = 1;
+		for (ActivityModel activityModel : activities) {
+			convertedActivities.put(i + ". " + activityModel.getName(), activityModel.getId());
+			i++;
+		}
+		return convertedActivities;
+	}
+	
 }

@@ -42,7 +42,7 @@
                         <Label text="لیست تکنولوژی های مورد استفاده" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
-                  <Button fx:id="addAllocatedResourceButtonId" layoutX="22.0" layoutY="509.0" mnemonicParsing="false" onAction="#handleAddResourceToProjectButton" prefHeight="25.0" prefWidth="190.0" text="ثبت منبع موجود" />
+                  <Button fx:id="addAllocatedResourceButtonId" layoutX="22.0" layoutY="509.0" mnemonicParsing="false" onAction="#handleAllocatedResourceButton" prefHeight="25.0" prefWidth="190.0" text="ثبت منبع موجود" />
                   <Button fx:id="addProjectButtonId" layoutX="216.0" layoutY="509.0" mnemonicParsing="false" onAction="#handleAddProjectButton" prefWidth="190.0" text="ثبت پروژه" />
                 <Button fx:id="addRequiredResourceButtonId" layoutX="411.0" layoutY="509.0" mnemonicParsing="false" onAction="#handleRequiredResourceButton" prefWidth="190.0" text="ثبت نیازمندی یک واحد" textOverrun="CLIP" />
                </children>

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import controller.prediction.PredictionController;
 import controller.prediction.ResourcePredictionController;
+import controller.project.DevelopementProcessController;
 import controller.resourceAllocation.ResourceAllocationController;
 import controller.resourceManagement.ResourceManagementController;
 import controller.userAccount.UserAccountController;
@@ -25,6 +26,8 @@ public class RootLayoutController {
 	@FXML
 	private ResourceManagementController resourceManagementController;
 	@FXML
+	private DevelopementProcessController developmentProcessController;
+	@FXML
 	private PredictionController predictionController;
 	@FXML
 	private Button logoutButton;
@@ -32,6 +35,8 @@ public class RootLayoutController {
 	private Tab resourceAllocationTabId;
 	@FXML
 	private Tab resourceManagementTabId;
+	@FXML
+	private Tab processTabId;
 	@FXML
 	private Tab predictionTabId;
 
@@ -71,6 +76,12 @@ public class RootLayoutController {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	
+	@FXML void onProcessSelection() {
+		if (processTabId.isSelected()) {
+			developmentProcessController.showAllActivities();
 		}
 	}
 

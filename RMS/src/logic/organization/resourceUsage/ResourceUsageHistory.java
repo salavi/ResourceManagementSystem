@@ -7,7 +7,9 @@ import logic.organization.activity.Activity;
 import logic.organization.project.Project;
 import logic.organization.resource.Resource;
 import logic.organization.unit.Unit;
+import model.organization.activity.ActivityAdapter;
 import model.organization.activity.ActivityModel;
+import model.organization.project.ProjectAdapter;
 import model.organization.project.ProjectModel;
 import model.organization.resource.ResourceAdapter;
 import model.organization.resource.ResourceModel;
@@ -77,5 +79,24 @@ public class ResourceUsageHistory {
 
 	public void setActivity(Activity activity) {
 		this.activity = activity;
+	}
+
+
+	public ResourceUsageHistoryModel createRUH(Long activityId, Long projectId, Long resourceId) {
+		ProjectModel projectModel = ProjectAdapter.getInstance().getProject(projectId);
+		ActivityModel activityModel = ActivityAdapter.getInstance().getActivity(activityId);
+		ResourceModel resourceModel = ResourceAdapter.getInstance().getResource(resourceId);
+		
+		Set<ResourceModel> resources = new HashSet<>();
+		resources.add(resourceModel);
+		
+		ResourceUsageHistoryModel ruhModel = new ResourceUsageHistoryModel();
+		ruhModel.setActivity(activityModel);
+		ruhModel.setProject(projectModel);
+		ruhModel.setUnit(activityModel.getUnit());
+		ruhModel.setResources(resources);
+		
+		ResourceUsageHistoryAdapter.getInstance().addResourceUsageHistory(ruhModel);
+		return ruhModel;
 	}
 }
