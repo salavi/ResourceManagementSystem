@@ -197,7 +197,29 @@ public class Project {
 		
 		return myMap;
 	}
+	
+	public Map<String, List<String>> getInformationalResourcesUsedInProjects(){
+		Map<String, List<String>> myMap = new HashMap();
+		ProjectAdapter projectAdapter = new ProjectAdapter();
+		Iterator<Object> iterator = projectAdapter.getInformationalResourcesUsedInProjects().iterator();
+		
+		while ( iterator.hasNext() ) {
+		    Object[] tuple = (Object[]) iterator.next();
+		    String projectName = (String) tuple[0];
+		    String informationalResourceType;
+		    if(tuple[1] == null)
+		    	informationalResourceType = "--";
+		    else
+		    	informationalResourceType = (String) tuple[1];
+		    if(!myMap.containsKey(projectName)){
+				myMap.put(projectName, new ArrayList<>());
+			}
+			myMap.get(projectName).add(informationalResourceType);
+		}				
+		return myMap;
+	}
 }
+
 
 class ProjectNameFinancialAmount{
 	String projectName;

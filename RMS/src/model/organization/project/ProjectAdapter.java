@@ -123,6 +123,28 @@ public class ProjectAdapter extends Adapter {
 		}
 	}
 	
+	public List<Object> getInformationalResourcesUsedInProjects(){
+		try{
+			List<Object> result = new ArrayList<>();
+			
+			// creating transaction object
+			Transaction t = session.beginTransaction();
+			String sql = ("SELECT project.Name, InformationResource.type FROM PROJECT RIGHT JOIN resourceusagehistory ON project.ID=resourceusagehistory.project"
+					+ " RIGHT JOIN ruhresources ON resourceusagehistory.ID=ruhresources.ruhID"
+					+ " LEFT JOIN resource ON ruhresources.ResourceID=resource.ID"
+					+ " LEFT JOIN InformationResource ON InformationResource.InformationResourceID=resource.ID");
+			SQLQuery query = session.createSQLQuery(sql);
+//			query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+			result = query.list();
+			t.commit();// transaction is committed
+			return result;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	
 //	public List<String> getFinancialResourcesUsedInProjects(){
 //		try{
