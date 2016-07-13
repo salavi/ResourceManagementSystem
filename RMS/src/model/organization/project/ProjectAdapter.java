@@ -75,21 +75,15 @@ public class ProjectAdapter extends Adapter {
 		return project;
 	}
 
-	public List<ProjectModel> findSimilarProjects(int minNumOfHumans, int maxNumOfHumans, int minNumOfModules,
+	public List<Long> findSimilarProjects(int minNumOfHumans, int maxNumOfHumans, int minNumOfModules,
 			int maxNumOfModules, String[] technologies) {
-		List<ProjectModel> result = new ArrayList<>();
+		List<Long> result = new ArrayList<>();
 		for (String technology : technologies) {
-			String query1 = "from ProjectModel as projectModel left join TechnologyModel as technologyModel"
+			String query1 = "select distinct projectModel.id from ProjectModel as projectModel, TechnologyModel as technologyModel "
 					+ "WHERE projectModel.numOfInvolvedHumans < :maxNumHumans AND projectModel.numOfInvolvedHumans > :minNumHumans "
 					+ "AND projectModel.numOfModules < :maxNumModules AND projectModel.numOfModules > :minNumModules "
 					+ "AND technologyModel.name = :technologyName";
 
-			// String query1 = "Select * FROM Project JOIN Technology "
-			// + "WHERE (NumOfInvolvedHumans < :maxNumHumans AND
-			// NumOfInvolvedHumans > :minNumHumans) "
-			// + "AND (NumOfModules < :maxNumModules AND NumOfModules >
-			// :minNumModules) "
-			// + "AND Technology.Name = 'soheilTech'";
 			Transaction t = session.beginTransaction();
 			Query query = session.createQuery(query1);
 			query.setParameter("minNumHumans", minNumOfHumans);
@@ -97,7 +91,7 @@ public class ProjectAdapter extends Adapter {
 			query.setParameter("minNumModules", minNumOfModules);
 			query.setParameter("maxNumModules", maxNumOfModules);
 			query.setParameter("technologyName", technology);
-			List<ProjectModel> projectsList = query.list();
+			List<Long> projectsList = query.list();
 			result.addAll(projectsList);
 			t.commit();// transaction is committed
 		}

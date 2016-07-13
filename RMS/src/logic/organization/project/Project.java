@@ -121,8 +121,9 @@ public class Project {
 		}
 		return map;
 	}
-	
-	public void addDevelopementProcess(Long projectId, Long unitId, String activiy, String moduleName, String moduleId, LocalDate localStartDate, LocalDate localEndDate) {
+
+	public void addDevelopementProcess(Long projectId, Long unitId, String activiy, String moduleName, String moduleId,
+			LocalDate localStartDate, LocalDate localEndDate) {
 		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
 		projectModel = projectAdapter.getProject(projectId);
 
@@ -132,34 +133,35 @@ public class Project {
 
 		Date startDate = Date.from(localStartDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		Date endDate = Date.from(localEndDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		
+
 		developmentProcess.setProcessModel(projectModel.getDevelopementProcess());
 		developmentProcess.addActivity(activiy, module, unitId, startDate, endDate);
 
 		projectAdapter.addProject(projectModel);
 	}
 
-	public List<ProjectModel> findSimilarProjects(int minNumOfHumans, int maxNumOfHumans, int minNumOfModules,
+	public void addMaintananceProcess(Long projectId, Long moduleId, Long unitId, String activity,
+			LocalDate localStartDate, LocalDate localEndDate) {
+		Date startDate = Date.from(localStartDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date endDate = Date.from(localEndDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
+		projectModel = projectAdapter.getProject(projectId);
+
+		maintenanceProcess.setProcessModel(projectModel.getMaintananceProcess());
+		maintenanceProcess.addActivity(activity, moduleId, unitId, startDate, endDate);
+
+		projectAdapter.addProject(projectModel);
+
+	}
+	
+	
+	public List<Long> findSimilarProjects(int minNumOfHumans, int maxNumOfHumans, int minNumOfModules,
 			int maxNumOfModules, String[] technologies) {
 
 		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
-		List<ProjectModel> projectModels = projectAdapter.findSimilarProjects(minNumOfHumans, maxNumOfHumans,
-				minNumOfModules, maxNumOfModules, technologies);
-		return projectModels;
-	}
-	
-	public void addMaintananceProcess(Long projectId, Long moduleId, Long unitId, String activity, LocalDate localStartDate, LocalDate localEndDate) {
-		Date startDate = Date.from(localStartDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Date endDate = Date.from(localEndDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		
-		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
-		projectModel =  projectAdapter.getProject(projectId);
-		
-		maintenanceProcess.setProcessModel(projectModel.getMaintananceProcess());
-		maintenanceProcess.addActivity(activity, moduleId, unitId, startDate, endDate);
-		
-		projectAdapter.addProject(projectModel);
-		
-
+		List<Long> projectIds = projectAdapter.findSimilarProjects(minNumOfHumans, maxNumOfHumans, minNumOfModules,
+				maxNumOfModules, technologies);
+		return projectIds;
 	}
 }
