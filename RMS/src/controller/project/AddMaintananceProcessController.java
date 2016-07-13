@@ -48,7 +48,7 @@ public class AddMaintananceProcessController extends AddProcessController{
 			moduleId = modules.get(module);
 		}
 		
-		new Project().addMaintananceProcess(projectId, moduleId, unitId, activity, startDate, endDate);
+		new Project().addMaintananceProcess(projectId, moduleId, unitId, activity, startDate, endDate, selectedResourcesIds);
 	}
 	
 	private void showModuleList() {

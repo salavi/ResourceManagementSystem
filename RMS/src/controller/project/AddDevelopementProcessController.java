@@ -34,7 +34,7 @@ public class AddDevelopementProcessController extends AddProcessController {
 			projectId = projects.get(project);
 		}
 		
-		new Project().addDevelopementProcess(projectId, unitId, activity, moduleName, moduleId, startDate, endDate);
+		new Project().addDevelopementProcess(projectId, unitId, activity, moduleName, moduleId, startDate, endDate, selectedResourcesIds);
 	}
 	
 	

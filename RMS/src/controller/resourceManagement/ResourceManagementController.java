@@ -86,6 +86,7 @@ public class ResourceManagementController {
 	
 	public void showAllResources() {
 		TreeItem<String> resourceRoot = new TreeItem<String> ("منابع سازمان");
+		resourceRoot.setExpanded(true);
 		
 		TreeItem<String> financialRootItem = new TreeItem<String> (ResourceType.FINANCIALRESOURCE.getFarsiType());
 		financialRootItem.setExpanded(true);

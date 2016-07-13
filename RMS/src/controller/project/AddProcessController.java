@@ -91,7 +91,7 @@ abstract class AddProcessController {
 		String resourceType = resourceTypeCombo.getValue();
 		ObservableList<String> items = resourceList.getSelectionModel().getSelectedItems();
 		selectedResourceList.getItems().addAll(items);
-		
+		System.out.println("add selectedResources");
 		Long resourceId;
 		if(resourceType.equals(ResourceType.FINANCIALRESOURCE.getFarsiType())) {
 			for (String item : items) {	

@@ -50,7 +50,7 @@
                         <DatePicker fx:id="startDateInput" prefHeight="25.0" prefWidth="194.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <DatePicker fx:id="endDateInput" prefHeight="25.0" prefWidth="194.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.valignment="BOTTOM" />
-                        <Button fx:id="addResourceButton" mnemonicParsing="false" onAction="#handleResourceTypeCombo" text="+" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                        <Button fx:id="addResourceButton" mnemonicParsing="false" onAction="#handleAddResourceButton" text="+" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
                         <Button fx:id="returnButton" mnemonicParsing="false" onAction="#handleReturnButton" prefHeight="25.0" prefWidth="88.0" text="بازگشت" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
                         <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAddButton" prefWidth="88.0" text="افزودن" GridPane.columnIndex="4" GridPane.rowIndex="6" />
                         <ComboBox fx:id="resourceTypeCombo" onAction="#handleResourceTypeCombo" prefHeight="25.0" prefWidth="193.0" promptText="نوع منبع" GridPane.columnIndex="4" />

@@ -7,8 +7,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import logic.organization.module.Module;
+import logic.organization.resourceUsage.ResourceUsageHistory;
+import model.organization.activity.ActivityModel;
 import model.organization.project.ProcessModel;
 import model.organization.project.ProjectAdapter;
 import model.organization.project.ProjectModel;
@@ -122,7 +125,7 @@ public class Project {
 		return map;
 	}
 	
-	public void addDevelopementProcess(Long projectId, Long unitId, String activiy, String moduleName, String moduleId, LocalDate localStartDate, LocalDate localEndDate) {
+	public void addDevelopementProcess(Long projectId, Long unitId, String activiy, String moduleName, String moduleId, LocalDate localStartDate, LocalDate localEndDate, Set<Long> resources) {
 		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
 		projectModel = projectAdapter.getProject(projectId);
 
@@ -134,10 +137,10 @@ public class Project {
 		Date endDate = Date.from(localEndDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		
 		developmentProcess.setProcessModel(projectModel.getDevelopementProcess());
-		developmentProcess.addActivity(activiy, module, unitId, startDate, endDate);
+		ActivityModel activityModel = developmentProcess.addActivity(activiy, module, unitId, startDate, endDate);
 
 		projectAdapter.addProject(projectModel);
-		
+		new ResourceUsageHistory().createRUH(activityModel, activityModel.getUnit(), projectModel, resources);
 		
 	}
 
@@ -150,7 +153,7 @@ public class Project {
 		return projectModels;
 	}
 	
-	public void addMaintananceProcess(Long projectId, Long moduleId, Long unitId, String activity, LocalDate localStartDate, LocalDate localEndDate) {
+	public void addMaintananceProcess(Long projectId, Long moduleId, Long unitId, String activity, LocalDate localStartDate, LocalDate localEndDate, Set<Long> resources) {
 		Date startDate = Date.from(localStartDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		Date endDate = Date.from(localEndDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		
@@ -158,10 +161,9 @@ public class Project {
 		projectModel =  projectAdapter.getProject(projectId);
 		
 		maintenanceProcess.setProcessModel(projectModel.getMaintananceProcess());
-		maintenanceProcess.addActivity(activity, moduleId, unitId, startDate, endDate);
+		ActivityModel activityModel = maintenanceProcess.addActivity(activity, moduleId, unitId, startDate, endDate);
 		
 		projectAdapter.addProject(projectModel);
-		
-
+		new ResourceUsageHistory().createRUH(activityModel, activityModel.getUnit(), projectModel, resources);
 	}
 }

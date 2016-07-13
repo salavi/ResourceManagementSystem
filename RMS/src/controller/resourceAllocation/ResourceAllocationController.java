@@ -1,11 +1,11 @@
 package controller.resourceAllocation;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
-import controller.resourceManagement.AddResourceController;
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,9 +14,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 import javafx.stage.Stage;
 import logic.organization.project.Project;
 import model.organization.project.ProjectModel;
@@ -30,13 +29,13 @@ public class ResourceAllocationController {
 	@FXML
 	private Button addRequiredResourceButtonId;
 	@FXML
-	private TableView<ProjectModel> tableViewId;
+	private TreeView<String> projectListTreeId;
 	@FXML
 	private TableColumn<ProjectModel, String> projectsColumn;
 	
 	private ObservableList<ProjectModel> retrievedProjectData = FXCollections.observableArrayList();
 
-	private List<ProjectModel> projectsList;
+	private Map<String, Long> projectsList;
 
 	public ResourceAllocationController() {
 
@@ -102,33 +101,24 @@ public class ResourceAllocationController {
 			e.printStackTrace();
 		}
 	}
-
-	public void showAllProjects() {
-//		System.out.println("fetchProjects");
-//		Project project = new Project();
-//		this.projectsList = project.getAllProjects();
-//		changeToRetrievedProjects(this.projectsList);
-		
-//		ObservableList<String> data = FXCollections.observableArrayList();
-//		data.addAll(projectsMap.keySet());
-//		System.out.println(data);
-//		tableViewId.getItems().setAll(data);
-	}
-
-	private void changeToRetrievedProjects(List<ProjectModel> projectsList) {
-		// TODO Auto-generated method stub
-		for(ProjectModel projectModel: projectsList){
-			retrievedProjectData.add(projectModel);
+	
+	private List<TreeItem<String>> createTreeItems(Set<String> keys) {
+		List<TreeItem<String>> children = new ArrayList<TreeItem<String>>();
+		for (String key : keys) {
+			TreeItem<String> item = new TreeItem<String> (key);
+			children.add(item);
 		}
 		
-		projectsColumn.setCellValueFactory(new PropertyValueFactory<ProjectModel, String>("پروژه‌های سازمان"));
-//		projectsColumn.setCellValueFactory(new PropertyValueFactory<ProjectModel, String>("firstName"));
-//		projectsColumn.setCellValueFactory(
-//			    new PropertyValueFactory<ProjectModel,String>("پروژه‌های سازمان")
-//			);
-		
-		tableViewId.setItems(retrievedProjectData);
-//		tableViewId.getColumns().add(projectsColumn);
+		return children;
+	}
+	
+
+	public void showAllProjects() {
+		TreeItem<String> projectRoot = new TreeItem<String> ("پروژه های سازمان");
+		projectRoot.setExpanded(true);
+		projectsList = new Project().getAllProjects();
+		projectRoot.getChildren().addAll(createTreeItems(projectsList.keySet()));
+		this.projectListTreeId.setRoot(projectRoot);
 	}
 
 }
