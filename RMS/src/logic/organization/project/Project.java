@@ -142,6 +142,8 @@ public class Project {
 		developmentProcess.addActivity(activiy, module, unitId, startDate, endDate);
 		
 		projectAdapter.addProject(projectModel);
+		
+		
 	}
 	
 	public void addMaintananceProcess(Long projectId, Long moduleId, Long unitId, String activity, LocalDate localStartDate, LocalDate localEndDate) {
