@@ -3,7 +3,9 @@ package model.organization.project;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Transaction;
 
 import model.Adapter;
@@ -105,4 +107,51 @@ public class ProjectAdapter extends Adapter {
 		return result;
 	}
 
+	public List<Object> getFinancialResourcesUsedInProjects(){
+		try{
+			List<Object> result = new ArrayList<>();
+			
+			// creating transaction object
+			Transaction t = session.beginTransaction();
+			String sql = ("SELECT project.Name, FinancialResource.amount FROM PROJECT RIGHT JOIN resourceusagehistory ON project.ID=resourceusagehistory.project "
+					+ "RIGHT JOIN ruhresources ON resourceusagehistory.ID=ruhresources.ruhID "
+					+ "LEFT JOIN resource ON ruhresources.ResourceID=resource.ID "
+					+ "LEFT JOIN FinancialResource ON FinancialResource.FinancialResourceID=resource.ID");
+			SQLQuery query = session.createSQLQuery(sql);
+//			query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+			result = query.list();
+			t.commit();// transaction is committed
+			return result;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	
+//	public List<String> getFinancialResourcesUsedInProjects(){
+//		try{
+//			List<String> result = new ArrayList<>();
+//			
+//			// creating transaction object
+//			Transaction t = session.beginTransaction();
+//			String sql = ("SELECT project.Name, FinancialResource.amount FROM PROJECT RIGHT JOIN resourceusagehistory ON project.ID=resourceusagehistory.project "
+//					+ "RIGHT JOIN ruhresources ON resourceusagehistory.ID=ruhresources.ruhID "
+//					+ "LEFT JOIN resource ON ruhresources.ResourceID=resource.ID "
+//					+ "LEFT JOIN FinancialResource ON FinancialResource.FinancialResourceID=resource.ID");
+//			SQLQuery query = session.createSQLQuery(sql);
+//			query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+//			List<Object> projResources = query.list();
+//			for (Object projectResource: projResources){
+//				result.add(projectResource.toString());
+//			}
+//			t.commit();// transaction is committed
+//			return result;
+//		}
+//		catch(Exception e){
+//			e.printStackTrace();
+//			return null;
+//		}
+//	}
 }
