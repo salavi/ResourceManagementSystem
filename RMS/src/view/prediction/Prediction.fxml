@@ -1,28 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.prediction.PredictionController">
-   <children>
-      <TabPane layoutX="169.0" layoutY="59.0" prefHeight="600.0" prefWidth="900.0" side="RIGHT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <tabs>
-          <Tab text="تخمین منابع">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-              	<fx:include fx:id="resourcePrediction" source="ResourcePredictionForm.fxml" />
-              </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="نیازمندی‌های ضروری">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-              	<fx:include fx:id="requirementPrediction" source="RequirementPredictionForm.fxml" />
-              </AnchorPane>
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
-   </children>
-</AnchorPane>
+<SplitPane dividerPositions="0.4287305122494432" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.prediction.PredictionController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="456.0">
+         <children>
+            <GridPane alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="243.0" prefWidth="469.0" AnchorPane.bottomAnchor="255.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" minWidth="10.0" prefWidth="158.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="284.0" minWidth="10.0" prefWidth="284.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="154.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="173.0" minHeight="1.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="222.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="222.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="222.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="255.0" minHeight="10.0" prefHeight="58.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="تکنولوژی" />
+                  <Label text="کمترین تعداد افراد درگیر پروژه" GridPane.rowIndex="1" />
+                  <Label text="بیشترین تعداد افراد درگیر پروژه" GridPane.rowIndex="2" />
+                  <Label text="کمترین تعداد ماژول‌ها" GridPane.rowIndex="3" />
+                  <Label text="بیشترین تعداد ماژول‌ها" GridPane.rowIndex="4" />
+                  <TextField fx:id="technologiesListId" GridPane.columnIndex="1" />
+                  <TextField fx:id="minNumOfHumansId" prefWidth="255.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="maxNumOfHumansId" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="minNumOfModulesId" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="maxNumOfModulesId" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Button fx:id="searchResourceButtonId" mnemonicParsing="false" onAction="#handleSearchResourceButton" prefHeight="26.0" prefWidth="115.0" text="جست و جوی منابع" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                  <Button fx:id="requirementsPredictionButtonId" mnemonicParsing="false" onAction="#handleRequirementsPrediction" prefHeight="26.0" prefWidth="116.0" text="پیش‌بینی نیازمندی‌ها" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+               </children>
+            </GridPane>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

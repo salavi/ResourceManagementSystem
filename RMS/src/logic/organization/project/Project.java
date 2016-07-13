@@ -16,6 +16,7 @@ import model.organization.project.ProcessModel;
 import model.organization.project.ProjectAdapter;
 import model.organization.project.ProjectModel;
 import model.organization.project.TechnologyModel;
+import model.organization.resourceUsage.ResourceUsageHistoryAdapter;
 
 public class Project {
 
@@ -166,6 +167,9 @@ public class Project {
 		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
 		List<Long> projectIds = projectAdapter.findSimilarProjects(minNumOfHumans, maxNumOfHumans, minNumOfModules,
 				maxNumOfModules, technologies);
+
+//		ResourceUsageHistoryAdapter resourceUsageHistoryAdapter = ResourceUsageHistoryAdapter.getInstance();
+		
 		return projectIds;
 	}
 }

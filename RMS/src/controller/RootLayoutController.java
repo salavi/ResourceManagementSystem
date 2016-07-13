@@ -3,7 +3,6 @@ package controller;
 import java.io.IOException;
 
 import controller.prediction.PredictionController;
-import controller.prediction.ResourcePredictionController;
 import controller.resourceAllocation.ResourceAllocationController;
 import controller.resourceManagement.ResourceManagementController;
 import controller.userAccount.UserAccountController;

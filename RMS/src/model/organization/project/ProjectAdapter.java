@@ -77,25 +77,45 @@ public class ProjectAdapter extends Adapter {
 
 	public List<Long> findSimilarProjects(int minNumOfHumans, int maxNumOfHumans, int minNumOfModules,
 			int maxNumOfModules, String[] technologies) {
-		List<Long> result = new ArrayList<>();
-		for (String technology : technologies) {
-			String query1 = "select distinct projectModel.id from ProjectModel as projectModel, TechnologyModel as technologyModel "
-					+ "WHERE projectModel.numOfInvolvedHumans < :maxNumHumans AND projectModel.numOfInvolvedHumans > :minNumHumans "
-					+ "AND projectModel.numOfModules < :maxNumModules AND projectModel.numOfModules > :minNumModules "
-					+ "AND technologyModel.name = :technologyName";
 
-			Transaction t = session.beginTransaction();
-			Query query = session.createQuery(query1);
-			query.setParameter("minNumHumans", minNumOfHumans);
-			query.setParameter("maxNumHumans", maxNumOfHumans);
-			query.setParameter("minNumModules", minNumOfModules);
-			query.setParameter("maxNumModules", maxNumOfModules);
-			query.setParameter("technologyName", technology);
-			List<Long> projectsList = query.list();
-			result.addAll(projectsList);
-			t.commit();// transaction is committed
-		}
+//		String query1 = "SELECT project.ID FROM Project AS project RIGHT JOIN Technology as technology ON Project.ID = Technology.pid "
+//				+ "WHERE Project.NumOfInvolvedHumans > :minNumHumans AND Project.NumOfInvolvedHumans < :maxNumHumans "
+//				+ "AND Project.NumOfModules > :minNumModules AND Project.NumOfModules < :maxNumModules "
+//				+ "AND Technology.Name IN (:technologyNames)";
+		String query1 = "SELECT RUHResources.ResourceID From "
+				+ "(SELECT t1.ID as pid, t1.Name, ResourceUsageHistory.ID as ruhid FROM "
+				+ "(SELECT project.ID, Project.Name FROM Project AS project RIGHT JOIN Technology as technology ON Project.ID = Technology.pid "
+				+ "WHERE Project.NumOfInvolvedHumans > :minNumHumans AND Project.NumOfInvolvedHumans < :maxNumHumans "
+				+ "AND Project.NumOfModules > :minNumModules AND Project.NumOfModules < :maxNumModules "
+				+ "AND Technology.Name IN " + parseTechnologies(technologies) + ")"
+						+ " as t1 LEFT JOIN ResourceUsageHistory ON t1.ID = ResourceUsageHistory.project)"
+						+ " as t2 LEFT JOIN RUHResources on t2.ruhid = RUHResources.ruhID";
+
+		Transaction t = session.beginTransaction();
+		Query query = session.createSQLQuery(query1);
+		query.setParameter("minNumHumans", minNumOfHumans);
+		query.setParameter("maxNumHumans", maxNumOfHumans);
+		query.setParameter("minNumModules", minNumOfModules);
+		query.setParameter("maxNumModules", maxNumOfModules);
+		List<Long> projectsList = query.list();
+		// result.addAll(projectsList);
+		t.commit();// transaction is committed
+		// }
 		System.out.println("retrieved");
+		System.out.println(projectsList);
+		return projectsList;
+	}
+
+	private String parseTechnologies(String[] technologies) {
+		// TODO Auto-generated method stub
+		String result = "(";
+		for (int i = 0; i < technologies.length; i++) {
+			if (i == technologies.length - 1) {
+				result = result + "'" + technologies[i] + "') ";
+				break;
+			}
+				result = result + "'" + technologies[i] + "', ";
+		}
 		return result;
 	}
 
