@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FDFDFD;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.project.AddDevelopementProcessController">
+<AnchorPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FDFDFD;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.project.AddDevelopementProcessController">
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F6F6F6; -fx-border-color: #B38B5D; -fx-border-width: 5;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="50.0">
          <children>
@@ -58,7 +58,7 @@
                         <ComboBox fx:id="resourceTypeCombo" onAction="#handleResourceTypeCombo" prefWidth="189.0" promptText="نوع منبع" GridPane.columnIndex="4" />
                         <ListView fx:id="resourceList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                         <ListView fx:id="selectedResourceList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                        <Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.valignment="BOTTOM" />
+                        <Button fx:id="addProjectButton" mnemonicParsing="false" onAction="#handleAddProjectButton" text="+" GridPane.columnIndex="2" GridPane.valignment="BOTTOM" />
                      </children>
                   </GridPane>
                </children>

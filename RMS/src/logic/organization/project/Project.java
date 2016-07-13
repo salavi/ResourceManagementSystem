@@ -5,6 +5,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -167,5 +168,42 @@ public class Project {
 		List<Long> projectIds = projectAdapter.findSimilarProjects(minNumOfHumans, maxNumOfHumans, minNumOfModules,
 				maxNumOfModules, technologies);
 		return projectIds;
+	}
+	
+	public Map<String, List<String>> getFinancialResourcesUsedInProjects(){
+		Map<String, List<String>> myMap = new HashMap();
+		ProjectAdapter projectAdapter = new ProjectAdapter();
+		Iterator<Object> iterator = projectAdapter.getFinancialResourcesUsedInProjects().iterator();
+		
+		List<ProjectNameFinancialAmount> projNameFinancialAmount = new ArrayList<>();
+		while ( iterator.hasNext() ) {
+		    Object[] tuple = (Object[]) iterator.next();
+		    ProjectNameFinancialAmount row = new ProjectNameFinancialAmount();
+		    row.projectName = (String) tuple[0];
+		    if(tuple[1] == null)
+		    	row.financialAmount = 0;
+		    else
+		    	row.financialAmount = (double) tuple[1];
+		    projNameFinancialAmount.add(row);
+		    System.out.println(row.toString());
+		}
+		
+		for(ProjectNameFinancialAmount pnfa: projNameFinancialAmount){
+			if(!myMap.containsKey(pnfa.projectName)){
+				myMap.put(pnfa.projectName, new ArrayList<>());
+			}
+			myMap.get(pnfa.projectName).add("" + (pnfa.financialAmount));
+		}
+		
+		return myMap;
+	}
+}
+
+class ProjectNameFinancialAmount{
+	String projectName;
+	double financialAmount;
+	
+	public String toString(){
+		return projectName + financialAmount;
 	}
 }
