@@ -2,12 +2,14 @@ package controller.project;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import controller.resourceManagement.ResourceType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableSet;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -35,6 +37,8 @@ abstract class AddProcessController {
 	@FXML
 	protected Button addResourceButton;
 	@FXML
+	protected Button addProjectButton;
+	@FXML
 	protected ListView<String> projectList;
 	@FXML
 	protected ListView<String> unitList;
@@ -53,11 +57,11 @@ abstract class AddProcessController {
 	
 	protected Map<String, Long> units;
 	protected Map<String, Long> projects;
-	protected Map<String, Long> humanResources;
-	protected Map<String, Long> financialResources;
-	protected Map<String, Long> informationalResources;
-	protected Map<String, Long> physicalResources;
-	protected List<Long> selectedResourcesIds = new ArrayList<Long>();
+	private Map<String, Long> humanResources;
+	private Map<String, Long> financialResources;
+	private Map<String, Long> informationalResources;
+	private Map<String, Long> physicalResources;
+	protected Set<Long> selectedResourcesIds = new TreeSet<Long>();
 
 	public AddProcessController() {
 		super();
@@ -89,6 +93,7 @@ abstract class AddProcessController {
 		String resourceType = resourceTypeCombo.getValue();
 		ObservableList<String> items = resourceList.getSelectionModel().getSelectedItems();
 		selectedResourceList.getItems().addAll(items);
+		System.out.println("add selectedResources");
 		Long resourceId;
 		if(resourceType.equals(ResourceType.FINANCIALRESOURCE.getFarsiType())) {
 			for (String item : items) {	
@@ -115,6 +120,9 @@ abstract class AddProcessController {
 			}
 		}
 	}
+	
+	@FXML
+	protected abstract void handleAddProjectButton();
 
 	@FXML
 	protected void handleResourceTypeCombo() {

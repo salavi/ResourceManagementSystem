@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//src/controller/MainApp.java=UTF-8
 encoding//src/controller/project/AddDevelopementProcessController.java=UTF-8
 encoding//src/controller/project/AddProcessController.java=UTF-8
+encoding//src/controller/resourceAllocation/ResourceAllocationController.java=UTF-8
 encoding//src/controller/resourceManagement/AddResourceController.java=UTF-8
 encoding//src/controller/resourceManagement/ResourceManagementController.java=UTF-8
 encoding//src/controller/resourceManagement/ResourceType.java=UTF-8

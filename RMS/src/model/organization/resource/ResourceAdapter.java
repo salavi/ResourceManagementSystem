@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 
 import model.Adapter;
 import model.authentication.UserAccountModel;
+import model.organization.module.ModuleModel;
 
 public class ResourceAdapter extends Adapter{
 	private static ResourceAdapter instance = null;
@@ -29,18 +30,9 @@ public class ResourceAdapter extends Adapter{
 	}	
 
 	public ResourceModel getResource(Long resourceId){
-		try {
-			// creating transaction object
-			Transaction t = session.beginTransaction();
-			Query query = session.createQuery("FROM ResourceModel resourceModel WHERE resourceModel.id = :un");
-			query.setParameter("un", resourceId);
-			List<ResourceModel> resourceModel = query.list();
-			t.commit();// transaction is committed
-			return resourceModel.get(0);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+		Transaction t = session.beginTransaction();
+		ResourceModel module = (ResourceModel)session.get(ResourceModel.class, resourceId);
+		return module;
 		
 	}
 

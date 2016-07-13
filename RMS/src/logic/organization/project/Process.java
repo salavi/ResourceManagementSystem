@@ -23,7 +23,7 @@ public class Process {
 		activities = new ArrayList<>();
 	}
 	
-	public void addActivity(String name, Module module, Long unitId, Date startDate, Date endDate){
+	public ActivityModel addActivity(String name, Module module, Long unitId, Date startDate, Date endDate){
 		//TODO
 		Activity activity = new Activity(name, startDate, endDate);
 		activity.setModule(module);
@@ -31,15 +31,18 @@ public class Process {
 		
 		ActivityModel activityModel = activity.createActivityModel(unitId);
 		this.processModel.addAcitity(activityModel);
+		
+		return activityModel;
 	}
 	
-	public void addActivity(String name, Long moduleId, Long unitId, Date startDate, Date endDate){
-		//TODO
+	public ActivityModel addActivity(String name, Long moduleId, Long unitId, Date startDate, Date endDate){
 		Activity activity = new Activity(name, startDate, endDate);
 		this.activities.add(activity);
 		
 		ActivityModel activityModel = activity.createActivityModel(moduleId, unitId);
 		this.processModel.addAcitity(activityModel);
+		
+		return activityModel;
 	}
 
 	public String getTypeOfProcess() {
