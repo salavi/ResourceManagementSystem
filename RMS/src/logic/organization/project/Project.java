@@ -17,6 +17,7 @@ import model.organization.project.ProcessModel;
 import model.organization.project.ProjectAdapter;
 import model.organization.project.ProjectModel;
 import model.organization.project.TechnologyModel;
+import model.organization.resourceUsage.ResourceUsageHistoryAdapter;
 
 public class Project {
 
@@ -167,6 +168,9 @@ public class Project {
 		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
 		List<Long> projectIds = projectAdapter.findSimilarProjects(minNumOfHumans, maxNumOfHumans, minNumOfModules,
 				maxNumOfModules, technologies);
+
+//		ResourceUsageHistoryAdapter resourceUsageHistoryAdapter = ResourceUsageHistoryAdapter.getInstance();
+		
 		return projectIds;
 	}
 	
@@ -197,7 +201,29 @@ public class Project {
 		
 		return myMap;
 	}
+	
+	public Map<String, List<String>> getInformationalResourcesUsedInProjects(){
+		Map<String, List<String>> myMap = new HashMap();
+		ProjectAdapter projectAdapter = new ProjectAdapter();
+		Iterator<Object> iterator = projectAdapter.getInformationalResourcesUsedInProjects().iterator();
+		
+		while ( iterator.hasNext() ) {
+		    Object[] tuple = (Object[]) iterator.next();
+		    String projectName = (String) tuple[0];
+		    String informationalResourceType;
+		    if(tuple[1] == null)
+		    	informationalResourceType = "--";
+		    else
+		    	informationalResourceType = (String) tuple[1];
+		    if(!myMap.containsKey(projectName)){
+				myMap.put(projectName, new ArrayList<>());
+			}
+			myMap.get(projectName).add(informationalResourceType);
+		}				
+		return myMap;
+	}
 }
+
 
 class ProjectNameFinancialAmount{
 	String projectName;
