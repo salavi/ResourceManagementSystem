@@ -1,7 +1,5 @@
 package logic.organization.resource;
 
-import logic.organization.unit.Unit;
-
 class PhysicalResource extends Resource {
 
 	private String type;

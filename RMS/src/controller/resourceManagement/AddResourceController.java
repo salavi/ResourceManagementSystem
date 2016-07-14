@@ -20,9 +20,7 @@ import logic.organization.resource.FinancialResourceCreator;
 import logic.organization.resource.HumanResourceCreator;
 import logic.organization.resource.InformationResourceCreator;
 import logic.organization.resource.PhysicalResourceCreator;
-import logic.organization.resource.ResourceFactory;
 import logic.organization.unit.Unit;
-import model.organization.resource.FinancialResourceModel;
 
 public class AddResourceController {
 	@FXML

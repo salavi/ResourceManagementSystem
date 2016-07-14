@@ -3,13 +3,11 @@ package model.organization.project;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Transaction;
 
 import model.Adapter;
-import model.organization.unit.UnitModel;
 
 public class ProjectAdapter extends Adapter {
 	private static ProjectAdapter instance = null;
