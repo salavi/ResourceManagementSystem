@@ -34,27 +34,24 @@ public class AddMaintananceProcessController extends AddProcessController {
 		LocalDate endDate = endDateInput.getValue();
 
 		String unit = this.unitList.getSelectionModel().getSelectedItem();
-		Long unitId = -1l;
-		if (unit != null) {
-			unitId = units.get(unit);
-		}
-
 		String project = this.projectList.getSelectionModel().getSelectedItem();
-		Long projectId = -1l;
-		if (project != null) {
-			projectId = projects.get(project);
-		}
-
 		String module = this.moduleList.getSelectionModel().getSelectedItem();
-		Long moduleId = -1l;
-		if (module != null) {
-			moduleId = modules.get(module);
+		if (!isInputValid(activity, startDate, endDate, unit, project, module))
+			System.out.println("error");
+		else {
+			Long unitId = units.get(unit);
+			Long projectId = projects.get(project);
+			Long moduleId = modules.get(module);
+			new Project().addMaintananceProcess(projectId, moduleId, unitId, activity, startDate, endDate,
+					selectedResourcesIds);
 		}
-
-		new Project().addMaintananceProcess(projectId, moduleId, unitId, activity, startDate, endDate,
-				selectedResourcesIds);
-		
 		this.clear();
+	}
+
+	private boolean isInputValid(String activity, LocalDate startDate, LocalDate endDate, String unit, String project,
+			String module) {
+		return activity != null && startDate != null && endDate != null && unit != null && project != null
+				&& module != null;
 	}
 
 	private void showModuleList() {
@@ -86,9 +83,8 @@ public class AddMaintananceProcessController extends AddProcessController {
 		}
 
 	}
-	
+
 	protected void clear() {
-		System.out.println("cleaaaaaaaaaar");
 		super.clear();
 		this.moduleList.getSelectionModel().clearSelection();
 	}

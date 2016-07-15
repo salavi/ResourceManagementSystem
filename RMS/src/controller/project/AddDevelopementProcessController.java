@@ -27,21 +27,25 @@ public class AddDevelopementProcessController extends AddProcessController {
 		LocalDate endDate = endDateInput.getValue();
 
 		String unit = this.unitList.getSelectionModel().getSelectedItem();
-		Long unitId = -1l;
-		if (unit != null) {
-			unitId = units.get(unit);
-		}
-
 		String project = this.projectList.getSelectionModel().getSelectedItem();
-		Long projectId = -1l;
-		if (project != null) {
-			projectId = projects.get(project);
+
+		if (!isInputValid(activity, moduleName, moduleId, unit, project, startDate, endDate))
+			System.out.println("error");
+
+		else {
+			Long unitId = units.get(unit);
+			Long projectId = projects.get(project);
+			new Project().addDevelopementProcess(projectId, unitId, activity, moduleName, moduleId, startDate, endDate,
+					selectedResourcesIds);
 		}
 
-		new Project().addDevelopementProcess(projectId, unitId, activity, moduleName, moduleId, startDate, endDate,
-				selectedResourcesIds);
-		
 		this.clear();
+	}
+
+	private boolean isInputValid(String activity, String moduleName, String moduleId, String unit, String project,
+			LocalDate startDate, LocalDate endDate) {
+		return activity != null && moduleName != null && moduleId != null && unit != null && project != null
+				&& startDate != null && endDate != null;
 	}
 
 	@Override
@@ -66,7 +70,7 @@ public class AddDevelopementProcessController extends AddProcessController {
 		}
 
 	}
-	
+
 	protected void clear() {
 		super.clear();
 		this.moduleIdInput.clear();

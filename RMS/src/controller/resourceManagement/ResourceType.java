@@ -9,7 +9,7 @@ public enum ResourceType {
 	private final String farsiType;
 	private final String englishType;
 	
-	ResourceType(String fType, String enType) {
+	private ResourceType(String fType, String enType) {
 		this.farsiType = fType;
 		this.englishType = enType;
 	}

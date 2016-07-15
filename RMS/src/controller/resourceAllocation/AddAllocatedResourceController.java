@@ -44,20 +44,19 @@ public class AddAllocatedResourceController {
 	private Button returnButton;
 	@FXML
 	private Button addResourceButton;
-	
+
 	private Map<String, Long> projects;
 	private Map<String, Long> humanResources;
 	private Map<String, Long> financialResources;
 	private Map<String, Long> informationalResources;
 	private Map<String, Long> physicalResources;
 	private Map<String, Long> activities;
-	
 
 	@FXML
 	private void handleAddResourceButton() {
-		
+
 	}
-	
+
 	@FXML
 	private void handleReturnButton() {
 		try {
@@ -75,7 +74,7 @@ public class AddAllocatedResourceController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
 	private void handleAddButton() {
 		LocalDate startDate = startDateInput.getValue();
@@ -83,43 +82,46 @@ public class AddAllocatedResourceController {
 		
 		String resourceType = resourceTypeCombo.getValue();
 		String resource = resourceList.getSelectionModel().getSelectedItem();
-		Long resourceId = getResourceId(resourceType, resource);
-		
 		String project = projectCombo.getValue();
-		Long projectId = projects.get(project);
-		
 		String activity = activityList.getSelectionModel().getSelectedItem();
-		Long activityId = activities.get(activity);
-		
-		new ResourceUsageHistory().createRUH(activityId, projectId, resourceId);
+		if (!isInputValid(startDate, endDate, resourceType, resource, project, activity)) 
+			System.out.println("error");
+		else {
+			Long resourceId = getResourceId(resourceType, resource);			
+			Long projectId = projects.get(project);			
+			Long activityId = activities.get(activity);
+			new ResourceUsageHistory().createRUH(activityId, projectId, resourceId);
+		}
 		this.clear();
 	}
-	
+
+	private boolean isInputValid(LocalDate startDate, LocalDate endDate, String resourceType, String resource,
+			String project, String activity) {
+		return startDate != null && endDate != null && resourceType != null && resource != null && project != null && activity != null;
+	}
+
 	@FXML
 	protected void handleResourceTypeCombo() {
 		System.out.println("resourceTypeCombo");
 		String value = (String) resourceTypeCombo.getValue();
 		ObservableList<String> types = null;
-		if(value.equals(ResourceType.FINANCIALRESOURCE.getFarsiType())) {
+		if (value.equals(ResourceType.FINANCIALRESOURCE.getFarsiType())) {
 			financialResources = new FinancialResourceCreator().getAllFinancialResources();
 			types = FXCollections.observableArrayList(financialResources.keySet());
-			
-		} 
-		else if (value.equals(ResourceType.INFORMATIONALRESOURCE.getFarsiType())) {
+
+		} else if (value.equals(ResourceType.INFORMATIONALRESOURCE.getFarsiType())) {
 			informationalResources = new InformationResourceCreator().getAllInformationalResources();
 			types = FXCollections.observableArrayList(informationalResources.keySet());
-		}
-		else if (value.equals(ResourceType.PHYSICALRESOURCE.getFarsiType())) {
+		} else if (value.equals(ResourceType.PHYSICALRESOURCE.getFarsiType())) {
 			physicalResources = new PhysicalResourceCreator().getAllPhysicalResources();
 			types = FXCollections.observableArrayList(physicalResources.keySet());
-		}
-		else if (value.equals(ResourceType.HUMANRESOUCE.getFarsiType())) {
+		} else if (value.equals(ResourceType.HUMANRESOUCE.getFarsiType())) {
 			humanResources = new HumanResourceCreator().getAllHumanResources();
 			types = FXCollections.observableArrayList(humanResources.keySet());
 		}
 		resourceList.setItems(types);
 	}
-	
+
 	@FXML
 	private void handleProjectCombo() {
 		String value = (String) projectCombo.getValue();
@@ -127,20 +129,19 @@ public class AddAllocatedResourceController {
 		if (value != null) {
 			projectId = projects.get(value);
 		}
-		
+
 		activities = new Activity().getActivitiesOfProject(projectId);
 		ObservableList<String> items = FXCollections.observableArrayList(activities.keySet());
 		activityList.setItems(items);
 	}
-	
+
 	public void initial() {
 		showProjectList();
 		showResourceTypes();
 	}
-	
-	
+
 	private Long getResourceId(String resourceType, String resource) {
-		if(resourceType.equals(ResourceType.FINANCIALRESOURCE.getFarsiType()))
+		if (resourceType.equals(ResourceType.FINANCIALRESOURCE.getFarsiType()))
 			return financialResources.get(resource);
 		else if (resourceType.equals(ResourceType.HUMANRESOUCE.getFarsiType()))
 			return humanResources.get(resource);
@@ -150,25 +151,25 @@ public class AddAllocatedResourceController {
 			return physicalResources.get(resource);
 		return -1l;
 	}
-	
+
 	private void showResourceTypes() {
 		ObservableList<String> types = FXCollections.observableArrayList("منبع مالی", "منبع انسانی", "منبع فیزیکی",
 				"منبع اطلاعاتی");
 		resourceTypeCombo.setItems(types);
 	}
-	
+
 	private void showProjectList() {
 		Project project = new Project();
 		projects = project.getAllProjects();
 		ObservableList<String> items = FXCollections.observableArrayList(projects.keySet());
 		projectCombo.setItems(items);
 	}
-	
+
 	private void clear() {
 		this.resourceList.getSelectionModel().clearSelection();
 		this.activityList.getSelectionModel().clearSelection();
 		this.activityList.getSelectionModel().clearSelection();
-		
+
 		this.startDateInput.getEditor().clear();
 		this.endDateInput.getEditor().clear();
 	}

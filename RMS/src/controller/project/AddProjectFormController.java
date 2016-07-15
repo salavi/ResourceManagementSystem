@@ -55,8 +55,8 @@ public class AddProjectFormController {
 		String technologyGoal = goalOfTechId.getText();
 		Technology technology = new Technology(technologyName, technologyGoal);
 		listOfTechnologies.add(technology);
-		data.add(Integer.toString(++numberOfTechnologies) + "." + "Ù†Ø§Ù… ØªÚ©Ù†ÙˆÙ„ÙˆÚ˜ÛŒ:" + technologyName + "\n   "
-				+ "Ù‡Ø¯Ù� Ø§Ø³ØªÙ�Ø§Ø¯Ù‡:" + technologyGoal);
+		data.add(Integer.toString(++numberOfTechnologies) + "." + "نام تکنولوژی:" + technologyName + "\n   "
+				+ "هدف استفاده از تکنولوژی:" + technologyGoal);
 		technologyListViewId.setItems(data);
 
 		technologyNameId.clear();;
@@ -65,8 +65,6 @@ public class AddProjectFormController {
 
 	@FXML
 	public void handleAddProjectButton() {
-
-		System.out.println("handleAddProjectButton");
 		Process developmentProcess = new Process("DevelopmentProcess");
 		Process maintananceProcess = new Process("MaintananceProcess");
 		Project project = new Project(projectNameId.getText(), Integer.parseInt(numOfHumansId.getText()),
