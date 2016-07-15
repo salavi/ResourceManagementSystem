@@ -81,43 +81,14 @@ public class ReportMainPageController {
 		aProjectRoot.getChildren().add(typeOfResourceRoot);	
 	}
 	
-	
-	private List<TreeItem<String>> createTreeItemsForUnitInformationAndCounts(List<String> unitInformation, List<String> unitCount) {
-		try{
-			List<TreeItem<String>> children = new ArrayList<>();
-			int arraySize = unitInformation.size();
-			String array[] = new String[arraySize];
-			int counter = 0;
-			for (String information : unitInformation) {
-				array[counter] = information;
-				counter++;
-			}
-			counter = 0;
-			for(String count : unitCount){
-				array[counter] += " " + count;
-				counter++;
-			}
-			for(int i = 0; i < arraySize; i++){
-				TreeItem<String> element = new TreeItem<String> (array[i]);
-				children.add(element);
-			}
-			return children;
-		}
-		catch(Exception e){
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
-	private TreeItem<String> createATypeOfResourceRootForExistingResourcesReport(ResourceType type, TreeItem<String> existingResourcesListRoot){
+	private void createATypeOfResourceRootForExistingResourcesReport(ResourceType type, TreeItem<String> existingResourcesListRoot){
 		TreeItem<String> rootItem = new TreeItem<String> (type.getFarsiType());
 		rootItem.setExpanded(true);
-		List<String> financialResourcesUnitsInformation = Resource.getResourcesUnits(type.getEnglishType());
-		List<String> financialResourcesUnitsCount = Resource.getResourcesUnitCounts(type.getEnglishType());
-		rootItem.getChildren().addAll(createTreeItemsForUnitInformationAndCounts(financialResourcesUnitsInformation, financialResourcesUnitsCount));		
+		List<String> unitsOfResources = Resource.findExistingResourcesInUnits(type.getEnglishType());
+		if(unitsOfResources == null)
+			return;
+		rootItem.getChildren().addAll(createOrdinaryTreeItems(unitsOfResources));
 		existingResourcesListRoot.getChildren().add(rootItem);
-		rootItem.setExpanded(true);		
-		return rootItem;
 	}
 	
 	private List<TreeItem<String>> createOrdinaryTreeItems(List<String> elements) {

@@ -1,5 +1,7 @@
 package logic.organization.resource;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import logic.organization.unit.Unit;
@@ -31,14 +33,17 @@ public abstract class Resource {
 		this.resourceId = resourceId;
 	}
 	
-	public static List<String> getResourcesUnits(String type){
-		List<String> units = ResourceAdapter.getInstance().findUnitsOfResources(type);
-		return units;
-	}
-	
-	public static List<String> getResourcesUnitCounts(String type){
-		List<String> unitCounts = ResourceAdapter.getInstance().findUnitCountsOfResources(type);
-		return unitCounts;
+	public static List<String> findExistingResourcesInUnits(String type){
+		List<String> result = new ArrayList<>();
+		ResourceAdapter resourceAdapter = ResourceAdapter.getInstance();
+		Iterator<Object> it = resourceAdapter.findExistingResourcesInUnits(type).iterator();
+		if(it == null)
+			return null;
+		while(it.hasNext()){
+			Object[] tuples = (Object[]) it.next();
+			result.add("Unit: " + tuples[0] + "  Specialty: " + tuples[1] + "    Count: " + tuples[2]);
+		}
+		return result;
 	}
 	
 	public static ResourceModel createResourceModel(Long resourceId) {
