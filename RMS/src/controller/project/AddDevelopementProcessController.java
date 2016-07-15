@@ -3,11 +3,14 @@ package controller.project;
 import java.io.IOException;
 import java.time.LocalDate;
 
+import controller.ErrorMessage;
+import controller.SuccessMessage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import logic.organization.project.Project;
 
@@ -29,14 +32,18 @@ public class AddDevelopementProcessController extends AddProcessController {
 		String unit = this.unitList.getSelectionModel().getSelectedItem();
 		String project = this.projectList.getSelectionModel().getSelectedItem();
 
-		if (!isInputValid(activity, moduleName, moduleId, unit, project, startDate, endDate))
-			System.out.println("error");
-
+		if (!isInputValid(activity, moduleName, moduleId, unit, project, startDate, endDate)) {
+			message.setFill(Color.RED);
+			message.setText(ErrorMessage.INVALID_INPUT);
+		}
 		else {
 			Long unitId = units.get(unit);
 			Long projectId = projects.get(project);
 			new Project().addDevelopementProcess(projectId, unitId, activity, moduleName, moduleId, startDate, endDate,
 					selectedResourcesIds);
+			
+			message.setText(SuccessMessage.ADD_INFO);
+			message.setFill(Color.GREEN);
 		}
 
 		this.clear();

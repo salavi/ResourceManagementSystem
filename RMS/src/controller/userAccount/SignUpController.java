@@ -2,6 +2,7 @@ package controller.userAccount;
 
 import java.io.IOException;
 
+import controller.ErrorMessage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -63,7 +64,7 @@ public class SignUpController {
 				//TODO
 				//username is not unique
 				message.setFill(Color.RED);
-				message.setText("این نام کاربری موجود می‌باشد");
+				message.setText(ErrorMessage.DUPLICATE_USERNAME);
 				username.clear();
 			}
 			else if(success == 1){
@@ -85,7 +86,7 @@ public class SignUpController {
 		}
 		else{
 			message.setFill(Color.RED);
-			message.setText("وارد کردن تمامی اطلاعات الزامی است");
+			message.setText(ErrorMessage.INVALID_INPUT);
 		}
 	}
 }

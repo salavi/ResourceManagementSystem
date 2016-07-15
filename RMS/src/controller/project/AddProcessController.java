@@ -18,6 +18,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import logic.organization.project.Project;
 import logic.organization.resource.FinancialResourceCreator;
@@ -52,6 +53,8 @@ abstract class AddProcessController {
 	protected DatePicker endDateInput;
 	@FXML
 	protected ComboBox<String> resourceTypeCombo;
+	@FXML
+	protected Text message;
 	
 	protected Map<String, Long> units;
 	protected Map<String, Long> projects;

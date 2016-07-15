@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Map;
 
+import controller.ErrorMessage;
+import controller.SuccessMessage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import logic.organization.module.Module;
 import logic.organization.project.Project;
@@ -36,14 +39,19 @@ public class AddMaintananceProcessController extends AddProcessController {
 		String unit = this.unitList.getSelectionModel().getSelectedItem();
 		String project = this.projectList.getSelectionModel().getSelectedItem();
 		String module = this.moduleList.getSelectionModel().getSelectedItem();
-		if (!isInputValid(activity, startDate, endDate, unit, project, module))
-			System.out.println("error");
+		if (!isInputValid(activity, startDate, endDate, unit, project, module)) {
+			message.setFill(Color.RED);
+			message.setText(ErrorMessage.INVALID_INPUT);
+		}
 		else {
 			Long unitId = units.get(unit);
 			Long projectId = projects.get(project);
 			Long moduleId = modules.get(module);
 			new Project().addMaintananceProcess(projectId, moduleId, unitId, activity, startDate, endDate,
 					selectedResourcesIds);
+			
+			message.setText(SuccessMessage.ADD_INFO);
+			message.setFill(Color.GREEN);
 		}
 		this.clear();
 	}

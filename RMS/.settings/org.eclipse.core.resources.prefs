@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
+encoding//src/controller/ErrorMessage.java=UTF-8
 encoding//src/controller/MainApp.java=UTF-8
+encoding//src/controller/SuccessMessage.java=UTF-8
 encoding//src/controller/project/AddDevelopementProcessController.java=UTF-8
 encoding//src/controller/project/AddProcessController.java=UTF-8
 encoding//src/controller/project/AddProjectFormController.java=UTF-8

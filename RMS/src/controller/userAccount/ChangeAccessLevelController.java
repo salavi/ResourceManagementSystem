@@ -1,5 +1,7 @@
 package controller.userAccount;
 
+import controller.ErrorMessage;
+import controller.SuccessMessage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
@@ -26,11 +28,11 @@ public class ChangeAccessLevelController {
 	@FXML public void handleEnterButton(){
 		if(username.getText().isEmpty()){
 			message.setFill(Color.RED);
-			message.setText("لطفا نام کاربری را وارد نمایید");
+			message.setText(ErrorMessage.ENTER_USERNAME);
 		}
 		else if(!uppestLevelButton.isSelected() && !mediumLevelButton.isSelected() && !lowestLevelButton.isSelected()){
 			message.setFill(Color.RED);
-			message.setText("لطفا یکی از سطوح دسترسی را انتخاب نمایید");
+			message.setText(ErrorMessage.ENTER_ACCESS_LEVEL);
 		}
 		else{
 			message.setText("");
@@ -47,15 +49,15 @@ public class ChangeAccessLevelController {
 			int success = auth.getLoggedInUser().changeAccesssLevel(username.getText(), newAccessLevel);
 			if(success == -1){
 				message.setFill(Color.RED);
-				message.setText("نام کاربری مورد نظر یافت نشد");
+				message.setText(ErrorMessage.USERNAME_NOT_FOUND);
 			}
 			else if(success == 0){
 				message.setFill(Color.RED);
-				message.setText("سطح دسترسی شما از کاربر مورد نظر بالاتر نیست و امکان اعمال این تغییر وجود ندارد");
+				message.setText(ErrorMessage.LOWER_ACCESS_LEVEL);
 			}
 			else if(success == 1){
 				message.setFill(Color.GREEN);
-				message.setText("سطح دسترسی کاربر مورد نظر با موفقیت تغییر یافت");
+				message.setText(SuccessMessage.CHANGE_ACCESS_LEVEL);
 			}
 		}
 	}

@@ -1,5 +1,7 @@
 package controller.userAccount;
 
+import controller.ErrorMessage;
+import controller.SuccessMessage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -28,21 +30,21 @@ public class ChangePasswordController {
 	@FXML public void handleEnterButton(){
 		if (oldPassword.getText().isEmpty() || newPassword.getText().isEmpty() || newPasswordConfirmation.getText().isEmpty()) {
 			message.setFill(Color.RED);
-			message.setText("وارد کردن تمامی اطلاعات جهت ویرایش الزامی است");
+			message.setText(ErrorMessage.INVALID_INPUT);
 		} else {
 			// TODO agar yeki az field ha khali bud
 			message.setText("");
 			int success = auth.getLoggedInUser().editPassword(oldPassword.getText(), newPassword.getText(), newPasswordConfirmation.getText());
 			if (success == 1) {
 				message.setFill(Color.GREEN);
-				message.setText("اطلاعات وارد شده با موفقیت ویرایش شد");
+				message.setText(SuccessMessage.EDIT_INFO);
 			} else if (success == 0) {
 				message.setFill(Color.RED);
-				message.setText("رمز عبور قدیمی وارد شده با رمز عبور حساب کاربری یکسان نمی‌باشد");
+				message.setText(ErrorMessage.INVALID_OLD_PASS);
 			}
 			else if(success == 2){
 				message.setFill(Color.RED);
-				message.setText("رمز عبور جدید و تکرار آن متفاوت می‌باشند");
+				message.setText(ErrorMessage.DIFFERENT_PASS_AND_PASS_CONF);
 			}
 		}
 	}

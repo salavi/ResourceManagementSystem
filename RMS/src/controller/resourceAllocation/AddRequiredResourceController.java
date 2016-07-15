@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.Map;
 
+import controller.ErrorMessage;
+import controller.SuccessMessage;
 import controller.resourceManagement.AddResourceController;
 import controller.resourceManagement.ResourceType;
 import javafx.collections.FXCollections;
@@ -17,6 +19,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import logic.organization.resource.FinancialResourceCreator;
 import logic.organization.resource.HumanResourceCreator;
@@ -44,6 +48,8 @@ public class AddRequiredResourceController {
 	private Button addResourceButtonId;
 	@FXML
 	private DatePicker resolvingDatePickerId;
+	@FXML
+	private Text message;
 
 	private Map<String, Long> units;
 	private Map<String, Long> financialResources;
@@ -132,12 +138,17 @@ public class AddRequiredResourceController {
 		Long resourceId = -1l;
 		System.out.println();
 		if (resourceType == null || requirementStatus == null || resource == null || unit == null) {
-			System.out.println("error");
-		} else {
+			message.setFill(Color.RED);
+			message.setText(ErrorMessage.INVALID_INPUT);
+		} 
+		 else {
 			unitId = units.get(unit);
 			resourceId = findResourceId(resourceType, resource);
 			Unit unitResource = new Unit();
 			unitResource.addRequiredResourceToUnit(resourceId, unitId);
+			
+			message.setText(SuccessMessage.ADD_INFO);
+			message.setFill(Color.GREEN);
 		}
 		
 		this.clear();

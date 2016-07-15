@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Map;
 
+import controller.ErrorMessage;
+import controller.SuccessMessage;
 import controller.resourceManagement.ResourceType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import logic.organization.activity.Activity;
 import logic.organization.project.Project;
@@ -44,6 +48,8 @@ public class AddAllocatedResourceController {
 	private Button returnButton;
 	@FXML
 	private Button addResourceButton;
+	@FXML
+	private Text message;
 
 	private Map<String, Long> projects;
 	private Map<String, Long> humanResources;
@@ -84,13 +90,18 @@ public class AddAllocatedResourceController {
 		String resource = resourceList.getSelectionModel().getSelectedItem();
 		String project = projectCombo.getValue();
 		String activity = activityList.getSelectionModel().getSelectedItem();
-		if (!isInputValid(startDate, endDate, resourceType, resource, project, activity)) 
-			System.out.println("error");
+		if (!isInputValid(startDate, endDate, resourceType, resource, project, activity))  {
+			message.setFill(Color.RED);
+			message.setText(ErrorMessage.INVALID_INPUT);
+		}
 		else {
 			Long resourceId = getResourceId(resourceType, resource);			
 			Long projectId = projects.get(project);			
 			Long activityId = activities.get(activity);
 			new ResourceUsageHistory().createRUH(activityId, projectId, resourceId);
+			
+			message.setText(SuccessMessage.ADD_INFO);
+			message.setFill(Color.GREEN);
 		}
 		this.clear();
 	}

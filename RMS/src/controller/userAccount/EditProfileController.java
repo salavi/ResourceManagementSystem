@@ -1,5 +1,7 @@
 package controller.userAccount;
 
+import controller.ErrorMessage;
+import controller.SuccessMessage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -26,7 +28,7 @@ public class EditProfileController {
 	public void handleRegisterButton() {
 		if (firstName.getText().isEmpty() && lastName.getText().isEmpty()) {
 			message.setFill(Color.RED);
-			message.setText("لطفا اطلاعات را برای ویرایش وارد نمایید");
+			message.setText(ErrorMessage.INVALID_INPUT);
 		} else {
 			int success;
 			if(firstName.getText().isEmpty()){
@@ -40,10 +42,10 @@ public class EditProfileController {
 			}
 			if (success == 1) {
 				message.setFill(Color.GREEN);
-				message.setText("اطلاعات وارد شده با موفقیت ویرایش شد");
+				message.setText(SuccessMessage.EDIT_INFO);
 			} else if (success == -1) {
 				message.setFill(Color.RED);
-				message.setText("ویرایش اطلاعات ناموفق بود");
+				message.setText(ErrorMessage.EDIT_PROFILE);
 			}
 		}
 	}

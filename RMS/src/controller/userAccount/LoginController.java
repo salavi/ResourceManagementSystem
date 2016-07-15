@@ -2,7 +2,9 @@ package controller.userAccount;
 
 import java.io.IOException;
 
+import controller.ErrorMessage;
 import controller.MainApp;
+import controller.SuccessMessage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -47,18 +49,18 @@ public class LoginController {
 			loggedInUser = auth.login(username.getText(), password.getText());
 			if(loggedInUser == null){
 				message.setFill(Color.RED);
-				message.setText("کاربر با این مشخصات موجود نمی‌باشد");
+				message.setText(ErrorMessage.USER_NOT_FOUND);
 			}
 			else{
 				//TODO
 				message.setFill(Color.GREEN);
-				message.setText("ورود شما با موفقیت انجام شد");
+				message.setText(SuccessMessage.LOGIN);
 				showHomePage();
 			}
 		}
 		else{
 			message.setFill(Color.RED);
-			message.setText("لطفا نام کاربری و رمز عبور را وارد نمایید");
+			message.setText(ErrorMessage.ENTER_USERNAME_PASS);
 		}
 
 	}
