@@ -2,9 +2,6 @@ package controller.project;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Set;
-
-import javax.persistence.Version;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

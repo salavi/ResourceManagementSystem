@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Set;
 
 import controller.project.AddProjectFormController;
-import controller.resourceManagement.AddResourceController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

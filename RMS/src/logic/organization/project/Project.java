@@ -162,18 +162,97 @@ public class Project {
 		new ResourceUsageHistory().createRUH(activityModel, activityModel.getUnit(), projectModel, resources);
 	}
 
-	public List<Long> findSimilarProjects(int minNumOfHumans, int maxNumOfHumans, int minNumOfModules,
-			int maxNumOfModules, String[] technologies) {
-
+	public Map<String, List<String>> findSimilarProjectsHumanResources(int minNumOfHumans, int maxNumOfHumans,
+			int minNumOfModules, int maxNumOfModules, String[] technologies) {
+		Map<String, List<String>> resultMap = new HashMap();
 		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
-		List<Long> projectIds = projectAdapter.findSimilarProjects(minNumOfHumans, maxNumOfHumans, minNumOfModules,
-				maxNumOfModules, technologies);
+		Iterator<Object> dbIterator = projectAdapter.findSimilarProjectsHumanResources(minNumOfHumans, maxNumOfHumans,
+				minNumOfModules, maxNumOfModules, technologies).iterator();
 
-//		ResourceUsageHistoryAdapter resourceUsageHistoryAdapter = ResourceUsageHistoryAdapter.getInstance();
-		
-		return projectIds;
+		while (dbIterator.hasNext()) {
+			Object[] tuple = (Object[]) dbIterator.next();
+			String projectName = (String) tuple[0];
+			String humanResourceFirstName, humanResourceLastName;
+			if (tuple[1] != null) {
+				humanResourceFirstName = (String) tuple[1];
+				humanResourceLastName = (String) tuple[2];
+				if (!resultMap.containsKey(projectName)) {
+					resultMap.put(projectName, new ArrayList<>());
+				}
+				resultMap.get(projectName).add(humanResourceFirstName + " " + humanResourceLastName);
+			}
+		}
+		return resultMap;
+	}
+
+	public Map<String, List<String>> findSimilarProjectsInformationalResources(int minNumOfHumans, int maxNumOfHumans,
+			int minNumOfModules, int maxNumOfModules, String[] technologies) {
+		Map<String, List<String>> resultMap = new HashMap();
+		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
+		Iterator<Object> dbIterator = projectAdapter.findSimilarProjectsInformationalResources(minNumOfHumans, maxNumOfHumans,
+				minNumOfModules, maxNumOfModules, technologies).iterator();
+
+		while (dbIterator.hasNext()) {
+			Object[] tuple = (Object[]) dbIterator.next();
+			String projectName = (String) tuple[0];
+			String informationalResourceType;
+			if (tuple[1] != null) {
+				informationalResourceType = (String) tuple[1];
+				if (!resultMap.containsKey(projectName)) {
+					resultMap.put(projectName, new ArrayList<>());
+				}
+				resultMap.get(projectName).add(informationalResourceType);
+			}
+		}
+		return resultMap;
+	}
+
+	public Map<String, List<String>> findSimilarProjectsPhysicalResources(int minNumOfHumans, int maxNumOfHumans,
+			int minNumOfModules, int maxNumOfModules, String[] technologies) {
+		Map<String, List<String>> resultMap = new HashMap();
+		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
+		Iterator<Object> dbIterator = projectAdapter.findSimilarProjectsPhysicalResources(minNumOfHumans,
+				maxNumOfHumans, minNumOfModules, maxNumOfModules, technologies).iterator();
+
+		while (dbIterator.hasNext()) {
+			Object[] tuple = (Object[]) dbIterator.next();
+			String projectName = (String) tuple[0];
+			String physicalResourceType;
+			if (tuple[1] != null) {
+				physicalResourceType = (String) tuple[1];
+				if (!resultMap.containsKey(projectName)) {
+					resultMap.put(projectName, new ArrayList<>());
+				}
+				resultMap.get(projectName).add(physicalResourceType);
+			}
+		}
+		return resultMap;
+
 	}
 	
+	public Map<String, List<String>> findSimilarProjectsFinancialResources(int minNumOfHumans, int maxNumOfHumans,
+			int minNumOfModules, int maxNumOfModules, String[] technologies) {
+		Map<String, List<String>> resultMap = new HashMap();
+		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
+		Iterator<Object> dbIterator = projectAdapter.findSimilarProjectsFinancialResources(minNumOfHumans,
+				maxNumOfHumans, minNumOfModules, maxNumOfModules, technologies).iterator();
+
+		while (dbIterator.hasNext()) {
+			Object[] tuple = (Object[]) dbIterator.next();
+			String projectName = (String) tuple[0];
+			String financialResourceAmount;
+			if (tuple[1] != null) {
+				financialResourceAmount = Double.toString((Double)tuple[1]);
+				if (!resultMap.containsKey(projectName)) {
+					resultMap.put(projectName, new ArrayList<>());
+				}
+				resultMap.get(projectName).add(financialResourceAmount);
+			}
+		}
+		return resultMap;
+
+	}
+
 	
 	public Map<String, List<String>> getAResourceTypeUsedInProjects(String type){
 		Map<String, List<String>> projectNameResourcesList = new HashMap<>();
@@ -210,9 +289,9 @@ public class Project {
 		    	resource = tuple[1] + "";
 		    if(!projectNameResourcesList.containsKey(projectName)){
 				projectNameResourcesList.put(projectName, new ArrayList<>());
-			}
-			projectNameResourcesList.get(projectName).add(resource);
-		}				
+		    }
+		    projectNameResourcesList.get(projectName).add(resource);
+		}
 		return projectNameResourcesList;
 	}
 	

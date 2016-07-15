@@ -1,7 +1,5 @@
 package logic.organization.resource;
 
-import logic.organization.unit.Unit;
-
 class InformationalResource extends Resource {
 
 	private String type;

@@ -5,13 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import logic.authentication.UserAccount;
 
 
 @Entity
-//@Table(name = "UserAccounts", 
-//uniqueConstraints = @UniqueConstraint(columnNames = {"UserName"}))
+@Table(name = "UserAccount")
 public class UserAccountModel {
 	private String firstName;
 	private String lastName;	

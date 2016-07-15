@@ -10,32 +10,42 @@ import java.util.Set;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TreeCell;
+import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import logic.organization.resource.FinancialResourceCreator;
 import logic.organization.resource.HumanResourceCreator;
 import logic.organization.resource.InformationResourceCreator;
 import logic.organization.resource.PhysicalResourceCreator;
+import logic.organization.resource.Resource;
 import logic.organization.resource.ResourceFactory;
+import model.organization.resource.FinancialResourceModel;
+import model.organization.resource.HumanResourceModel;
+import model.organization.resource.InformationalResourceModel;
+import model.organization.resource.PhysicalResourceModel;
+import model.organization.resource.ResourceModel;
 
 public class ResourceManagementController {
 	@FXML private Button addResourceButton;
 	@FXML private TreeView<String> resourceListTree; 
 	
-//	private final Node rootIcon = new ImageView(
-//	        new Image(getClass().getResourceAsStream("folder_16.png"))
-//	    );
+	@FXML private Label resourceTypeLabel;
+	@FXML private Label resourceIdLabel;
+	@FXML private Label currentUnitLabel;
+	@FXML private Label firstDataLabel;
+	@FXML private Label firstTitleLabel;
+	@FXML private Label secondDataLabel;
+	@FXML private Label secondTitleLabel;
+	
+	@FXML private GridPane gridPane;
+	
 	
 	private Map<String, Long> humanResources;
 	private Map<String, Long> informationalResources;
@@ -80,11 +90,69 @@ public class ResourceManagementController {
 		return children;
 	}
 	
-	private void showResourceInfo(Long resourceId, ResourceType resourceType) {
+	private void showResourceInfo(String key) {
+		Long resourceId;
+		ResourceModel resource = null;
+		this.gridPane.setVisible(true);
+		if (humanResources.containsKey(key)) {
+        	resourceId = humanResources.get(key);
+        	resource = Resource.createResourceModel(resourceId);
+        	
+        	this.resourceTypeLabel.setText(ResourceType.HUMANRESOUCE.getFarsiType());
+        	
+        	this.firstTitleLabel.setText("نام");
+        	this.firstDataLabel.setText(((HumanResourceModel)resource).getFirstName());
+        	
+        	this.secondTitleLabel.setVisible(true);
+        	this.secondTitleLabel.setText("نام خانوادگی");
+        	this.secondDataLabel.setVisible(true);
+        	this.secondDataLabel.setText(((HumanResourceModel)resource).getLastName());
+        }
+        else if (physicalResources.containsKey(key)) {
+        	resourceId = physicalResources.get(key);
+        	resource = Resource.createResourceModel(resourceId);
+        	
+        	this.resourceTypeLabel.setText(ResourceType.PHYSICALRESOURCE.getFarsiType());
+        	
+        	this.firstTitleLabel.setText("نوع");
+        	this.firstDataLabel.setText(((PhysicalResourceModel)resource).getType());
+        	
+        	this.secondTitleLabel.setVisible(false);
+        	this.secondDataLabel.setVisible(false);
+        }
+        else if (informationalResources.containsKey(key)) {
+        	resourceId = informationalResources.get(key);
+        	resource = Resource.createResourceModel(resourceId);
+        	
+        	this.resourceTypeLabel.setText(ResourceType.INFORMATIONALRESOURCE.getFarsiType());
+        	
+        	this.firstTitleLabel.setText("نوع");
+        	this.firstDataLabel.setText(((InformationalResourceModel)resource).getType());
+        	
+        	this.secondTitleLabel.setVisible(false);
+        	this.secondDataLabel.setVisible(false);
+        }
+        else if (financialResources.containsKey(key)) {
+        	resourceId = financialResources.get(key);
+        	resource = Resource.createResourceModel(resourceId);
+        	
+        	this.resourceTypeLabel.setText(ResourceType.FINANCIALRESOURCE.getFarsiType());
+        	
+        	this.firstTitleLabel.setText("بودجه");
+        	this.firstDataLabel.setText(((FinancialResourceModel)resource).getAmount() + "");
+        	
+        	this.secondTitleLabel.setVisible(false);
+        	this.secondDataLabel.setVisible(false);
+        }
 		
-	}
+		this.resourceIdLabel.setText(resource.getResourceId());
+		this.currentUnitLabel.setText(resource.getCurrentUnit().getSpecialty());
+    }
+		
+	
 	
 	public void showAllResources() {
+		this.gridPane.setVisible(false);
 		TreeItem<String> resourceRoot = new TreeItem<String> ("منابع سازمان");
 		resourceRoot.setExpanded(true);
 		
@@ -124,26 +192,9 @@ public class ResourceManagementController {
 
 		            TreeItem<String> selectedItem = (TreeItem<String>) newValue;
 		            String key = selectedItem.getValue();
-		            if (humanResources.containsKey(key)) {
-		            	Long resourceId = humanResources.get(key);
-		            	showResourceInfo(resourceId, ResourceType.HUMANRESOUCE);
-		            }
-		            else if (physicalResources.containsKey(key)) {
-		            	Long resourceId = physicalResources.get(key);
-		            	showResourceInfo(resourceId, ResourceType.PHYSICALRESOURCE);
-		            }
-		            else if (informationalResources.containsKey(key)) {
-		            	Long resourceId = informationalResources.get(key);
-		            	showResourceInfo(resourceId, ResourceType.INFORMATIONALRESOURCE);
-		            }
-		            else if (financialResources.containsKey(key)) {
-		            	Long resourceId = financialResources.get(key);
-		            	showResourceInfo(resourceId, ResourceType.FINANCIALRESOURCE);
-		            }
+		            showResourceInfo(key);
 		        }
-
 		      });
- 
 	}
 
 }

@@ -9,8 +9,6 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Transaction;
 
 import model.Adapter;
-import model.authentication.UserAccountModel;
-import model.organization.module.ModuleModel;
 
 public class ResourceAdapter extends Adapter{
 	private static ResourceAdapter instance = null;
