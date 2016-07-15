@@ -1,13 +1,5 @@
 package logic.organization.project;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import model.organization.project.TechnologyAdapter;
-import model.organization.project.TechnologyModel;
-import model.organization.unit.UnitModel;
-
 public class Technology {
 	
 	private String name;

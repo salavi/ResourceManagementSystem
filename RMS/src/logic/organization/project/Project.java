@@ -17,7 +17,6 @@ import model.organization.project.ProcessModel;
 import model.organization.project.ProjectAdapter;
 import model.organization.project.ProjectModel;
 import model.organization.project.TechnologyModel;
-import model.organization.resourceUsage.ResourceUsageHistoryAdapter;
 
 public class Project {
 

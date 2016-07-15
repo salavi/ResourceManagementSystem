@@ -1,7 +1,5 @@
 package logic.organization.resource;
 
-import logic.organization.unit.Unit;
-
 class HumanResource extends Resource {
 
 	private String firstName;

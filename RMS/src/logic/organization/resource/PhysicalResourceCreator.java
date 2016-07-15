@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import model.organization.resource.InformationalResourceModel;
 import model.organization.resource.PhysicalResourceModel;
 import model.organization.resource.ResourceAdapter;
 import model.organization.resource.ResourceModel;
