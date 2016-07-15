@@ -32,6 +32,7 @@ public class Project {
 	public Project() {
 		developmentProcess = new Process("developmentProcess ");
 		maintenanceProcess = new Process("maintenanceProcess");
+		listOfTechnologies = new ArrayList<>();
 
 	}
 
@@ -298,6 +299,19 @@ public class Project {
 	public List<String> getAllProjectNamesUsedInResourceUsageHistory(){
 		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
 		return projectAdapter.getAllProjectNamesUsedInResourceUsageHistory();
+	}
+
+	public Project getProject(Long projectId) {
+		ProjectModel projectModel = ProjectAdapter.getInstance().getProject(projectId);
+		this.setName(projectModel.getName());
+		this.setNumOfInvolvedHumans(projectModel.getNumOfInvolvedHumans());
+		this.setNumOfModules(projectModel.getNumOfModules());
+		
+		for (TechnologyModel technology : projectModel.getListOfTechnologies()) {
+			this.listOfTechnologies.add(new Technology(technology.getName(), technology.getGoalOfUsage()));
+		}
+		
+		return this;
 	}
 }
 

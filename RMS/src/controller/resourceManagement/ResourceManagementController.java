@@ -184,7 +184,7 @@ public class ResourceManagementController {
 		resourceRoot.getChildren().add(informationalRootItem);
 		
 		this.resourceListTree.setRoot(resourceRoot);
-		 this.resourceListTree.getSelectionModel().selectedItemProperty().addListener( new ChangeListener() {
+		this.resourceListTree.getSelectionModel().selectedItemProperty().addListener( new ChangeListener() {
 
 		        @Override
 		        public void changed(ObservableValue observable, Object oldValue,
