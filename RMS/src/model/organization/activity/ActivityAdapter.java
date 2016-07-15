@@ -7,6 +7,7 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Transaction;
 
 import model.Adapter;
+import model.organization.project.ProjectModel;
 
 public class ActivityAdapter extends Adapter {
 
@@ -50,15 +51,15 @@ public class ActivityAdapter extends Adapter {
 			return null;
 		}
 	}
-	
+
 	public List<Object> findAll(String typeOfProcess) {
 		try {
 			// creating transaction object
 			Transaction t = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery("SELECT activity.id, activity.Name FROM activity "
 					+ "LEFT JOIN process on activity.pid = process.id "
-					+ "LEFT JOIN module on activity.module = module.ID "
-					+ "WHERE process.TypeOfProcess = '"+ typeOfProcess + "'");
+					+ "LEFT JOIN module on activity.module = module.ID " + "WHERE process.TypeOfProcess = '"
+					+ typeOfProcess + "'");
 			List<Object> activityList = query.list();
 			t.commit();// transaction is committed
 			System.out.println("retrieved");
@@ -69,7 +70,6 @@ public class ActivityAdapter extends Adapter {
 			return null;
 		}
 	}
-	
 
 	public int updateActivity(ActivityModel activityModel) {
 		try {
@@ -84,16 +84,21 @@ public class ActivityAdapter extends Adapter {
 			return -1;
 		}
 	}
-	
 
 	public List<ActivityModel> findActivitiesOfProject(Long projectId) {
 		try {
 			// creating transaction object
 			Transaction t = session.beginTransaction();
-			SQLQuery query = session.createSQLQuery("SELECT * FROM activity JOIN project ON activity.pid = project.DevProcID WHERE project.ID =" + projectId).addEntity(ActivityModel.class);
+			SQLQuery query = session.createSQLQuery(
+					"SELECT * FROM activity JOIN project ON activity.pid = project.DevProcID WHERE project.ID ="
+							+ projectId)
+					.addEntity(ActivityModel.class);
 			List<ActivityModel> activityList = query.list();
-			 
-			query = session.createSQLQuery("SELECT * FROM activity JOIN project ON activity.pid = project.MainProcID WHERE project.ID =" + projectId).addEntity(ActivityModel.class);
+
+			query = session.createSQLQuery(
+					"SELECT * FROM activity JOIN project ON activity.pid = project.MainProcID WHERE project.ID ="
+							+ projectId)
+					.addEntity(ActivityModel.class);
 			activityList.addAll(query.list());
 			t.commit();// transaction is committed
 			System.out.println("retrieved");
@@ -107,8 +112,21 @@ public class ActivityAdapter extends Adapter {
 
 	public ActivityModel getActivity(Long activityId) {
 		Transaction t = session.beginTransaction();
-		ActivityModel unit = (ActivityModel)session.get(ActivityModel.class, activityId);
+		ActivityModel unit = (ActivityModel) session.get(ActivityModel.class, activityId);
 		return unit;
 	}
 
+	public String getProjectName(Long activityId, String processType) {
+		Transaction t = session.beginTransaction();
+		SQLQuery query = session
+				.createSQLQuery(
+						"SELECT project.Name FROM project "
+						+ "LEFT JOIN process ON process.ID = project." + processType
+						+ " LEFT JOIN activity on process.ID = activity.pid "
+						+ "WHERE activity.ID = " + activityId);
+		String projectName = (String) query.list().get(0);
+		t.commit();// transaction is committed
+		System.out.println("retrieved");
+		return projectName;
+	}
 }

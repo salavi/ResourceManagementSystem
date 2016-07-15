@@ -17,6 +17,15 @@ public class Unit {
 	private String specialty;
 	private ArrayList<Resource> RequiredResources;
 	private ArrayList<Resource> ExistingResources;
+	
+	public Unit(UnitModel unitModel) {
+		this.unitId = unitModel.getUnitId();
+		this.specialty = unitModel.getSpecialty();
+	}
+
+	public Unit() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Map<String, Long> getAllUnits() {
 		UnitAdapter unitAdapter = UnitAdapter.getInstance();

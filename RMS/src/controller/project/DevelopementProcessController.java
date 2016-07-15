@@ -1,18 +1,24 @@
 package controller.project;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import logic.organization.activity.Activity;
 
@@ -23,6 +29,15 @@ public class DevelopementProcessController {
 	Button addMainProcessButton;
 	@FXML
 	TreeView<String> activityListTree;
+	
+	@FXML private Label activityNameLabel;
+	@FXML private Label startDateLabel;
+	@FXML private Label endDateLabel;
+	@FXML private Label projectNameLabel;
+	@FXML private Label unitNameLabel;
+	@FXML private Label moduleNameLabel;
+	
+	@FXML private GridPane gridPane;
 	
 	private Map<String, Long> devActivities;
 	private Map<String, Long> mainActivities;
@@ -86,7 +101,34 @@ public class DevelopementProcessController {
 		return children;
 	}
 	
+	private void showActivityInfo(String key) {
+		Long activityId;
+		Activity activity;
+		String projectName;
+		if(this.devActivities.containsKey(key)) {
+			activityId = this.devActivities.get(key);
+			activity = new Activity().getActivity(activityId);
+			projectName = activity.getProjectNameOfActivity(activityId, "DevProcID");
+		}
+		else {
+			activityId = this.mainActivities.get(key);
+			activity = new Activity().getActivity(activityId);
+			projectName = activity.getProjectNameOfActivity(activityId, "MainProcID");
+		}
+		
+		this.gridPane.setVisible(true);
+		this.activityNameLabel.setText(activity.getName());
+		this.moduleNameLabel.setText(activity.getModule().getName());
+		this.unitNameLabel.setText(activity.getUnit().getSpeciality());
+		
+		this.startDateLabel.setText(activity.getStartDate().toString());
+		this.endDateLabel.setText(activity.getEndDate().toString());
+		
+		this.projectNameLabel.setText(projectName);
+	}
+	
 	public void showAllActivities() {
+		this.gridPane.setVisible(false);
 		TreeItem<String> activityRoot = new TreeItem<String> ("فرآیندهای سازمان");
 		activityRoot.setExpanded(true);
 
@@ -106,5 +148,16 @@ public class DevelopementProcessController {
 		activityRoot.getChildren().add(mainActivityRoot);
 		
 		activityListTree.setRoot(activityRoot);
+		activityListTree.getSelectionModel().selectedItemProperty().addListener( new ChangeListener() {
+
+	        @Override
+	        public void changed(ObservableValue observable, Object oldValue,
+	                Object newValue) {
+
+	            TreeItem<String> selectedItem = (TreeItem<String>) newValue;
+	            String key = selectedItem.getValue();
+	            showActivityInfo(key);
+	        }
+	      });
 	}
 }

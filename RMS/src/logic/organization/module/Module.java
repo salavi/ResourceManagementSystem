@@ -12,6 +12,15 @@ public class Module {
 	private String name;
 	private String moduleId;
 	
+	public Module(ModuleModel moduleModel) {
+		this.name = moduleModel.getName();
+		this.moduleId = moduleModel.getModuleId();
+	}
+	
+	public Module() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getName() {
 		return name;
 	}

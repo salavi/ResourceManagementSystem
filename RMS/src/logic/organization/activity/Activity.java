@@ -149,5 +149,19 @@ public class Activity {
 		}
 		return convertedActivities;
 	}
+
+	public Activity getActivity(Long activityId) {
+		ActivityModel activityModel = ActivityAdapter.getInstance().getActivity(activityId);
+		this.setStartDate(activityModel.getStartDate());
+		this.setEndDate(activityModel.getEndDate());
+		this.setModule(new Module(activityModel.getModule()));
+		this.setUnit(new Unit(activityModel.getUnit()));
+		
+		return this;
+	}
+
+	public String getProjectNameOfActivity(Long activityId, String processType) {
+		return ActivityAdapter.getInstance().getProjectName(activityId, processType);
+	}
 	
 }
