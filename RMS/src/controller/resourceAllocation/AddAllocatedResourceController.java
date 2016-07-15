@@ -57,6 +57,11 @@ public class AddAllocatedResourceController {
 	private Map<String, Long> informationalResources;
 	private Map<String, Long> physicalResources;
 	private Map<String, Long> activities;
+	
+	public AddAllocatedResourceController() {
+		// TODO Auto-generated constructor stub
+		message = new Text();
+	}
 
 	@FXML
 	private void handleAddResourceButton() {

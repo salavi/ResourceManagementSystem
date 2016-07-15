@@ -66,6 +66,7 @@ abstract class AddProcessController {
 
 	public AddProcessController() {
 		super();
+		message = new Text();
 	}
 	
 	@FXML

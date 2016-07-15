@@ -49,6 +49,11 @@ public class AddResourceController {
 
 	private Map<String, Long> units;
 	private String returnState;
+	
+	public AddResourceController() {
+		// TODO Auto-generated constructor stub
+		message = new Text();
+	}
 
 	@FXML
 	private void handleResourceTypeCombo() {

@@ -56,6 +56,11 @@ public class AddRequiredResourceController {
 	private Map<String, Long> informationalResources;
 	private Map<String, Long> humanResources;
 	private Map<String, Long> physicalResources;
+	
+	public AddRequiredResourceController() {
+		// TODO Auto-generated constructor stub
+		message = new Text();
+	}
 
 	@FXML
 	public void handleResourceTypeCombo() {
