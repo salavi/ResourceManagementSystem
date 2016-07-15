@@ -11,10 +11,10 @@
    		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
    		<property name="hibernate.connection.url">jdbc:mysql://localhost/RMS</property>
         <property name="connection.username">root</property>  
-        <property name="connection.password">root</property>   
-   		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>  
-    <mapping resource="DBXML/UserAccount.hbm.xml"/>
+        <property name="connection.password"></property>   
+   		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <mapping resource="DBXML/Resource.hbm.xml"/>
+    <mapping resource="DBXML/UserAccount.hbm.xml"/>
     <mapping resource="DBXML/Unit.hbm.xml"/>
     <mapping resource="DBXML/Module.hbm.xml"/>
     <mapping resource="DBXML/Activity.hbm.xml"/>
