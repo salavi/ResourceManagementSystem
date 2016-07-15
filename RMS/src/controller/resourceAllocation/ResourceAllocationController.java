@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Set;
 
 import controller.project.AddProjectFormController;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,11 +16,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import logic.organization.project.Project;
+import logic.organization.project.Technology;
 import model.organization.project.ProjectModel;
 
 public class ResourceAllocationController {
@@ -32,7 +37,16 @@ public class ResourceAllocationController {
 	@FXML
 	private TreeView<String> projectListTreeId;
 	@FXML
-	private TableColumn<ProjectModel, String> projectsColumn;
+	private Label projectNameLabelId;
+	@FXML
+	private Label numOfHumanLabelId;
+	@FXML
+	private Label numOfModuleLabelId;
+	@FXML
+	private ListView<String> listOfTechnologiesListId;
+	@FXML
+	private GridPane gridPaneId;
+	
 	
 	private ObservableList<ProjectModel> retrievedProjectData = FXCollections.observableArrayList();
 
@@ -119,14 +133,44 @@ public class ResourceAllocationController {
 		
 		return children;
 	}
-	
+
+	private void showProjectInfo(String key) {
+		this.gridPaneId.setVisible(true);
+
+		Long projectId = projectsList.get(key);
+		Project project = new Project().getProject(projectId);
+		
+		this.projectNameLabelId.setText(project.getName());
+		this.numOfHumanLabelId.setText(project.getNumOfInvolvedHumans() + "");
+		this.numOfModuleLabelId.setText(project.getNumOfModules() + "");
+		
+		this.listOfTechnologiesListId.setVisible(true);
+		ObservableList<String> items = FXCollections.observableArrayList();
+		for (Technology tech : project.getListOfTechnologies()) {
+			items.add(tech.getName());
+		}
+		this.listOfTechnologiesListId.setItems(items);
+	}
 
 	public void showAllProjects() {
+		this.gridPaneId.setVisible(false);
+		this.listOfTechnologiesListId.setVisible(false);
 		TreeItem<String> projectRoot = new TreeItem<String> ("پروژه های سازمان");
 		projectRoot.setExpanded(true);
 		projectsList = new Project().getAllProjects();
 		projectRoot.getChildren().addAll(createTreeItems(projectsList.keySet()));
 		this.projectListTreeId.setRoot(projectRoot);
+		this.projectListTreeId.getSelectionModel().selectedItemProperty().addListener( new ChangeListener() {
+
+	        @Override
+	        public void changed(ObservableValue observable, Object oldValue,
+	                Object newValue) {
+
+	            TreeItem<String> selectedItem = (TreeItem<String>) newValue;
+	            String key = selectedItem.getValue();
+	            showProjectInfo(key);
+	        }
+	      });
 	}
 
 }

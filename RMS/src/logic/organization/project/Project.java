@@ -31,6 +31,7 @@ public class Project {
 	public Project() {
 		developmentProcess = new Process("developmentProcess ");
 		maintenanceProcess = new Process("maintenanceProcess");
+		listOfTechnologies = new ArrayList<>();
 
 	}
 
@@ -299,6 +300,19 @@ public class Project {
 			myMap.get(projectName).add(informationalResourceType);
 		}
 		return myMap;
+	}
+
+	public Project getProject(Long projectId) {
+		ProjectModel projectModel = ProjectAdapter.getInstance().getProject(projectId);
+		this.setName(projectModel.getName());
+		this.setNumOfInvolvedHumans(projectModel.getNumOfInvolvedHumans());
+		this.setNumOfModules(projectModel.getNumOfModules());
+		
+		for (TechnologyModel technology : projectModel.getListOfTechnologies()) {
+			this.listOfTechnologies.add(new Technology(technology.getName(), technology.getGoalOfUsage()));
+		}
+		
+		return this;
 	}
 }
 
