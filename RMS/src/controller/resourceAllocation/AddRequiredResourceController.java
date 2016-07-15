@@ -74,9 +74,9 @@ public class AddRequiredResourceController {
 	@FXML
 	public void handleRequirementStatusCombo() {
 		String value = (String) requirementStatusComboId.getValue();
-		if (value.equals("رفع شده است")) {
+		if (value.equals("رفع شده")) {
 			resolvingDatePickerId.setDisable(false);
-		} else if (value.equals("رفع نشده است")) {
+		} else if (value.equals("رفع نشده")) {
 			resolvingDatePickerId.setDisable(true);
 		}
 	}
@@ -139,7 +139,8 @@ public class AddRequiredResourceController {
 			Unit unitResource = new Unit();
 			unitResource.addRequiredResourceToUnit(resourceId, unitId);
 		}
-
+		
+		this.clear();
 	}
 
 	private Long findResourceId(String resourceType, String resource) {
@@ -175,8 +176,15 @@ public class AddRequiredResourceController {
 	}
 
 	private void showRequirementStatus() {
-		ObservableList<String> requirementStatus = FXCollections.observableArrayList("رفع شده است", "رفع نشده است");
+		ObservableList<String> requirementStatus = FXCollections.observableArrayList("رفع شده", "رفع نشده");
 		requirementStatusComboId.setItems(requirementStatus);
+	}
+	
+	private void clear() {
+		this.resourceList.getSelectionModel().clearSelection();
+		this.unitList.getSelectionModel().clearSelection();
+		
+		this.resolvingDatePickerId.getEditor().clear();
 	}
 
 	public void initial() {

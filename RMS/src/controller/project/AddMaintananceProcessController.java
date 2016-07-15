@@ -53,6 +53,8 @@ public class AddMaintananceProcessController extends AddProcessController {
 
 		new Project().addMaintananceProcess(projectId, moduleId, unitId, activity, startDate, endDate,
 				selectedResourcesIds);
+		
+		this.clear();
 	}
 
 	private void showModuleList() {
@@ -83,5 +85,11 @@ public class AddMaintananceProcessController extends AddProcessController {
 			e.printStackTrace();
 		}
 
+	}
+	
+	protected void clear() {
+		System.out.println("cleaaaaaaaaaar");
+		super.clear();
+		this.moduleList.getSelectionModel().clearSelection();
 	}
 }

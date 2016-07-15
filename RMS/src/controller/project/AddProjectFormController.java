@@ -55,8 +55,8 @@ public class AddProjectFormController {
 		String technologyGoal = goalOfTechId.getText();
 		Technology technology = new Technology(technologyName, technologyGoal);
 		listOfTechnologies.add(technology);
-		data.add(Integer.toString(++numberOfTechnologies) + "." + "نام تکنولوژی:" + technologyName + "\n   "
-				+ "هدف استفاده:" + technologyGoal);
+		data.add(Integer.toString(++numberOfTechnologies) + "." + "Ù†Ø§Ù… ØªÚ©Ù†ÙˆÙ„ÙˆÚ˜ÛŒ:" + technologyName + "\n   "
+				+ "Ù‡Ø¯Ù� Ø§Ø³ØªÙ�Ø§Ø¯Ù‡:" + technologyGoal);
 		technologyListViewId.setItems(data);
 
 		technologyNameId.clear();;
@@ -72,6 +72,7 @@ public class AddProjectFormController {
 		Project project = new Project(projectNameId.getText(), Integer.parseInt(numOfHumansId.getText()),
 				Integer.parseInt(numOfModulesId.getText()), developmentProcess, maintananceProcess, listOfTechnologies);
 		project.addProjectToDB();
+		this.clear();
 	}
 	
 	@FXML
@@ -99,6 +100,16 @@ public class AddProjectFormController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	private void clear() {
+		this.technologyListViewId.getItems().clear();
+		
+		this.technologyNameId.clear();
+		this.goalOfTechId.clear();
+		this.projectNameId.clear();
+		this.numOfHumansId.clear();
+		this.numOfModulesId.clear();
 	}
 
 	public String getReturnState() {

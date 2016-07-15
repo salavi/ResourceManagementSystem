@@ -35,8 +35,6 @@ public class AddAllocatedResourceController {
 	@FXML
 	private ListView<String> activityList;
 	@FXML
-	private ListView<String> unitList;
-	@FXML
 	private DatePicker startDateInput;
 	@FXML
 	private DatePicker endDateInput;
@@ -94,6 +92,7 @@ public class AddAllocatedResourceController {
 		Long activityId = activities.get(activity);
 		
 		new ResourceUsageHistory().createRUH(activityId, projectId, resourceId);
+		this.clear();
 	}
 	
 	@FXML
@@ -163,5 +162,14 @@ public class AddAllocatedResourceController {
 		projects = project.getAllProjects();
 		ObservableList<String> items = FXCollections.observableArrayList(projects.keySet());
 		projectCombo.setItems(items);
+	}
+	
+	private void clear() {
+		this.resourceList.getSelectionModel().clearSelection();
+		this.activityList.getSelectionModel().clearSelection();
+		this.activityList.getSelectionModel().clearSelection();
+		
+		this.startDateInput.getEditor().clear();
+		this.endDateInput.getEditor().clear();
 	}
 }

@@ -119,10 +119,7 @@ public class AddResourceController {
 				new HumanResourceCreator().createHumanResource(unitId, resourceId, firstValue, secondValue);
 			}
 		}
-
-		this.resourceId.clear();
-		this.firstInput.clear();
-		this.secondInput.clear();
+		this.clear();
 	}
 
 	private void showUnitsList() {
@@ -136,6 +133,14 @@ public class AddResourceController {
 		ObservableList<String> types = FXCollections.observableArrayList("منبع مالی", "منبع انسانی", "منبع فیزیکی",
 				"منبع اطلاعاتی");
 		resourceTypeCombo.setItems(types);
+	}
+	
+	private void clear() {
+		this.resourceId.clear();
+		this.firstInput.clear();
+		this.secondInput.clear();
+		
+		this.unitList.getSelectionModel().clearSelection();
 	}
 
 	public void initial() {

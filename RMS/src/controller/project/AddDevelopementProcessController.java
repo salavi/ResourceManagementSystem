@@ -40,6 +40,8 @@ public class AddDevelopementProcessController extends AddProcessController {
 
 		new Project().addDevelopementProcess(projectId, unitId, activity, moduleName, moduleId, startDate, endDate,
 				selectedResourcesIds);
+		
+		this.clear();
 	}
 
 	@Override
@@ -63,6 +65,12 @@ public class AddDevelopementProcessController extends AddProcessController {
 			e.printStackTrace();
 		}
 
+	}
+	
+	protected void clear() {
+		super.clear();
+		this.moduleIdInput.clear();
+		this.moduleNameInput.clear();
 	}
 
 }

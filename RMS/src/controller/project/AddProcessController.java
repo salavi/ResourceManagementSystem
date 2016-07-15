@@ -152,6 +152,17 @@ abstract class AddProcessController {
 		this.showUnitList();
 		this.showProjectList();
 	}
+	
+	protected void clear() {
+		this.activityNameInput.clear();
+		this.startDateInput.getEditor().clear();
+		this.endDateInput.getEditor().clear();
+		
+		this.unitList.getSelectionModel().clearSelection();
+		this.projectList.getSelectionModel().clearSelection();
+		this.resourceList.getSelectionModel().clearSelection();
+		this.resourceList.getItems().clear();
+	}
 
 	private void showResourceTypes() {
 		ObservableList<String> types = FXCollections.observableArrayList(
