@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.exception.ConstraintViolationException;
 
 import model.Adapter;
@@ -23,6 +24,9 @@ public class UserAccountAdapter extends Adapter {
 		try {
 			// creating transaction object
 			Transaction t = session.beginTransaction();
+			int userAccountCount = ((Long) getSession().createQuery("select count(*) from UserAccountModel").uniqueResult()).intValue();
+			if(userAccountCount <= 2)
+				userAcModel.setAccessLevel(2);
 			session.persist(userAcModel);// persisting the object
 			t.commit();// transaction is committed
 			System.out.println("saved");
