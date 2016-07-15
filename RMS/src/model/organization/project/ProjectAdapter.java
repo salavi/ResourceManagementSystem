@@ -3,13 +3,11 @@ package model.organization.project;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Transaction;
 
 import model.Adapter;
-import model.organization.unit.UnitModel;
 
 public class ProjectAdapter extends Adapter {
 	private static ProjectAdapter instance = null;
@@ -132,7 +130,6 @@ public class ProjectAdapter extends Adapter {
 					+ "LEFT JOIN resource ON ruhresources.ResourceID=resource.ID "
 					+ "LEFT JOIN FinancialResource ON FinancialResource.FinancialResourceID=resource.ID");
 			SQLQuery query = session.createSQLQuery(sql);
-//			query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
 			result = query.list();
 			t.commit();// transaction is committed
 			return result;
@@ -149,12 +146,12 @@ public class ProjectAdapter extends Adapter {
 			
 			// creating transaction object
 			Transaction t = session.beginTransaction();
-			String sql = ("SELECT project.Name, InformationResource.type FROM PROJECT RIGHT JOIN resourceusagehistory ON project.ID=resourceusagehistory.project"
+			String sql = ("SELECT project.Name, InformationResource.type FROM PROJECT"
+					+ " RIGHT JOIN resourceusagehistory ON project.ID=resourceusagehistory.project"
 					+ " RIGHT JOIN ruhresources ON resourceusagehistory.ID=ruhresources.ruhID"
 					+ " LEFT JOIN resource ON ruhresources.ResourceID=resource.ID"
 					+ " LEFT JOIN InformationResource ON InformationResource.InformationResourceID=resource.ID");
 			SQLQuery query = session.createSQLQuery(sql);
-//			query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
 			result = query.list();
 			t.commit();// transaction is committed
 			return result;
@@ -165,29 +162,66 @@ public class ProjectAdapter extends Adapter {
 		}
 	}
 	
+	public List<Object> getHumanResourcesUsedInProjects(){
+		try{
+			List<Object> result = new ArrayList<>();
+			
+			// creating transaction object
+			Transaction t = session.beginTransaction();
+			String sql = ("SELECT project.Name, HumanResource.firstName, HumanResource.lastName "
+					+ "FROM PROJECT RIGHT JOIN resourceusagehistory ON project.ID=resourceusagehistory.project "
+					+ "RIGHT JOIN ruhresources ON resourceusagehistory.ID=ruhresources.ruhID "
+					+ "LEFT JOIN resource ON ruhresources.ResourceID=resource.ID "
+					+ "LEFT JOIN HumanResource ON HumanResource.HumanResourceID=resource.ID");
+			SQLQuery query = session.createSQLQuery(sql);
+			result = query.list();
+			t.commit();// transaction is committed
+			return result;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
-//	public List<String> getFinancialResourcesUsedInProjects(){
-//		try{
-//			List<String> result = new ArrayList<>();
-//			
-//			// creating transaction object
-//			Transaction t = session.beginTransaction();
-//			String sql = ("SELECT project.Name, FinancialResource.amount FROM PROJECT RIGHT JOIN resourceusagehistory ON project.ID=resourceusagehistory.project "
-//					+ "RIGHT JOIN ruhresources ON resourceusagehistory.ID=ruhresources.ruhID "
-//					+ "LEFT JOIN resource ON ruhresources.ResourceID=resource.ID "
-//					+ "LEFT JOIN FinancialResource ON FinancialResource.FinancialResourceID=resource.ID");
-//			SQLQuery query = session.createSQLQuery(sql);
-//			query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-//			List<Object> projResources = query.list();
-//			for (Object projectResource: projResources){
-//				result.add(projectResource.toString());
-//			}
-//			t.commit();// transaction is committed
-//			return result;
-//		}
-//		catch(Exception e){
-//			e.printStackTrace();
-//			return null;
-//		}
-//	}
+	public List<Object> getPhysicalResourcesUsedInProjects(){
+		try{
+			List<Object> result = new ArrayList<>();
+			
+			// creating transaction object
+			Transaction t = session.beginTransaction();
+			String sql = ("SELECT project.Name, PhysicalResource.type"
+					+ " FROM PROJECT RIGHT JOIN resourceusagehistory ON project.ID=resourceusagehistory.project"
+					+ " RIGHT JOIN ruhresources ON resourceusagehistory.ID=ruhresources.ruhID"
+					+ " LEFT JOIN resource ON ruhresources.ResourceID=resource.ID"
+					+ " LEFT JOIN PhysicalResource ON PhysicalResource.PhysicalResourceID=resource.ID");
+			SQLQuery query = session.createSQLQuery(sql);
+			result = query.list();
+			t.commit();// transaction is committed
+			return result;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public List<String> getAllProjectNamesUsedInResourceUsageHistory(){
+		try{
+			List<String> result = new ArrayList<>();
+			
+			// creating transaction object
+			Transaction t = session.beginTransaction();
+			String sql = ("SELECT DISTINCT project.Name FROM PROJECT"
+					+ " RIGHT JOIN resourceusagehistory ON project.ID=resourceusagehistory.project");
+			SQLQuery query = session.createSQLQuery(sql);
+			result = query.list();
+			t.commit();// transaction is committed
+			return result;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

@@ -1,10 +1,8 @@
 package controller.report;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import controller.resourceManagement.ResourceType;
 import javafx.fxml.FXML;
@@ -16,12 +14,12 @@ import logic.organization.resource.Resource;
 
 public class ReportMainPageController {
 	@FXML Button existingResourcesReportButton;
-	@FXML Button CirculationOfResourcesReportButton;
+	@FXML Button circulationOfResourcesReportButton;
 	@FXML Button requiredResourcesReportButton;
-	@FXML private TreeView<String> existingResourcesListTree; 
+	@FXML private TreeView<String> mainListTree; 
 
 	@FXML public void handleExistingResourcesButton(){
-		existingResourcesListTree.setRoot(null);
+		mainListTree.setRoot(null);
 		buildAndShowExistingResourcesTree();
 	}
 
@@ -30,66 +28,57 @@ public class ReportMainPageController {
 	}
 
 	@FXML public void handleRequiredResourcesButton(){
-		existingResourcesListTree.setRoot(null);
-		buildAndShowRequiredResources();
+		mainListTree.setRoot(null);
+		buildAndShowRequiredResourcesTree();
 	}
+	
 	
 	private void buildAndShowExistingResourcesTree(){
 		TreeItem<String> existingResourcesListRoot = new TreeItem<String> ("منابع سازمان");
 		existingResourcesListRoot.setExpanded(true);
 
-		TreeItem<String> financialRootItem = createARootForExistingResourcesReport(ResourceType.FINANCIALRESOURCE);
-		existingResourcesListRoot.getChildren().add(financialRootItem);
-		financialRootItem.setExpanded(true);
-		
-		TreeItem<String> informationRootItem = createARootForExistingResourcesReport(ResourceType.INFORMATIONALRESOURCE);
-		existingResourcesListRoot.getChildren().add(informationRootItem);
-		informationRootItem.setExpanded(true);
-		
-		TreeItem<String> humanRootItem = createARootForExistingResourcesReport(ResourceType.HUMANRESOUCE);
-		existingResourcesListRoot.getChildren().add(humanRootItem);
-		humanRootItem.setExpanded(true);
-		
-		TreeItem<String> physicalRootItem = createARootForExistingResourcesReport(ResourceType.PHYSICALRESOURCE);
-		existingResourcesListRoot.getChildren().add(physicalRootItem);
-		physicalRootItem.setExpanded(true);
+		createATypeOfResourceRootForExistingResourcesReport(ResourceType.FINANCIALRESOURCE, existingResourcesListRoot);
+		createATypeOfResourceRootForExistingResourcesReport(ResourceType.INFORMATIONALRESOURCE, existingResourcesListRoot);
+		createATypeOfResourceRootForExistingResourcesReport(ResourceType.HUMANRESOUCE, existingResourcesListRoot);
+		createATypeOfResourceRootForExistingResourcesReport(ResourceType.PHYSICALRESOURCE, existingResourcesListRoot);
 
-		this.existingResourcesListTree.setRoot(existingResourcesListRoot);
+		this.mainListTree.setRoot(existingResourcesListRoot);
 	}
 	
-	public void buildAndShowRequiredResources(){
-		TreeItem<String> existingResourcesListRoot = new TreeItem<String> ("پروژه‌های سازمان");
-		existingResourcesListRoot.setExpanded(true);
+	
+	public void buildAndShowRequiredResourcesTree(){
+		TreeItem<String> projectsListRoot = new TreeItem<String> ("پروژه‌های سازمان");
+		projectsListRoot.setExpanded(true);
 
 		Project project = new Project();
-		Map<String, List<String>> financialResources = project.getFinancialResourcesUsedInProjects();
-		Map<String, List<String>> informationalResources = project.getInformationalResourcesUsedInProjects();
-//		Map<String, List<String>> humanResources = project.getHumanResourcesUsedInProjects();
-//		Map<String, List<String>> physicalResources = project.getPhysicalResourcesUsedInProjects();
+		List<String> allProjectNames = project.getAllProjectNamesUsedInResourceUsageHistory();
+		Map<String, List<String>> financialResources = project.getAResourceTypeUsedInProjects(ResourceType.FINANCIALRESOURCE.getEnglishType());
+		Map<String, List<String>> informationalResources = project.getAResourceTypeUsedInProjects(ResourceType.INFORMATIONALRESOURCE.getEnglishType());
+		Map<String, List<String>> humanResources = project.getAResourceTypeUsedInProjects(ResourceType.HUMANRESOUCE.getEnglishType());
+		Map<String, List<String>> physicalResources = project.getAResourceTypeUsedInProjects(ResourceType.PHYSICALRESOURCE.getEnglishType());
 		
-
-		Set<String> frKeySet = financialResources.keySet();
-		for(String key: frKeySet){
-			TreeItem<String> rootItem = new TreeItem<String> (key);
-			rootItem.setExpanded(true);
+		for(String aProject: allProjectNames){
+			TreeItem<String> aProjectRoot = new TreeItem<String> (aProject);
+			aProjectRoot.setExpanded(true);
 			
-			TreeItem<String> financialRootItem = addATypeOfResource(rootItem, ResourceType.FINANCIALRESOURCE);
-			financialRootItem.getChildren().addAll(createOrdinaryTreeItems(financialResources.get(key)));
+			addATypeOfResourceForAProjectInRequiredResourcesReport(aProjectRoot, ResourceType.FINANCIALRESOURCE, financialResources);
+			addATypeOfResourceForAProjectInRequiredResourcesReport(aProjectRoot, ResourceType.INFORMATIONALRESOURCE, informationalResources);
+			addATypeOfResourceForAProjectInRequiredResourcesReport(aProjectRoot, ResourceType.HUMANRESOUCE, humanResources);
+			addATypeOfResourceForAProjectInRequiredResourcesReport(aProjectRoot, ResourceType.PHYSICALRESOURCE, physicalResources);
 			
-			TreeItem<String> informationalRootItem = addATypeOfResource(rootItem, ResourceType.INFORMATIONALRESOURCE);
-			informationalRootItem.getChildren().addAll(createOrdinaryTreeItems(informationalResources.get(key)));
-			
-			existingResourcesListRoot.getChildren().add(rootItem);
-			this.existingResourcesListTree.setRoot(existingResourcesListRoot);
+			projectsListRoot.getChildren().add(aProjectRoot);
 		}
+		this.mainListTree.setRoot(projectsListRoot);
 	}
 	
 	
-	private TreeItem<String> addATypeOfResource(TreeItem<String> root, ResourceType resourceType){
-		TreeItem<String> subRootItem = new TreeItem<String> (resourceType.getFarsiType());;
-		subRootItem.setExpanded(true);
-		root.getChildren().add(subRootItem);	
-		return subRootItem;
+	private void addATypeOfResourceForAProjectInRequiredResourcesReport(TreeItem<String> aProjectRoot, ResourceType resourceType, Map<String, List<String>> resourcesUsedInProjects){
+		if (resourcesUsedInProjects == null || !resourcesUsedInProjects.containsKey(aProjectRoot.getValue()))
+			return;
+		TreeItem<String> typeOfResourceRoot = new TreeItem<String> (resourceType.getFarsiType());;
+		typeOfResourceRoot.setExpanded(true);
+		typeOfResourceRoot.getChildren().addAll(createOrdinaryTreeItems(resourcesUsedInProjects.get(aProjectRoot.getValue())));
+		aProjectRoot.getChildren().add(typeOfResourceRoot);	
 	}
 	
 	
@@ -120,12 +109,14 @@ public class ReportMainPageController {
 		}
 	}
 	
-	private TreeItem<String> createARootForExistingResourcesReport(ResourceType type){
+	private TreeItem<String> createATypeOfResourceRootForExistingResourcesReport(ResourceType type, TreeItem<String> existingResourcesListRoot){
 		TreeItem<String> rootItem = new TreeItem<String> (type.getFarsiType());
 		rootItem.setExpanded(true);
 		List<String> financialResourcesUnitsInformation = Resource.getResourcesUnits(type.getEnglishType());
 		List<String> financialResourcesUnitsCount = Resource.getResourcesUnitCounts(type.getEnglishType());
-		rootItem.getChildren().addAll(createTreeItemsForUnitInformationAndCounts(financialResourcesUnitsInformation, financialResourcesUnitsCount));
+		rootItem.getChildren().addAll(createTreeItemsForUnitInformationAndCounts(financialResourcesUnitsInformation, financialResourcesUnitsCount));		
+		existingResourcesListRoot.getChildren().add(rootItem);
+		rootItem.setExpanded(true);		
 		return rootItem;
 	}
 	
