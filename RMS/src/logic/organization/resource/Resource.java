@@ -41,9 +41,10 @@ public abstract class Resource {
 		return unitCounts;
 	}
 	
-	public static ResourceModel findResource(Long resourceId) {
+	public static ResourceModel createResourceModel(Long resourceId) {
 		
 		ResourceAdapter resourceAdapter = new ResourceAdapter();
 		return resourceAdapter.getResource(resourceId);
 	}
+	
 }
