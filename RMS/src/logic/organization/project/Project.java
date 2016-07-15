@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import controller.resourceManagement.ResourceType;
 import logic.organization.module.Module;
 import logic.organization.resourceUsage.ResourceUsageHistory;
 import model.organization.activity.ActivityModel;
@@ -253,53 +254,51 @@ public class Project {
 
 	}
 
-	public Map<String, List<String>> getFinancialResourcesUsedInProjects() {
-		Map<String, List<String>> myMap = new HashMap();
-		ProjectAdapter projectAdapter = new ProjectAdapter();
-		Iterator<Object> iterator = projectAdapter.getFinancialResourcesUsedInProjects().iterator();
-
-		List<ProjectNameFinancialAmount> projNameFinancialAmount = new ArrayList<>();
-		while (iterator.hasNext()) {
-			Object[] tuple = (Object[]) iterator.next();
-			ProjectNameFinancialAmount row = new ProjectNameFinancialAmount();
-			row.projectName = (String) tuple[0];
-			if (tuple[1] == null)
-				row.financialAmount = 0;
-			else
-				row.financialAmount = (double) tuple[1];
-			projNameFinancialAmount.add(row);
-			System.out.println(row.toString());
+	
+	public Map<String, List<String>> getAResourceTypeUsedInProjects(String type){
+		Map<String, List<String>> projectNameResourcesList = new HashMap<>();
+		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
+		
+		Iterator<Object> iterator = null;
+		switch (type){
+		case "Financial":
+			iterator = projectAdapter.getFinancialResourcesUsedInProjects().iterator();
+			break;
+		case "Information":
+			iterator = projectAdapter.getInformationalResourcesUsedInProjects().iterator();
+			break;
+		case "Human":
+			iterator = projectAdapter.getHumanResourcesUsedInProjects().iterator();
+			break;
+		case "Physical":
+			iterator = projectAdapter.getPhysicalResourcesUsedInProjects().iterator();
+			break;
 		}
-
-		for (ProjectNameFinancialAmount pnfa : projNameFinancialAmount) {
-			if (!myMap.containsKey(pnfa.projectName)) {
-				myMap.put(pnfa.projectName, new ArrayList<>());
-			}
-			myMap.get(pnfa.projectName).add("" + (pnfa.financialAmount));
+		
+		if(iterator == null)
+			return null;
+		
+		while ( iterator.hasNext() ) {
+		    Object[] tuple = (Object[]) iterator.next();
+		    String projectName = (String) tuple[0];
+		    String resource;
+		    if(tuple[1] == null)
+		    	continue;
+		    else if(type == ResourceType.HUMANRESOUCE.getEnglishType())
+		    	resource = tuple[1] + " " + tuple[2];
+		    else
+		    	resource = tuple[1] + "";
+		    if(!projectNameResourcesList.containsKey(projectName)){
+				projectNameResourcesList.put(projectName, new ArrayList<>());
+		    }
+		    projectNameResourcesList.get(projectName).add(resource);
 		}
-
-		return myMap;
+		return projectNameResourcesList;
 	}
-
-	public Map<String, List<String>> getInformationalResourcesUsedInProjects() {
-		Map<String, List<String>> myMap = new HashMap();
-		ProjectAdapter projectAdapter = new ProjectAdapter();
-		Iterator<Object> iterator = projectAdapter.getInformationalResourcesUsedInProjects().iterator();
-
-		while (iterator.hasNext()) {
-			Object[] tuple = (Object[]) iterator.next();
-			String projectName = (String) tuple[0];
-			String informationalResourceType;
-			if (tuple[1] == null)
-				informationalResourceType = "--";
-			else
-				informationalResourceType = (String) tuple[1];
-			if (!myMap.containsKey(projectName)) {
-				myMap.put(projectName, new ArrayList<>());
-			}
-			myMap.get(projectName).add(informationalResourceType);
-		}
-		return myMap;
+	
+	public List<String> getAllProjectNamesUsedInResourceUsageHistory(){
+		ProjectAdapter projectAdapter = ProjectAdapter.getInstance();
+		return projectAdapter.getAllProjectNamesUsedInResourceUsageHistory();
 	}
 
 	public Project getProject(Long projectId) {
@@ -316,11 +315,3 @@ public class Project {
 	}
 }
 
-class ProjectNameFinancialAmount {
-	String projectName;
-	double financialAmount;
-
-	public String toString() {
-		return projectName + financialAmount;
-	}
-}

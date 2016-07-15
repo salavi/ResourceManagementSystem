@@ -32,7 +32,7 @@ public class RemoveAccountController {
 			}
 			else if(success == 0){
 				message.setFill(Color.RED);
-				message.setText("امکان حذف این کاربر وجود ندارد. کاربر مورد نظر سطح دسترسی بالاتر دارد.");
+				message.setText("سطح دسترسی شما از کاربر مورد نظر بالاتر نیست و امکان اعمال این تغییر وجود ندارد");
 			}
 			else if(success == 1){
 				message.setFill(Color.GREEN);

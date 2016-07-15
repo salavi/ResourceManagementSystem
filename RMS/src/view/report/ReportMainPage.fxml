@@ -7,8 +7,8 @@
 <AnchorPane prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.report.ReportMainPageController">
    <children>
     <Button fx:id="requiredResourcesReportButton" layoutX="196.0" layoutY="498.0" mnemonicParsing="false" onAction="#handleRequiredResourcesButton" prefHeight="26.0" prefWidth="167.0" text="گزارش منابع مورد نیاز" />
-      <Button fx:id="CirculationOfResourcesReportButton" layoutX="374.0" layoutY="499.0" mnemonicParsing="false" onAction="#handleCirculationOfResourcesButton" prefWidth="167.0" text="گزارش جریان چرخشی" />
+      <Button fx:id="circulationOfResourcesReportButton" layoutX="374.0" layoutY="499.0" mnemonicParsing="false" onAction="#handleCirculationOfResourcesButton" prefWidth="167.0" text="گزارش جریان چرخشی" />
       <Button fx:id="existingResourcesReportButton" layoutX="550.0" layoutY="498.0" mnemonicParsing="false" onAction="#handleExistingResourcesButton" prefHeight="26.0" prefWidth="167.0" text="گزارش منابع موجود" />
-      <TreeView fx:id="existingResourcesListTree" prefHeight="470.0" prefWidth="900.0" />
+      <TreeView fx:id="mainListTree" prefHeight="470.0" prefWidth="900.0" />
    </children>
 </AnchorPane>

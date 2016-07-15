@@ -118,52 +118,23 @@ public class ResourceAdapter extends Adapter{
 		}
 
 	}
-
-	public List<String> findUnitsOfResources(String type){
+	
+	public List<Object> findExistingResourcesInUnits(String type){
 		try{
-			List<String> result = new ArrayList<>();
+			List<Object> result = new ArrayList<>();
 
 			// creating transaction object
 			Transaction t = session.beginTransaction();
-			String sql = ("SELECT UnitID, Specialty FROM Unit "
-					+ "RIGHT JOIN (SELECT DISTINCT currentUnit FROM Resource "
-					+ "RIGHT JOIN " + type + "Resource "
-					+ "On " + type + "Resource." + type + "ResourceID = Resource.ID "
-					+ "LEFT JOIN Unit "
-					+ "ON Unit.ID=Resource.currentUnit) AS currUnit "
-					+ "ON Unit.ID=currUnit.currentUnit;");
+			String sql = ("SELECT UnitID, Specialty, COUNT(currentUnit) FROM Unit"
+					+ " RIGHT JOIN (SELECT currentUnit FROM Resource"
+					+ " RIGHT JOIN " + type + "Resource"
+					+ " On " + type + "Resource." + type + "ResourceID = Resource.ID"
+					+ " LEFT JOIN Unit"
+					+ " ON Unit.ID=Resource.currentUnit) AS currUnit"
+					+ " ON Unit.ID=currUnit.currentUnit"
+					+ " GROUP BY currentUnit;");
 			SQLQuery query = session.createSQLQuery(sql);
-			query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-			List<Object> resources = query.list();
-			for (Object unitInformation: resources){
-				result.add(unitInformation.toString());
-			}
-			t.commit();// transaction is committed
-			return result;
-		}
-		catch(Exception e){
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public List<String> findUnitCountsOfResources(String type){
-		try{
-			List<String> result = new ArrayList<>();
-
-			// creating transaction object
-			Transaction t = session.beginTransaction();
-			String sql = ("SELECT count(currentUnit) "
-					+ "FROM Resource "
-					+ "RIGHT JOIN " + type + "Resource "
-					+ "ON " + type + "Resource." + type + "ResourceID=Resource.ID "
-					+ "GROUP by currentUnit;");
-			SQLQuery query = session.createSQLQuery(sql);
-			query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-			List<Object> counts = query.list();
-			for (Object unitCounts: counts){
-				result.add(unitCounts.toString());
-			}
+			result = query.list();
 			t.commit();// transaction is committed
 			return result;
 		}
@@ -173,5 +144,4 @@ public class ResourceAdapter extends Adapter{
 		}
 	}
 	
-//	public List
 }

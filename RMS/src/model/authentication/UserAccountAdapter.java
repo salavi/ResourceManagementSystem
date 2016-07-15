@@ -59,10 +59,12 @@ public class UserAccountAdapter extends Adapter {
 		try {
 			// creating transaction object
 			Transaction t = session.beginTransaction();
-			Query query = session.createQuery("FROM UserAccountModel userAccountModel WHERE userAccountModel.username = :un");
-			query.setParameter("un",username);
+			Query query = session.createQuery("FROM UserAccountModel userAccountModel WHERE userAccountModel.username = :userName");
+			query.setParameter("userName",username);
 			List<UserAccountModel> user = query.list();
 			t.commit();// transaction is committed
+			if(user.isEmpty())
+				return null;
 			return user.get(0);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -26,7 +26,8 @@ public class Authentication {
 	public UserAccount login(String username, String password){
 		UserAccountAdapter userAccountAdapter = UserAccountAdapter.getInstance();
 		UserAccountModel user = userAccountAdapter.find(username);
-		System.out.println(user == null);
+		if(user == null)
+			return null;
 		boolean isAuthenticated = user.authenticate(username, password);
 		if(isAuthenticated){
 			loggedInUser = user.getUserAccount();
