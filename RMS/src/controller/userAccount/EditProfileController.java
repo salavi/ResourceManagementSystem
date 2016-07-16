@@ -28,7 +28,7 @@ public class EditProfileController {
 	public void handleRegisterButton() {
 		if (firstName.getText().isEmpty() && lastName.getText().isEmpty()) {
 			message.setFill(Color.RED);
-			message.setText(ErrorMessage.INVALID_INPUT);
+			message.setText(ErrorMessage.EDIT_EMPTY_INPUT);
 		} else {
 			int success;
 			if(firstName.getText().isEmpty()){

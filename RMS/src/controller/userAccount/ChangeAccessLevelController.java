@@ -53,7 +53,7 @@ public class ChangeAccessLevelController {
 			}
 			else if(success == 0){
 				message.setFill(Color.RED);
-				message.setText(ErrorMessage.LOWER_ACCESS_LEVEL);
+				message.setText(ErrorMessage.LOWER_ACCESS_LEVEL_MODIFY);
 			}
 			else if(success == 1){
 				message.setFill(Color.GREEN);

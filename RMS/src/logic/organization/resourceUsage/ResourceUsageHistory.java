@@ -1,6 +1,11 @@
 package logic.organization.resourceUsage;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import logic.organization.activity.Activity;
@@ -22,21 +27,21 @@ public class ResourceUsageHistory {
 	private Project project;
 	private Set<Resource> resources;
 	private Activity activity;
-	
-	
+
+
 	public ResourceUsageHistoryModel createRUH(ActivityModel activityModel, UnitModel unitModel, ProjectModel projectModel, Set<Long> resources) {
 		Set<ResourceModel> resourceModels = new HashSet<>();
 		ResourceAdapter resourceAdapter = ResourceAdapter.getInstance();
 		for (Long resourceId : resources) {
 			resourceModels.add(resourceAdapter.getResource(resourceId));
 		}
-		
+
 		ResourceUsageHistoryModel ruhModel = new ResourceUsageHistoryModel();
 		ruhModel.setActivity(activityModel);
 		ruhModel.setProject(projectModel);
 		ruhModel.setResources(resourceModels);
 		ruhModel.setUnit(unitModel);
-		
+
 		ResourceUsageHistoryAdapter.getInstance().addResourceUsageHistory(ruhModel);
 		return ruhModel;
 	}
@@ -86,17 +91,53 @@ public class ResourceUsageHistory {
 		ProjectModel projectModel = ProjectAdapter.getInstance().getProject(projectId);
 		ActivityModel activityModel = ActivityAdapter.getInstance().getActivity(activityId);
 		ResourceModel resourceModel = ResourceAdapter.getInstance().getResource(resourceId);
-		
+
 		Set<ResourceModel> resources = new HashSet<>();
 		resources.add(resourceModel);
-		
+
 		ResourceUsageHistoryModel ruhModel = new ResourceUsageHistoryModel();
 		ruhModel.setActivity(activityModel);
 		ruhModel.setProject(projectModel);
 		ruhModel.setUnit(activityModel.getUnit());
 		ruhModel.setResources(resources);
-		
+
 		ResourceUsageHistoryAdapter.getInstance().addResourceUsageHistory(ruhModel);
 		return ruhModel;
+	}
+
+
+	public Map<String, List<String>> getResourceUsageHistoryInfo(){
+		Map<String, List<String>> result = new HashMap<>();
+		ResourceUsageHistoryAdapter resourceUsageHistoryAdapter = ResourceUsageHistoryAdapter.getInstance();
+		Iterator<Object> it = resourceUsageHistoryAdapter.getResourceUsageHistoryInfo().iterator();
+		if(it == null)
+			return null;
+		while(it.hasNext()){
+			Object[] tuples = (Object[]) it.next();			
+			if(!result.containsKey(tuples[0] + "")){
+				result.put(tuples[0] + "", new ArrayList<>());
+		    }
+			String aHistory = "StartDate: " + tuples[1].toString() + "   EndDate: " + tuples[2].toString() + "   Type of Process: " + tuples[3].toString() + "   Project Name: " + tuples[4];
+		    result.get(tuples[0] + "").add(aHistory);
+		}
+		return result;
+	}
+	
+	public Map<String, String> getDistinctResourcesUsedInRUHResources(String type){
+		Map<String, String> result = new HashMap<>();
+		ResourceUsageHistoryAdapter resourceUsageHistoryAdapter = ResourceUsageHistoryAdapter.getInstance();
+		Iterator<Object> it = resourceUsageHistoryAdapter.getDistinctResourcesUsedInRUHResources(type).iterator();
+		if(it == null)
+			return null;
+		while(it.hasNext()){
+			Object[] tuples = (Object[]) it.next();
+			if(!result.containsKey(tuples[0])){
+				if(type.equals("Human"))
+					result.put(tuples[0] + "", tuples[1] + "  " + tuples[2]);
+				else
+					result.put(tuples[0] + "", tuples[1] + "");
+			}
+		}
+		return result;
 	}
 }
