@@ -34,22 +34,6 @@ public class ResourceAdapter extends Adapter{
 		
 	}
 
-	public List<HumanResourceModel> findAll() {
-		try{
-			// creating transaction object
-			Transaction t = session.beginTransaction();
-			Query query = session.createQuery("from HumanResourceModel");
-			List<HumanResourceModel> resources = query.list();
-			t.commit();// transaction is committed
-			System.out.println("retrieved");
-			return resources;
-
-		}catch(Exception e){
-			e.printStackTrace();
-			return null;
-		}
-
-	}
 
 	public List<FinancialResourceModel> findAllFinancialResources() {
 		try{

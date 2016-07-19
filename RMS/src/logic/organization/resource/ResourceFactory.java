@@ -3,7 +3,7 @@ package logic.organization.resource;
 import model.organization.resource.ResourceAdapter;
 
 public abstract class ResourceFactory {
-	ResourceAdapter resourceAdapter;
+	protected ResourceAdapter resourceAdapter;
 	
 	public ResourceFactory(){
 		 resourceAdapter = new ResourceAdapter();
